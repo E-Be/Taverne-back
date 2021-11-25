@@ -1,8 +1,12 @@
 package inventaire;
 import inventaire.Bar;
+import javax.persistence.Entity;
+import javax.persistence.Entity;
 
+
+@Entity
 public abstract class Boisson extends Bar {
-
+	
 	protected int id;
 	protected String nom;
 	protected String type_produit;
