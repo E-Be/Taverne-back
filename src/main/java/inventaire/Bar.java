@@ -24,6 +24,10 @@ public class Bar {
 		
 	}
 	
+	public Bar() {
+		
+	}
+	
 
 	public int getId_bar() {
 		return id_bar;

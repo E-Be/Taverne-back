@@ -9,6 +9,10 @@ public class Alcool extends Boisson{
 		
 		super(id, nom, prixHT, prixHThh,1.2);
 	}
+	
+	public Alcool() {
+		
+	}
 
 
 }
