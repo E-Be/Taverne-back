@@ -1,12 +1,17 @@
 package inventaire;
 import inventaire.Bar;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Entity;
 
 
 @Entity
-public abstract class Boisson extends Bar {
+public abstract class Boisson{
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
 	protected String nom;
 	protected String type_produit;
@@ -24,6 +29,10 @@ public abstract class Boisson extends Bar {
 		this.prixHT=prixHT;
 		this.prixHThh=prixHThh;
 		this.tva=tva;
+	}
+	
+	public Boisson() {
+		
 	}
 
 	public int getId() {
