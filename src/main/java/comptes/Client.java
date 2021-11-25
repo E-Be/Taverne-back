@@ -1,11 +1,16 @@
 package comptes;
 
+import javax.persistence.Entity;
+
 import fonctionnalitees.CarteFidelite;
 
+@Entity
 public class Client extends Compte {
 	
 	private CarteFidelite carte;
 
+	public Client() {}
+	
 	public Client(int id, String nom, String prenom, String login, String password, String mail) {
 		super(id, nom, prenom, login, password, mail);
 	}

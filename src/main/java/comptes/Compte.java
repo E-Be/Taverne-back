@@ -1,13 +1,23 @@
 package comptes;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Compte {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
 	protected String nom;
 	protected String prenom;
 	protected String login;
 	protected String password;
 	protected String mail;
+	
+	public Compte() {}
 
 	public Compte(int id, String nom, String prenom, String login, String password, String mail) {
 		this.id = id;
