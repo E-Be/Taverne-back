@@ -1,5 +1,7 @@
 package inventaire;
+import javax.persistence.Entity;
 
+@Entity
 public class Soft extends Boisson {
 
 
