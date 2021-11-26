@@ -23,7 +23,7 @@ public abstract class Boisson{
 	@ManyToOne
 	protected Bar bar;
 	
-	@OneToMany
+	@OneToMany(mappedBy="boisson")
 	protected List<Utilisation> utilisations;
 	
 	public Boisson() {}
