@@ -17,9 +17,10 @@ public class Bar {
 	private int id_bar;
 	private String nom;
 	
-	
+	/*
 	@OneToMany
 	List<Stock> stocks;
+	*/
 	
 	public Bar() {	}
 
@@ -27,7 +28,7 @@ public class Bar {
 		super();
 		this.id_bar = id_bar;
 		this.nom = nom;
-		this.stocks = stocks;
+		//this.stocks = stocks;
 	}
 
 	public int getId_bar() {
@@ -46,17 +47,9 @@ public class Bar {
 		this.nom = nom;
 	}
 
-	public List<Stock> getStocks() {
-		return stocks;
-	}
-
-	public void setStocks(List<Stock> stocks) {
-		this.stocks = stocks;
-	}
-
 	@Override
 	public String toString() {
-		return "Bar [id_bar=" + id_bar + ", nom=" + nom + ", stocks=" + stocks + "]";
+		return "Bar [id_bar=" + id_bar + ", nom=" + nom + "]";
 	}
 
 	
