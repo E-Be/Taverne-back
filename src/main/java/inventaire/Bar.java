@@ -31,6 +31,12 @@ public class Bar {
 	List<Employe> employes;
 	
 	public Bar() {}
+=======
+	@OneToMany
+	List<Events> events;
+	
+	public Bar() {	}
+>>>>>>> Stashed changes
 
 	public Bar(String nom, List<Stock> stocks) {
 		this.nom = nom;

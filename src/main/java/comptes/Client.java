@@ -15,7 +15,7 @@ public class Client extends Compte {
 	@OneToOne
 	private CarteFidelite carte;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "client")
 	private List<Achat> achats;
 
 	public Client() {}
@@ -36,6 +36,16 @@ public class Client extends Compte {
 	public void setCarte(CarteFidelite carte) {
 		this.carte = carte;
 	}
+
+	public List<Achat> getAchats() {
+		return achats;
+	}
+
+	public void setAchats(List<Achat> achats) {
+		this.achats = achats;
+	}
+	
+	
 	
 	
 }

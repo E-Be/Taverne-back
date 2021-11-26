@@ -2,6 +2,7 @@ package fonctionnalitees;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Achat {
 	@ManyToOne
 	private Boisson boisson;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Client client;
 
 	public Achat() {	}
