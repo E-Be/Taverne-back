@@ -1,10 +1,12 @@
 package inventaire;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -13,21 +15,20 @@ public class Bar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_bar;
-	private int limite;  //Limite du stock a ne pas dépasser sous peine d'être à court de marchandise
-	private int qte; //Quantité de produits accessibles dans le stock
+	private String nom;
 	
 	
-	public Bar(int limite, int qte) {
-		
-		this.limite = limite;
-		this.qte = qte;
-		
+	@OneToMany
+	List<Stock> stocks;
+	
+	public Bar() {	}
+
+	public Bar(int id_bar, String nom, List<Stock> stocks) {
+		super();
+		this.id_bar = id_bar;
+		this.nom = nom;
+		this.stocks = stocks;
 	}
-	
-	public Bar() {
-		
-	}
-	
 
 	public int getId_bar() {
 		return id_bar;
@@ -36,21 +37,28 @@ public class Bar {
 	public void setId_bar(int id_bar) {
 		this.id_bar = id_bar;
 	}
-	
-	public int getLimite() {
-		return limite;
+
+	public String getNom() {
+		return nom;
 	}
 
-	public void setLimite(int limite) {
-		this.limite = limite;
-	}
-	
-	public int getQte() {
-		return qte;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public void setQte(int qte) {
-		this.qte = qte;
+	public List<Stock> getStocks() {
+		return stocks;
 	}
+
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
+
+	@Override
+	public String toString() {
+		return "Bar [id_bar=" + id_bar + ", nom=" + nom + ", stocks=" + stocks + "]";
+	}
+
+	
 
 }
