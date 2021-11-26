@@ -12,10 +12,9 @@ public class Intervenant extends Compte {
 	
 	private String entreprise;
 	
-	/*
-	@OneToMany
+	
+	@OneToMany(mappedBy= "intervenant")
 	private List<Intervention> interventions;
-	*/
 	
 	public Intervenant() {}
 
