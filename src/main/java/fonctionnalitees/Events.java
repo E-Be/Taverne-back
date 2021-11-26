@@ -1,5 +1,6 @@
 package fonctionnalitees;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -26,14 +27,12 @@ public class Events {
 	
 	@ManyToOne
 	private Employe emp;
-	private Date journee;
+	private LocalDate journee;
 	private String remarque;
 	
 	public Events() {}
 
-	public Events(int id, Bar bar, Horaires horaires, Employe emp, Date journee, String remarque) {
-		super();
-		this.id = id;
+	public Events(Bar bar, Horaires horaires, Employe emp, LocalDate journee, String remarque) {
 		this.bar = bar;
 		this.horaires = horaires;
 		this.emp = emp;
@@ -57,11 +56,11 @@ public class Events {
 		this.bar = bar;
 	}
 
-	public Horaires getHoraire() {
+	public Horaires getHoraires() {
 		return horaires;
 	}
 
-	public void setHoraire(Horaires horaires) {
+	public void setHoraires(Horaires horaires) {
 		this.horaires = horaires;
 	}
 
@@ -73,11 +72,11 @@ public class Events {
 		this.emp = emp;
 	}
 
-	public Date getJournee() {
+	public LocalDate getJournee() {
 		return journee;
 	}
 
-	public void setJournee(Date journee) {
+	public void setJournee(LocalDate journee) {
 		this.journee = journee;
 	}
 
@@ -91,10 +90,8 @@ public class Events {
 
 	@Override
 	public String toString() {
-		return "Events [id=" + id + ", bar=" + bar + ", emp=" + emp + ", journee=" + journee + ", remarque=" + remarque
-				+ "]";
+		return "Events [id=" + id + ", bar=" + bar + ", horaires=" + horaires + ", emp=" + emp + ", journee=" + journee
+				+ ", remarque=" + remarque + "]";
 	}
 	
-	
-
 }

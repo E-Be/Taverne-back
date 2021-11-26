@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import comptes.Employe;
+import fonctionnalitees.Events;
+
 
 @Entity
 public class Bar {
@@ -21,11 +24,15 @@ public class Bar {
 	@OneToMany(mappedBy = "bar")
 	List<Stock> stocks;
 	
+	@OneToMany (mappedBy = "bar")
+	List<Events> events;
+	
+	@OneToMany (mappedBy = "bar")
+	List<Employe> employes;
 	
 	public Bar() {}
 
-	public Bar(int id_bar, String nom, List<Stock> stocks) {
-		this.id_bar = id_bar;
+	public Bar(String nom, List<Stock> stocks) {
 		this.nom = nom;
 		this.stocks = stocks;
 	}

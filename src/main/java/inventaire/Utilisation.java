@@ -19,4 +19,47 @@ public class Utilisation {
 	
 	@OneToOne
 	private Boisson boisson;
+	
+	public Utilisation() {}
+
+	public Utilisation(double volume, Stock ingredient, Boisson boisson) {
+		super();
+		Volume = volume;
+		this.ingredient = ingredient;
+		this.boisson = boisson;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getVolume() {
+		return Volume;
+	}
+
+	public void setVolume(double volume) {
+		Volume = volume;
+	}
+
+	public Stock getIngredient() {
+		return ingredient;
+	}
+
+	public void setIngredient(Stock ingredient) {
+		this.ingredient = ingredient;
+	}
+
+	public Boisson getBoisson() {
+		return boisson;
+	}
+
+	public void setBoisson(Boisson boisson) {
+		this.boisson = boisson;
+	}
+	
+	
 }

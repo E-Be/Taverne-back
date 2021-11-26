@@ -1,12 +1,13 @@
 package fonctionnalitees;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import comptes.Employe;
 
@@ -20,16 +21,15 @@ public class Horaires {
 	private LocalTime horaire_embauche;
 	private LocalTime horaire_debauche;
 	
-	@ManyToOne
-	private Employe emp;
+	@OneToMany(mappedBy = "horaires")
+	private List<Events> events;
 	
 	public Horaires() {}
 
-	public Horaires(int id, LocalTime horaire_embauche, LocalTime horaire_debauche, Employe emp) {
+	public Horaires(LocalTime horaire_embauche, LocalTime horaire_debauche) {
 		this.id = id;
 		this.horaire_embauche = horaire_embauche;
 		this.horaire_debauche = horaire_debauche;
-		this.emp = emp;
 	}
 
 	public int getId() {
@@ -55,21 +55,6 @@ public class Horaires {
 	public void setHoraire_debauche(LocalTime horaire_debauche) {
 		this.horaire_debauche = horaire_debauche;
 	}
-
-	public Employe getEmp() {
-		return emp;
-	}
-
-	public void setEmp(Employe emp) {
-		this.emp = emp;
-	}
-
-	@Override
-	public String toString() {
-		return "Horaires [id=" + id + ", horaire_embauche=" + horaire_embauche + ", horaire_debauche="
-				+ horaire_debauche + ", emp=" + emp + "]";
-	}
-	
 	
 	
 }

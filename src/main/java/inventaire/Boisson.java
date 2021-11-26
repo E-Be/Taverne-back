@@ -29,7 +29,6 @@ public abstract class Boisson{
 	public Boisson() {}
 
 	public Boisson (String nom, double prixHT,double prixHThh,double tva){
-		this.id=id;
 		this.nom=nom;
 		this.prixHT=prixHT;
 		this.prixHThh=prixHThh;
