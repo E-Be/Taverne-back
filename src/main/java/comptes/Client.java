@@ -1,8 +1,12 @@
 package comptes;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import fonctionnalitees.Achat;
 import fonctionnalitees.CarteFidelite;
 
 @Entity
@@ -10,6 +14,9 @@ public class Client extends Compte {
 	
 	@OneToOne
 	private CarteFidelite carte;
+	
+	@OneToMany
+	private List<Achat> achats;
 
 	public Client() {}
 	
