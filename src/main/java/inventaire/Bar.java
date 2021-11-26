@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import fonctionnalitees.Events;
+
 
 @Entity
 public class Bar {
@@ -21,8 +23,15 @@ public class Bar {
 	@OneToMany(mappedBy = "bar")
 	List<Stock> stocks;
 	
+<<<<<<< Updated upstream
 	
 	public Bar() {}
+=======
+	@OneToMany
+	List<Events> events;
+	
+	public Bar() {	}
+>>>>>>> Stashed changes
 
 	public Bar(int id_bar, String nom, List<Stock> stocks) {
 		this.id_bar = id_bar;
