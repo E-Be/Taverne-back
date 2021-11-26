@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import comptes.Employe;
 import inventaire.Bar;
@@ -16,8 +17,14 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@ManyToOne
 	private Bar bar;
+	
+	@ManyToOne
 	private Horaires horaires;
+	
+	@ManyToOne
 	private Employe emp;
 	private Date journee;
 	private String remarque;

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import comptes.Employe;
 
@@ -18,6 +19,8 @@ public class Horaires {
 	private int id;
 	private LocalTime horaire_embauche;
 	private LocalTime horaire_debauche;
+	
+	@ManyToOne
 	private Employe emp;
 	
 	public Horaires() {}

@@ -19,15 +19,6 @@ public abstract class Compte {
 	
 	public Compte() {}
 
-	public Compte(int id, String nom, String prenom, String login, String password, String mail) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.login = login;
-		this.password = password;
-		this.mail = mail;
-	}
-	
 	public Compte(String nom, String prenom, String login, String password, String mail) {
 		this.nom = nom;
 		this.prenom = prenom;
