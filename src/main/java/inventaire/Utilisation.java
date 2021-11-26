@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,7 +18,7 @@ public class Utilisation {
 	@OneToOne
 	private Stock ingredient;
 	
-	@OneToOne
+	@ManyToOne
 	private Boisson boisson;
 	
 	public Utilisation() {}
