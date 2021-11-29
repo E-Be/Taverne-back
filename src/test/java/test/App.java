@@ -10,16 +10,33 @@ import comptes.Compte;
 import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
-import dao.DAOCarte;
-import dao.DAOCompte;
+
+
+import dao.jpa.DAOCompte;
+import dao.jpa.DAOAchat;
+import dao.jpa.DAOArticle;
+import dao.jpa.DAOCompte;
+import dao.jpa.DAOCompte;
+
+
+import idao.jpa.IDAOCompte;
+import idao.jpa.IDAOAchat;
+import idao.jpa.IDAOArticle;
+import idao.jpa.IDAOBar;
+import idao.jpa.IDAOBoisson;
 import fonctionnalitees.CarteFidelite;
+import util.Context;
 
 public class App {
 
 	static Compte connected;
+	
+	static IDAOCompte daoC = Context.getInstance().getDaoCompte();
+	static IDAOAchat daoA =Context.getInstance().getDaoAchat();
+	static IDAOArticle daoT = Context.getInstance().getDaoArticle();
+	static IDAOBar daoV = Context.getInstance().getDaoBar();
+	static IDAOBoisson daoBoisson = Context.getInstance().getDaoBoisson();
 
-	static DAOCompte daoC = new DAOCompte();
-	static DAOCarte daoCarte = new DAOCarte();
 
 	public static String saisieString(String msg) {
 		Scanner sc = new Scanner(System.in);

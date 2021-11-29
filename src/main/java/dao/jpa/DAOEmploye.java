@@ -6,38 +6,38 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import comptes.Employe;
 import fonctionnalitees.Events;
-import idao.jpa.IDAO;
-import idao.jpa.IDAOStock;
-import inventaire.Stock;
+import idao.jpa.IDAOEmploye;
 import util.Context;
 
-public class DAOStock implements IDAOStock{
-
+public class DAOEmploye implements IDAOEmploye{
+	
+	
 	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
-	public Stock findById(Integer id) {
+	public Employe findById(Integer id) {
 		EntityManager em = emf.createEntityManager();
-		Stock objet = em.find(Stock.class, id);
+		Employe objet = em.find(Employe.class, id);
 		em.close();
 		return objet;
 	}
 
 	@Override
-	public List<Stock> findAll() {
+	public List<Employe> findAll() {
 
 
 		EntityManager em = emf.createEntityManager();
 	
-		List<Stock> objets = em.createQuery("from Stock").getResultList();
+		List<Employe> objets = em.createQuery("from Employe").getResultList();
 		em.close();
 		return objets;
 		
 	}
 
 	@Override
-	public Stock save(Stock objet) {
+	public Employe save(Employe objet) {
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -53,7 +53,7 @@ public class DAOStock implements IDAOStock{
 	@Override
 	public void delete(Integer id) {
 		EntityManager em = emf.createEntityManager();
-		Stock objet = em.find(Stock.class, id);
+		Employe objet = em.find(Employe.class, id);
 
 		em.getTransaction().begin();
 		
@@ -65,14 +65,12 @@ public class DAOStock implements IDAOStock{
 	}
 
 	@Override
-	public List<Stock> findAllByBar(int id_bar) {
+	public List<Employe> findAllByBar(int id_bar) {
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Stock where id_bar = :id");
+		Query myQuery = em.createQuery("from Employe where id_bar = :id");
 		myQuery.setParameter("id", id_bar);
-		List<Stock> objets = myQuery.getResultList();
+		List<Employe> objets = myQuery.getResultList();
 		em.close();
 		return objets;
 	}
-
 }
-

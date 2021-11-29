@@ -66,10 +66,30 @@ public class DAOEvents implements IDAOEvents{
 	}
 
 	@Override
-	public List<Events> findByJour(LocalDate jour) {
+	public List<Events> findAllByJour(LocalDate jour) {
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Events where jour like :jour");
+		Query myQuery = em.createQuery("from Events where jour = :jour");
 		myQuery.setParameter("jour", jour);
+		List<Events> objets = myQuery.getResultList();
+		em.close();
+		return objets;
+	}
+
+	@Override
+	public List<Events> findAllByEmploye(int id_employe) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Events where id_emp =:id");
+		myQuery.setParameter("id", id_employe);
+		List<Events> objets = myQuery.getResultList();
+		em.close();
+		return objets;
+	}
+
+	@Override
+	public List<Events> findAllByHoraires(int id_horaires) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Events where id_horaires =:id");
+		myQuery.setParameter("id", id_horaires);
 		List<Events> objets = myQuery.getResultList();
 		em.close();
 		return objets;
