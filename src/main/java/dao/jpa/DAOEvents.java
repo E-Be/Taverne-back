@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import dao.IDAOEvents;
 import fonctionnalitees.Events;
+import idao.jpa.IDAOEvents;
 import util.Context;
 
 public class DAOEvents implements IDAOEvents{

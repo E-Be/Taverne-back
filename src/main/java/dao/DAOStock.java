@@ -13,6 +13,7 @@ import comptes.Compte;
 import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
+import idao.jpa.IDAO;
 
 public class DAOStock implements IDAO<Stock, Integer> {
 

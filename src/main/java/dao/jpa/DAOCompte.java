@@ -9,7 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import comptes.Compte;
-import dao.IDAOCompte;
+import idao.jpa.IDAOCompte;
 import util.Context;
 
 public class DAOCompte implements IDAOCompte {

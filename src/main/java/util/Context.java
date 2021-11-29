@@ -3,10 +3,10 @@ package util;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dao.IDAOBoisson;
-import dao.IDAOCompte;
-import dao.IDAOStock;
 import dao.jpa.DAOStock;
+import idao.jpa.IDAOBoisson;
+import idao.jpa.IDAOCompte;
+import idao.jpa.IDAOStock;
 import dao.jpa.DAOBoisson;
 import dao.jpa.DAOCompte;
 import comptes.Compte;

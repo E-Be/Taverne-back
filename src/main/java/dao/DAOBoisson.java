@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import idao.jpa.IDAO;
 import inventaire.Boisson;
 import inventaire.Alcool;
 import inventaire.Soft;
