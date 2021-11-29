@@ -1,12 +1,15 @@
 package dao.jpa;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import dao.IDAOEvents;
 import fonctionnalitees.Events;
+import inventaire.Article;
 import util.Context;
 
 public class DAOEvents implements IDAOEvents{
@@ -60,5 +63,15 @@ public class DAOEvents implements IDAOEvents{
 		em.getTransaction().commit();
 		em.close();
 
+	}
+
+	@Override
+	public List<Events> findByJour(LocalDate jour) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Events where jour like :jour");
+		myQuery.setParameter("jour", jour);
+		List<Events> objets = myQuery.getResultList();
+		em.close();
+		return objets;
 	}
 }
