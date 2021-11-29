@@ -19,22 +19,22 @@ public class DAOIntervention implements IDAOIntervention {
 	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	
-	public List<Intervenant> findByTypeArtiste (String artiste) {
+	public List<Intervention> findByArtiste (String artiste) {
 		
 		EntityManager em = emf.createEntityManager();
 		
-		List<Intervenant> intervenant = new ArrayList<Intervenant>();
+		List<Intervention> interventions = new ArrayList<Intervention>();
 
 		Query query = em.createQuery("from Compte c where c.Intervenant=:artiste");
 		query.setParameter("artiste", artiste);
 		
 		try 
 		{
-			intervenant = (List<Intervenant>) query.getResultList();
+			interventions = (List<Intervention>) query.getResultList();
 		}
 		catch(Exception e) {e.printStackTrace();}
 		em.close();
-		return intervenant;
+		return interventions;
 		}
 	
 	

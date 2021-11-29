@@ -9,7 +9,7 @@ import fonctionnalitees.Intervention;
 public interface IDAOIntervention extends IDAO <Intervention,Integer>{
 
 	
-	public List<Intervenant> findByTypeArtiste (String artiste);
+	public List<Intervention> findByArtiste (String artiste);
 	
 	
 	
