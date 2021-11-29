@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 
 import fonctionnalitees.Achat;
 import idao.jpa.IDAOAchat;
+import fonctionnalitees.Achat;
 import util.Context;
 
 public class DAOAchat implements IDAOAchat {
@@ -59,6 +60,12 @@ public class DAOAchat implements IDAOAchat {
 		em.getTransaction().commit();
 		em.close();
 
+	}
+	
+	@Override
+	public List<Achat> findAllByClient(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
