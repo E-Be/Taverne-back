@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,9 +17,11 @@ public class Stock {
 	private int seuil_limite;
 	
 	@ManyToOne
+	@JoinColumn(name="id_article")
 	private Article article;
 	
 	@ManyToOne
+	@JoinColumn(name="id_bar")
 	private Bar bar;
 	
 	public Stock() {}

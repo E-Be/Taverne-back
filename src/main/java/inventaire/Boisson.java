@@ -1,15 +1,21 @@
 package inventaire;
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="Type_Boisson")
 public abstract class Boisson{
 	
 	@Id
@@ -21,6 +27,7 @@ public abstract class Boisson{
 	protected double tva;
 	
 	@ManyToOne
+	@JoinColumn(name = "id_bar")
 	protected Bar bar;
 	
 	@OneToMany(mappedBy="boisson")
@@ -28,11 +35,14 @@ public abstract class Boisson{
 	
 	public Boisson() {}
 
-	public Boisson (String nom, double prixHT,double prixHThh,double tva){
-		this.nom=nom;
-		this.prixHT=prixHT;
-		this.prixHThh=prixHThh;
-		this.tva=tva;
+	public Boisson(String nom, double prixHT, double prixHThh, double tva, Bar bar,
+			List<Utilisation> utilisations) {
+		this.nom = nom;
+		this.prixHT = prixHT;
+		this.prixHThh = prixHThh;
+		this.tva = tva;
+		this.bar = bar;
+		this.utilisations = utilisations;
 	}
 
 	public int getId() {
@@ -42,7 +52,6 @@ public abstract class Boisson{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 
 	public String getNom() {
 		return nom;
@@ -97,6 +106,8 @@ public abstract class Boisson{
 		return "Boisson [id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", prixHThh=" + prixHThh + ", tva=" + tva
 				+ ", bar=" + bar + ", utilisations=" + utilisations + "]";
 	}
+
+	
 	
 	
 	

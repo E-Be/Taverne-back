@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -16,9 +17,11 @@ public class Utilisation {
 	private double Volume;
 	
 	@OneToOne
+	@JoinColumn(name="id_ingredient_stock")
 	private Stock ingredient;
 	
 	@ManyToOne
+	@JoinColumn(name="id_boisson")
 	private Boisson boisson;
 	
 	public Utilisation() {}
@@ -60,6 +63,12 @@ public class Utilisation {
 
 	public void setBoisson(Boisson boisson) {
 		this.boisson = boisson;
+	}
+
+	@Override
+	public String toString() {
+		return "Utilisation [id=" + id + ", Volume=" + Volume + ", ingredient=" + ingredient + ", boisson=" + boisson
+				+ "]";
 	}
 	
 	

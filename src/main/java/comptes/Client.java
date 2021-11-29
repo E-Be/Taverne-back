@@ -2,7 +2,9 @@ package comptes;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -10,9 +12,11 @@ import fonctionnalitees.Achat;
 import fonctionnalitees.CarteFidelite;
 
 @Entity
+@DiscriminatorValue("Client")
 public class Client extends Compte {
 	
 	@OneToOne
+	@JoinColumn(name = "id_carte")
 	private CarteFidelite carte;
 	
 	@OneToMany(mappedBy = "client")
