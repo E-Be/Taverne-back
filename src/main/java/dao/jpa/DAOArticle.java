@@ -76,7 +76,7 @@ public class DAOArticle implements IDAOArticle {
 	@Override
 	public List<Article> findAllByFournisseur(int id_fournisseur) {
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Article where id_fournisseur = id");
+		Query myQuery = em.createQuery("from Article where id_fournisseur = :id");
 		myQuery.setParameter("id", id_fournisseur);
 		List<Article> objets = myQuery.getResultList();
 		em.close();

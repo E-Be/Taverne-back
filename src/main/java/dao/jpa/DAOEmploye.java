@@ -67,7 +67,7 @@ public class DAOEmploye implements IDAOEmploye{
 	@Override
 	public List<Employe> findAllByBar(int id_bar) {
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Employe where id_bar like :id");
+		Query myQuery = em.createQuery("from Employe where id_bar = :id");
 		myQuery.setParameter("id", id_bar);
 		List<Employe> objets = myQuery.getResultList();
 		em.close();

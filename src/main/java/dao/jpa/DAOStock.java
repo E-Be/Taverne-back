@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
+import fonctionnalitees.Events;
 import idao.jpa.IDAO;
 import idao.jpa.IDAOStock;
 import inventaire.Stock;
@@ -60,6 +62,16 @@ public class DAOStock implements IDAOStock{
 		em.getTransaction().commit();
 		em.close();
 
+	}
+
+	@Override
+	public List<Stock> findAllByBar(int id_bar) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Stock where id_bar = :id");
+		myQuery.setParameter("id", id_bar);
+		List<Stock> objets = myQuery.getResultList();
+		em.close();
+		return objets;
 	}
 
 }
