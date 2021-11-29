@@ -26,10 +26,10 @@ public class Horaires {
 	
 	public Horaires() {}
 
-	public Horaires(LocalTime horaire_embauche, LocalTime horaire_debauche) {
-		this.id = id;
+	public Horaires(LocalTime horaire_embauche, LocalTime horaire_debauche, List<Events> events) {
 		this.horaire_embauche = horaire_embauche;
 		this.horaire_debauche = horaire_debauche;
+		this.events = events;
 	}
 
 	public int getId() {
@@ -55,6 +55,22 @@ public class Horaires {
 	public void setHoraire_debauche(LocalTime horaire_debauche) {
 		this.horaire_debauche = horaire_debauche;
 	}
+
+	public List<Events> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Events> events) {
+		this.events = events;
+	}
+
+	@Override
+	public String toString() {
+		return "Horaires [id=" + id + ", horaire_embauche=" + horaire_embauche + ", horaire_debauche="
+				+ horaire_debauche + ", events=" + events + "]";
+	}
+
+	
 	
 	
 }

@@ -1,11 +1,16 @@
 package comptes;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="Type_Compte")
 public abstract class Compte {
 	
 	@Id
@@ -74,6 +79,13 @@ public abstract class Compte {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
+				+ password + ", mail=" + mail + "]";
+	}
+	
 	
 	
 
