@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import fonctionnalitees.CarteFidelite;
+import fonctionnalitees.Events;
 import idao.jpa.IDAOCarteFidelite;
 import util.Context;
 
@@ -60,6 +62,16 @@ public class DAOCarteFidelite implements IDAOCarteFidelite {
 		em.getTransaction().commit();
 		em.close();
 
+	}
+
+	@Override
+	public List<CarteFidelite> findAllByMinPts(int minPts) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Events where nbPoints >= :minPts");
+		myQuery.setParameter("minPts", minPts);
+		List<CarteFidelite> objets = myQuery.getResultList();
+		em.close();
+		return objets;
 	}
 
 }
