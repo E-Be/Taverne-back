@@ -22,7 +22,7 @@ public class Intervention {
 	private LocalDateTime hFin;
 	
 	@Column(nullable = true)
-	private int coutArtiste;
+	private int coutIntervenant;
 	@Column(nullable = true)
 	private int prixClient;
 	
@@ -38,7 +38,7 @@ public class Intervention {
 	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, int coutArtiste, int prixClient) {
 		this.hDebut = hDebut;
 		this.hFin = hFin;
-		this.coutArtiste = coutArtiste;
+		this.coutIntervenant = coutArtiste;
 		this.prixClient = prixClient;
 	}
 
@@ -73,13 +73,13 @@ public class Intervention {
 	}
 
 
-	public int getCoutArtiste() {
-		return coutArtiste;
+	public int getCoutIntervenant() {
+		return coutIntervenant;
 	}
 
 
-	public void setCoutArtiste(int coutArtiste) {
-		this.coutArtiste = coutArtiste;
+	public void setCoutIntervenant(int coutArtiste) {
+		this.coutIntervenant = coutArtiste;
 	}
 
 
@@ -105,7 +105,7 @@ public class Intervention {
 
 	@Override
 	public String toString() {
-		return "Intervention [id=" + id + ", hDebut=" + hDebut + ", hFin=" + hFin + ", coutArtiste=" + coutArtiste
+		return "Intervention [id=" + id + ", hDebut=" + hDebut + ", hFin=" + hFin + ", coutArtiste=" + coutIntervenant
 				+ ", prixClient=" + prixClient + ", intervenant=" + intervenant + "]";
 	}
 	
