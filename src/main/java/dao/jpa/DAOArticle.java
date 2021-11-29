@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import dao.IDAOArticle;
-import inventaire.Article;
 import inventaire.Article;
 import util.Context;
 
@@ -61,5 +61,17 @@ public class DAOArticle implements IDAOArticle {
 		em.close();
 
 	}
+
+	@Override
+	public List<Article> findAllByTypeProduit(String typeProduit) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Article where type_produit like :TypeProduit");
+		myQuery.setParameter("TypeProduit", typeProduit);
+		List<Article> objets = myQuery.getResultList();
+		em.close();
+		return objets;
+	}
+	
+	
 
 }
