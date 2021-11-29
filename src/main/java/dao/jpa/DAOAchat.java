@@ -14,10 +14,10 @@ import util.Context;
 
 public class DAOAchat implements IDAOAchat {
 	
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Achat findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Achat objet = em.find(Achat.class, id);
 		em.close();
@@ -27,7 +27,7 @@ public class DAOAchat implements IDAOAchat {
 	@Override
 	public List<Achat> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Achat> objets = em.createQuery("from Achat").getResultList();
@@ -38,6 +38,7 @@ public class DAOAchat implements IDAOAchat {
 
 	@Override
 	public Achat save(Achat objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -52,6 +53,7 @@ public class DAOAchat implements IDAOAchat {
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Achat objet = em.find(Achat.class, id);
 
@@ -66,6 +68,7 @@ public class DAOAchat implements IDAOAchat {
 	
 	@Override
 	public List<Achat> findAllByClient(int id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Achat where client = :id");
 		myQuery.setParameter("id", id);

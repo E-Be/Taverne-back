@@ -48,18 +48,22 @@ public class InitialisationBaseJPA {
 		Compte employe = new Employe("employe","employe","titi","titi", "employe@employe.com", bar, events);
 		
 		Compte f1 = new Fournisseur ("PELTIER","Pascal", "Metro","Cash","metrcash&carry@metro.com","MetroCash&CarryFrance");
-		List<Article> catalogueF1 = new ArrayList<Article>();
+		//List<Article> catalogueF1 = new ArrayList<Article>();
 		Compte f2 = new Fournisseur ("MAUGER","Christophe", "Leclerc","Leclerc","Leclerc@leclerc.com","Leclerc");
-		List<Article> catalogueF2 = new ArrayList<Article>();
+		//List<Article> catalogueF2 = new ArrayList<Article>();
 		Compte f3 = new Fournisseur ("DE-MARCELUS","Guillaume", "Beer","C10","C10_fournisseur@C10.com","C10");
 		Compte f4 = new Fournisseur ("GILET","Pascal", "Heineken","Heineken","Beer@Heineken.com","Heineken");
 		Article biere = new Article("Biere",12.0,"Biere", 25.0, (Fournisseur)f1);
-		catalogueF1.add(biere);
+		//catalogueF1.add(biere);
 		Article coca =  new Article("Coca",12.0,"Soda", 25.0, (Fournisseur)f2);
-		catalogueF2.add(coca);
+		//catalogueF2.add(coca);
 		Stock biereStock = new Stock(50, 10);
 		
-		Context.getInstance().getDaoCompte().save(admin);
+		f2=Context.getInstance().getDaoCompte().save(f2);
+		coca.setFournisseur((Fournisseur) f2);
+		Context.getInstance().getDaoArticle().save(coca);
+		admin=Context.getInstance().getDaoCompte().save(admin);
+		
 		
 		
 	}
