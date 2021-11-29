@@ -26,6 +26,11 @@ public class Fournisseur extends Compte {
 		this.entreprise = entreprise;
 		this.catalogue = catalogue;
 	}
+	
+	public Fournisseur(String nom, String prenom, String login, String password, String mail, String entreprise) {
+		super(nom, prenom, login, password, mail);
+		this.entreprise = entreprise;
+	}
 
 	public String getEntreprise() {
 		return entreprise;

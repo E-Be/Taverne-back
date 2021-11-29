@@ -36,7 +36,7 @@ public class Context {
 
 	/////
 	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJpa");
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("taverne");
 	
 	private static Context singleton=null;
 

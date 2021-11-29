@@ -29,14 +29,17 @@ public class Article {
 	
 	public Article(){}
 	
-	public Article(String nom,double cout, String type_produit,double volume){
-		
-		this.nom=nom;
-		this.cout=cout;
-		this.type_produit=type_produit;
-		this.volume=volume;
-		
+	
+
+	public Article(String nom, double cout, String type_produit, double volume, Fournisseur fournisseur) {
+		this.nom = nom;
+		this.cout = cout;
+		this.type_produit = type_produit;
+		this.volume = volume;
+		this.fournisseur = fournisseur;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -86,11 +89,14 @@ public class Article {
 		this.fournisseur = fournisseur;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Article [id=" + id + ", nom=" + nom + ", cout=" + cout + ", type_produit=" + type_produit + ", volume="
-				+ volume + "]";
+				+ volume + ", fournisseur=" + fournisseur + "]";
 	}
-	
+
+
 	
 }

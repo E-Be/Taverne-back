@@ -32,7 +32,6 @@ public class Intervention {
 	
 	
 	@ManyToOne
-	@Column(nullable = false)
 	@JoinColumn(name = "id_intervenant", nullable = true)
 	private Intervenant intervenant;
 	
@@ -44,18 +43,22 @@ public class Intervention {
 	public Intervention() {}
 
 
-	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, String typeIntervention, int coutIntervenant, int prixClient,Bar bar) {
+	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, String typeIntervention, int coutIntervenant,
+			int prixClient, Intervenant intervenant, Bar bar) {
 		this.hDebut = hDebut;
 		this.hFin = hFin;
-		this.typeIntervention=typeIntervention;
+		this.typeIntervention = typeIntervention;
 		this.coutIntervenant = coutIntervenant;
 		this.prixClient = prixClient;
-		this.bar=bar;
-		
+		this.intervenant = intervenant;
+		this.bar = bar;
 	}
 
 
-	
+
+
+
+
 
 	@Override
 	public String toString() {
