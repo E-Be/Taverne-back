@@ -5,9 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import dao.IDAOBoisson;
-import inventaire.Boisson;
+import dao.IDAOStock;
+import inventaire.Stock;
 import util.Context;
+import dao.IDAO;
 
 public class DAOStock implements IDAOStock{
 
