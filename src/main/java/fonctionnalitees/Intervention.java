@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import comptes.Intervenant;
+import inventaire.Bar;
 
 @Entity
 public class Intervention {
@@ -18,9 +19,12 @@ public class Intervention {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private LocalDateTime hDebut;
 	private LocalDateTime hFin;
-	
+	///////
+	private String typeIntervention;
+	///////
 	@Column(nullable = true)
 	private int coutIntervenant;
 	@Column(nullable = true)
@@ -32,14 +36,50 @@ public class Intervention {
 	private Intervenant intervenant;
 	
 	
+	private Bar bar;
+	
+	
 	public Intervention() {}
 
 
-	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, int coutArtiste, int prixClient) {
+	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, String typeIntervention, int coutIntervenant, int prixClient,Bar bar) {
 		this.hDebut = hDebut;
 		this.hFin = hFin;
-		this.coutIntervenant = coutArtiste;
+		this.typeIntervention=typeIntervention;
+		this.coutIntervenant = coutIntervenant;
 		this.prixClient = prixClient;
+		this.bar=bar;
+		
+	}
+
+
+	
+
+	@Override
+	public String toString() {
+		return "Intervention [id=" + id + ", hDebut=" + hDebut + ", hFin=" + hFin + ", typeIntervention="
+				+ typeIntervention + ", coutIntervenant=" + coutIntervenant + ", prixClient=" + prixClient
+				+ ", intervenant=" + intervenant + ", bar=" + bar + "]";
+	}
+
+
+	public Bar getBar() {
+		return bar;
+	}
+
+
+	public void setBar(Bar bar) {
+		this.bar = bar;
+	}
+
+
+	public String getTypeIntervention() {
+		return typeIntervention;
+	}
+
+
+	public void setTypeIntervention(String typeIntervention) {
+		this.typeIntervention = typeIntervention;
 	}
 
 
@@ -102,13 +142,6 @@ public class Intervention {
 		this.intervenant = intervenant;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Intervention [id=" + id + ", hDebut=" + hDebut + ", hFin=" + hFin + ", coutArtiste=" + coutIntervenant
-				+ ", prixClient=" + prixClient + ", intervenant=" + intervenant + "]";
-	}
-	
 	
 	
 }

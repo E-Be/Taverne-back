@@ -13,17 +13,28 @@ import fonctionnalitees.Intervention;
 public class Intervenant extends Compte {
 	
 	private String entreprise;
-	
+////////////////
+private String artiste;
+////////////////
 	@OneToMany(mappedBy= "intervenant")
 	private List<Intervention> interventions;
 	
 	public Intervenant() {}
 
-	public Intervenant(String nom, String prenom, String login, String password, String mail, String entreprise,
+	public Intervenant(String nom, String prenom, String login, String password, String mail,String artiste, String entreprise,
 			List<Intervention> interventions) {
 		super(nom, prenom, login, password, mail);
 		this.entreprise = entreprise;
+		this.artiste=artiste;
 		this.interventions = interventions;
+	}
+
+	public String getArtiste() {
+		return artiste;
+	}
+
+	public void setArtiste(String artiste) {
+		this.artiste = artiste;
 	}
 
 	public String getEntreprise() {
@@ -44,8 +55,11 @@ public class Intervenant extends Compte {
 
 	@Override
 	public String toString() {
-		return "Intervenant [entreprise=" + entreprise + ", interventions=" + interventions + "]";
+		return "Intervenant [entreprise=" + entreprise + ", artiste=" + artiste + ", interventions=" + interventions
+				+ "]";
 	}
+
+	
 
 	
 

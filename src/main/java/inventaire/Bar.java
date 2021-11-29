@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 
 import comptes.Employe;
 import fonctionnalitees.Events;
+import fonctionnalitees.Intervention;
 
 
 @Entity
@@ -29,13 +30,19 @@ public class Bar {
 	@OneToMany (mappedBy = "bar")
 	List<Employe> employes;
 	
+	/////
+	@OneToMany(mappedBy = "bar")
+	List<Intervention> interventions;
+	////
+	
 	public Bar() {}
 
-	public Bar(String nom, List<Stock> stocks, List<Events> events, List<Employe> employes) {
+	public Bar(String nom, List<Stock> stocks, List<Events> events, List<Employe> employes,List<Intervention> interventions) {
 		this.nom = nom;
 		this.stocks = stocks;
 		this.events = events;
 		this.employes = employes;
+		this.interventions=interventions;
 	}
 
 	public int getId_bar() {
@@ -78,11 +85,21 @@ public class Bar {
 		this.employes = employes;
 	}
 
+	public List<Intervention> getInterventions() {
+		return interventions;
+	}
+
+	public void setInterventions(List<Intervention> interventions) {
+		this.interventions = interventions;
+	}
+
 	@Override
 	public String toString() {
 		return "Bar [id_bar=" + id_bar + ", nom=" + nom + ", stocks=" + stocks + ", events=" + events + ", employes="
-				+ employes + "]";
+				+ employes + ", interventions=" + interventions + "]";
 	}
+
+	
 
 	
 
