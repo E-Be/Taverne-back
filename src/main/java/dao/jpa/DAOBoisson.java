@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
+import fonctionnalitees.Events;
 import idao.jpa.IDAOBoisson;
 import inventaire.Boisson;
 import util.Context;
@@ -59,6 +61,16 @@ public class DAOBoisson implements IDAOBoisson{
 		em.getTransaction().commit();
 		em.close();
 
+	}
+
+	@Override
+	public List<Boisson> findAllByBar(int id) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Boisson where d_bar = :id");
+		myQuery.setParameter("id", id);
+		List<Boisson> objets = myQuery.getResultList();
+		em.close();
+		return objets;
 	}
 
 }
