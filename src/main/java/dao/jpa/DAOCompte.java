@@ -1,6 +1,7 @@
 package dao.jpa;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -79,6 +80,24 @@ public class DAOCompte implements IDAOCompte {
 		catch(Exception e) {e.printStackTrace();}
 		em.close();
 		return connected;
+	}
+	
+	public List<Compte> findByTypeCompte(String typeCompte) {
+		
+		EntityManager em = emf.createEntityManager();
+		
+		List<Compte> comptes = new ArrayList<Compte>();
+
+		Query query = em.createQuery("from Compte c where c.Type_Compte=:type");
+		query.setParameter("type", typeCompte);
+		
+		try 
+		{
+			comptes = (List<Compte>) query.getResultList();
+		}
+		catch(Exception e) {e.printStackTrace();}
+		em.close();
+		return comptes;
 
 	}
 
