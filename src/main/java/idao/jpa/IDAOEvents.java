@@ -7,7 +7,7 @@ import fonctionnalitees.Events;
 
 public interface IDAOEvents extends IDAO<Events,Integer> {
 
-	public List<Events> findByJour(LocalDate jour);
+	public List<Events> findAllByJour(LocalDate jour);
 	
-	
+	public List<Events> findAllByEmploye(int id_employe);
 }
