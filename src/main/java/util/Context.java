@@ -8,6 +8,7 @@ import dao.IDAOCompte;
 import dao.IDAOStock;
 import dao.jpa.DAOStock;
 import dao.jpa.DAOBoisson;
+import dao.jpa.DAOCompte;
 import comptes.Compte;
 
 public class Context {
@@ -20,7 +21,7 @@ public class Context {
 	private IDAOCompte daoCompte = new DAOCompte();
 	/////
 	
-	
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJpa");
 	
 	private static Context singleton=null;
 
@@ -55,14 +56,6 @@ public class Context {
 		this.daoBoisson = daoBoisson;
 	}
 
-	public IDAOCarte getDaoStock() {
-		return daoStock;
-	}
-
-	public void setDaoStock(IDAOCarte daoStock) {
-		this.daoStock = daoStock;
-	}
-
 	public IDAOCompte getDaoCompte() {
 		return daoCompte;
 	}
@@ -70,7 +63,14 @@ public class Context {
 	public void setDaoCompte(IDAOCompte daoCompte) {
 		this.daoCompte = daoCompte;
 	}
+	
+	public EntityManagerFactory getEmf() {
+		return emf;
+	}
 
+	public void setEmf(EntityManagerFactory emf) {
+		this.emf = emf;
+	}
 	
 	///
 	
