@@ -84,4 +84,14 @@ public class DAOEvents implements IDAOEvents{
 		em.close();
 		return objets;
 	}
+
+	@Override
+	public List<Events> findAllByHoraires(int id_horaires) {
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Events where id_horaires like :id");
+		myQuery.setParameter("id", id_horaires);
+		List<Events> objets = myQuery.getResultList();
+		em.close();
+		return objets;
+	}
 }
