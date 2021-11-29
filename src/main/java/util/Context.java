@@ -7,18 +7,21 @@ import dao.jpa.DAOStock;
 import idao.jpa.IDAOBoisson;
 import idao.jpa.IDAOCompte;
 import idao.jpa.IDAOStock;
+import idao.jpa.IDAOUtilisation;
 import dao.jpa.DAOBoisson;
 import dao.jpa.DAOCompte;
+import dao.jpa.DAOUtilisation;
 import comptes.Compte;
 
 public class Context {
 
 
-	//elements liés à NOTRE PROJET//
+	//elements liï¿½s ï¿½ NOTRE PROJET//
 	private Compte connected;
 	private IDAOBoisson daoBoisson = new DAOBoisson();
 	private IDAOStock daoStock = new DAOStock();
 	private IDAOCompte daoCompte = new DAOCompte();
+	private IDAOUtilisation daoUtilisation = new DAOUtilisation();
 	/////
 	
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJpa");
@@ -39,7 +42,7 @@ public class Context {
 	
 	
 	///
-	//Getters / Setters liés à NOTRE PROJET
+	//Getters / Setters liï¿½s ï¿½ NOTRE PROJET
 	public Compte getConnected() {
 		return connected;
 	}
@@ -71,6 +74,9 @@ public class Context {
 	public void setEmf(EntityManagerFactory emf) {
 		this.emf = emf;
 	}
+	
+	
+
 	
 	///
 	
