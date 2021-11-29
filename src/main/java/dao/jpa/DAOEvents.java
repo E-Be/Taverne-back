@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import dao.IDAOEvents;
 import fonctionnalitees.Events;
 import inventaire.Article;
+import idao.jpa.IDAOEvents;
 import util.Context;
 
 public class DAOEvents implements IDAOEvents{

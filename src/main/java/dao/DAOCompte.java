@@ -14,6 +14,7 @@ import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
 import fonctionnalitees.CarteFidelite;
+import idao.jpa.IDAO;
 
 
 

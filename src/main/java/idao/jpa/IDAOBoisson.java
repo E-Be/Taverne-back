@@ -1,4 +1,4 @@
-package dao;
+package idao.jpa;
 
 
 import inventaire.Boisson;

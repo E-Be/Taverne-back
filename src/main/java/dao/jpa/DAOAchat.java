@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import dao.IDAOAchat;
 import fonctionnalitees.Achat;
+import idao.jpa.IDAOAchat;
 import util.Context;
 
 public class DAOAchat implements IDAOAchat {
