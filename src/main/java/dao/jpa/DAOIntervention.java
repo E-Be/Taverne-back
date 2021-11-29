@@ -1,10 +1,14 @@
 package dao.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
+import comptes.Compte;
+import comptes.Intervenant;
 import fonctionnalitees.Intervention;
 import idao.jpa.IDAOIntervention;
 import inventaire.Stock;
@@ -14,6 +18,28 @@ public class DAOIntervention implements IDAOIntervention {
 
 	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
+	
+	public List<Intervenant> findByTypeArtiste (String artiste) {
+		
+		EntityManager em = emf.createEntityManager();
+		
+		List<Intervenant> intervenant = new ArrayList<Intervenant>();
+
+		Query query = em.createQuery("from Compte c where c.Intervenant=:artiste");
+		query.setParameter("artiste", artiste);
+		
+		try 
+		{
+			intervenant = (List<Intervenant>) query.getResultList();
+		}
+		catch(Exception e) {e.printStackTrace();}
+		em.close();
+		return intervenant;
+		}
+	
+	
+	
+	
 	@Override
 	public Intervention findById(Integer id) {
 		EntityManager em = emf.createEntityManager();

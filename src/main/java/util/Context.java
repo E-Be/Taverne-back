@@ -16,7 +16,7 @@ import comptes.Compte;
 public class Context {
 
 
-	//elements li�s � NOTRE PROJET//
+	//elements lies a NOTRE PROJET//
 	private Compte connected;
 	private IDAOBoisson daoBoisson = new DAOBoisson();
 	private IDAOStock daoStock = new DAOStock();
