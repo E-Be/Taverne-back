@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import fonctionnalitees.Achat;
 import idao.jpa.IDAOUtilisation;
 import inventaire.Utilisation;
 import util.Context;
@@ -60,5 +61,11 @@ public class DAOUtilisation implements IDAOUtilisation{
 		em.getTransaction().commit();
 		em.close();
 
+	}
+	
+	@Override
+	public List<Utilisation> findAllByBoisson(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
