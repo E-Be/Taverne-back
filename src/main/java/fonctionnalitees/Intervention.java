@@ -2,10 +2,12 @@ package fonctionnalitees;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import comptes.Intervenant;
@@ -18,11 +20,15 @@ public class Intervention {
 	private int id;
 	private LocalDateTime hDebut;
 	private LocalDateTime hFin;
+	
+	@Column(nullable = true)
 	private int coutArtiste;
+	@Column(nullable = true)
 	private int prixClient;
 	
 	
 	@ManyToOne
+	@JoinColumn(name = "id_intervenant", nullable = true)
 	private Intervenant intervenant;
 	
 	

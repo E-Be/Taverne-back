@@ -20,7 +20,6 @@ public class Bar {
 	private int id_bar;
 	private String nom;
 	
-	
 	@OneToMany(mappedBy = "bar")
 	List<Stock> stocks;
 	
@@ -32,9 +31,11 @@ public class Bar {
 	
 	public Bar() {}
 
-	public Bar(String nom, List<Stock> stocks) {
+	public Bar(String nom, List<Stock> stocks, List<Events> events, List<Employe> employes) {
 		this.nom = nom;
 		this.stocks = stocks;
+		this.events = events;
+		this.employes = employes;
 	}
 
 	public int getId_bar() {
@@ -61,7 +62,28 @@ public class Bar {
 		this.stocks = stocks;
 	}
 
-	
+	public List<Events> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Events> events) {
+		this.events = events;
+	}
+
+	public List<Employe> getEmployes() {
+		return employes;
+	}
+
+	public void setEmployes(List<Employe> employes) {
+		this.employes = employes;
+	}
+
+	@Override
+	public String toString() {
+		return "Bar [id_bar=" + id_bar + ", nom=" + nom + ", stocks=" + stocks + ", events=" + events + ", employes="
+				+ employes + "]";
+	}
+
 	
 
 }

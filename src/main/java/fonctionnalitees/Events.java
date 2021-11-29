@@ -3,10 +3,12 @@ package fonctionnalitees;
 import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import comptes.Employe;
@@ -20,23 +22,28 @@ public class Events {
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name="id_bar")
 	private Bar bar;
 	
 	@ManyToOne
+	@JoinColumn(name="id_horaires")
 	private Horaires horaires;
 	
 	@ManyToOne
+	@JoinColumn(name="id_emp")
 	private Employe emp;
-	private LocalDate journee;
+	private LocalDate jour;
+	
+	@Column(nullable = true)
 	private String remarque;
 	
 	public Events() {}
 
-	public Events(Bar bar, Horaires horaires, Employe emp, LocalDate journee, String remarque) {
+	public Events(Bar bar, Horaires horaires, Employe emp, LocalDate jour, String remarque) {
 		this.bar = bar;
 		this.horaires = horaires;
 		this.emp = emp;
-		this.journee = journee;
+		this.jour = jour;
 		this.remarque = remarque;
 	}
 
@@ -72,12 +79,12 @@ public class Events {
 		this.emp = emp;
 	}
 
-	public LocalDate getJournee() {
-		return journee;
+	public LocalDate getJour() {
+		return jour;
 	}
 
-	public void setJournee(LocalDate journee) {
-		this.journee = journee;
+	public void setJour(LocalDate journee) {
+		this.jour = journee;
 	}
 
 	public String getRemarque() {
@@ -90,7 +97,7 @@ public class Events {
 
 	@Override
 	public String toString() {
-		return "Events [id=" + id + ", bar=" + bar + ", horaires=" + horaires + ", emp=" + emp + ", journee=" + journee
+		return "Events [id=" + id + ", bar=" + bar + ", horaires=" + horaires + ", emp=" + emp + ", journee=" + jour
 				+ ", remarque=" + remarque + "]";
 	}
 	

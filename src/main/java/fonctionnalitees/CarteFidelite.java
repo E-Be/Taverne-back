@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,7 +19,7 @@ public class CarteFidelite {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "carte")
 	private Client owner;
 	
 	private int nbPoints;
@@ -30,12 +31,6 @@ public class CarteFidelite {
 		this.owner = owner;
 		this.nbPoints = 0;
 		owner.setCarte(this);
-	}
-	
-	public CarteFidelite(int id, Client owner, int points) {
-		this.id = id;
-		this.owner = owner;
-		this.nbPoints = points;
 	}
 	
 	public CarteFidelite(Client owner, int points) {
@@ -65,6 +60,11 @@ public class CarteFidelite {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "CarteFidelite [id=" + id + ", owner=" + owner + ", nbPoints=" + nbPoints + "]";
 	}
 	
 	
