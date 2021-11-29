@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import fonctionnalitees.Achat;
 import idao.jpa.IDAOUtilisation;
+import inventaire.Boisson;
 import inventaire.Utilisation;
 import util.Context;
 
@@ -65,7 +67,13 @@ public class DAOUtilisation implements IDAOUtilisation{
 	
 	@Override
 	public List<Utilisation> findAllByBoisson(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Utilisation where boisson = :id");
+		myQuery.setParameter("id", id);
+		List<Utilisation> objets = myQuery.getResultList();
+		em.close();
+		return objets;
 	}
+	
+	
 }
