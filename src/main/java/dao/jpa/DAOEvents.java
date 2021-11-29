@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import fonctionnalitees.Events;
 import idao.jpa.IDAOEvents;
-import inventaire.Article;
 import idao.jpa.IDAOEvents;
 import util.Context;
 
