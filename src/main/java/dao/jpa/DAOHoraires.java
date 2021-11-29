@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import dao.IDAOHoraires;
 import fonctionnalitees.Horaires;
+import idao.jpa.IDAOHoraires;
 import util.Context;
 
 public class DAOHoraires implements IDAOHoraires{

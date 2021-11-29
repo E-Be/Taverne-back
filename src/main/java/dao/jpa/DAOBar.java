@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import dao.IDAOBar;
+import idao.jpa.IDAOBar;
 import inventaire.Bar;
 import inventaire.Bar;
 import util.Context;
