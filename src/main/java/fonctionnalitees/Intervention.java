@@ -35,7 +35,7 @@ public class Intervention {
 	@JoinColumn(name = "id_intervenant", nullable = true)
 	private Intervenant intervenant;
 	
-	
+	@ManyToOne
 	private Bar bar;
 	
 	
