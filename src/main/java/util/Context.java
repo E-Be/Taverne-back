@@ -1,15 +1,13 @@
 package util;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import dao.IDAOBoisson;
-import dao.IDAOCarte;
-import dao.IDAOCatalogue;
 import dao.IDAOCompte;
 import dao.IDAOStock;
-import dao.jdbc.DAOBoissonJDBC;
-import dao.jdbc.DAOCarteJDBC;
-import dao.jdbc.DAOCatalogueJDBC;
-import dao.jdbc.DAOCompteJDBC;
 import dao.jpa.DAOStock;
+import dao.jpa.DAOBoisson;
 import comptes.Compte;
 
 public class Context {
@@ -17,11 +15,9 @@ public class Context {
 
 	//elements liés à NOTRE PROJET//
 	private Compte connected;
-	private IDAOBoisson daoCompte = new DAOBoisson();
-	private IDAOCarte daoPlanete = new DAOCarteJDBC();
-	private IDAOTrajet daoTrajet = new DAOTrajetJDBC();
-	private IDAOVaisseau daoVaisseau = new DAOVaisseauJDBC();
-	private IDAOPassager daoPassager = new DAOPassagerJDBC(); 
+	private IDAOBoisson daoBoisson = new DAOBoisson();
+	private IDAOStock daoStock = new DAOStock();
+	private IDAOCompte daoCompte = new DAOCompte();
 	/////
 	
 	
@@ -51,43 +47,31 @@ public class Context {
 		this.connected = connected;
 	}
 
+	public IDAOBoisson getDaoBoisson() {
+		return daoBoisson;
+	}
+
+	public void setDaoBoisson(IDAOBoisson daoBoisson) {
+		this.daoBoisson = daoBoisson;
+	}
+
+	public IDAOCarte getDaoStock() {
+		return daoStock;
+	}
+
+	public void setDaoStock(IDAOCarte daoStock) {
+		this.daoStock = daoStock;
+	}
+
 	public IDAOCompte getDaoCompte() {
 		return daoCompte;
 	}
 
-	public void setDaoCompte(IDAOCompte daoC) {
-		this.daoCompte = daoC;
-	}
-
-	public IDAOPlanete getDaoPlanete() {
-		return daoPlanete;
-	}
-
-	public void setDaoPlanete(IDAOPlanete daoP) {
-		this.daoPlanete = daoP;
-	}
-
-	public IDAOTrajet getDaoTrajet() {
-		return daoTrajet;
-	}
-
-	public void setDaoTrajet(IDAOTrajet daoT) {
-		this.daoTrajet = daoT;
-	}
-
-	public IDAOVaisseau getDaoVaisseau() {
-		return daoVaisseau;
+	public void setDaoCompte(IDAOCompte daoCompte) {
+		this.daoCompte = daoCompte;
 	}
 
 	
-
-	public IDAOPassager getDaoPassager() {
-		return daoPassager;
-	}
-
-	public void setDaoPassager(DAOPassagerJDBC daoPassager) {
-		this.daoPassager = daoPassager;
-	}
 	///
 	
 	
