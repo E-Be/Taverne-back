@@ -1,4 +1,4 @@
-package dao;
+package dao.jpa;
 
 
 import java.util.List;
@@ -8,9 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import comptes.Compte;
+import dao.IDAOCompte;
 import util.Context;
 
-public class DAOCompteJpa implements IDAOCompte {
+public class DAOCompte implements IDAOCompte {
 
 	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	
