@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import dao.jpa.DAOLogAlerte;
+import util.Context;
+
 @Entity
 public class Stock {
 
@@ -18,14 +21,14 @@ public class Stock {
 	private int id_stock;
 	private double volumeTot;
 	private Integer seuil_limite;
-	
+
 	@ManyToMany
 	private List<Article> articles;
-	
+
 	@ManyToOne
 	@JoinColumn(name="id_bar")
 	private Bar bar;
-	
+
 	public Stock() {}
 
 	public Stock(double volumeTot, Integer seuil_limite, List<Article> articles, Bar bar) {
@@ -74,16 +77,21 @@ public class Stock {
 	public void setBar(Bar bar) {
 		this.bar = bar;
 	}
-	
-	public void utiliserVolume(double volume) 
-	{
+
+	public void utiliserVolume(double volume) {
 		this.volumeTot-=volume;
-		/*if(this.volumeTot<=seuil_limite) 
-		{
-			System.out.println("ATTENTION LE STOCK EST FAIBLE");
-		}*/
+
+		try {
+			if(this.volumeTot<=seuil_limite) {
+				Context.getInstance().getDaoLogAlerte().creerAlerte(this);
+			}
+		}
+		catch(Exception e) {
+		}
+
 	}
-	
+
+
 	public void ajouterVolume(double volume) 
 	{
 		this.volumeTot+=volume;

@@ -13,6 +13,7 @@ import dao.jpa.DAOCompte;
 import dao.jpa.DAOEmploye;
 import dao.jpa.DAOEvents;
 import dao.jpa.DAOIntervention;
+import dao.jpa.DAOLogAlerte;
 import dao.jpa.DAOStock;
 import dao.jpa.DAOUtilisation;
 import idao.jpa.IDAOAchat;
@@ -24,6 +25,7 @@ import idao.jpa.IDAOCompte;
 import idao.jpa.IDAOEmploye;
 import idao.jpa.IDAOEvents;
 import idao.jpa.IDAOIntervention;
+import idao.jpa.IDAOLogAlerte;
 import idao.jpa.IDAOStock;
 import idao.jpa.IDAOUtilisation;
 
@@ -41,8 +43,10 @@ public class Context {
 	private IDAOEmploye daoEmploye = new DAOEmploye();
 	private IDAOEvents daoEvents = new DAOEvents();
 	private IDAOIntervention daoIntervention = new DAOIntervention();
+	private IDAOLogAlerte daoLogAlerte = new DAOLogAlerte();
 	private IDAOStock daoStock = new DAOStock();
 	private IDAOUtilisation daoUtilisation = new DAOUtilisation();
+
 	
 	
 
@@ -170,6 +174,14 @@ public class Context {
 
 	public void setDaoEmploye(IDAOEmploye daoEmploye) {
 		this.daoEmploye = daoEmploye;
+	}
+
+	public IDAOLogAlerte getDaoLogAlerte() {
+		return daoLogAlerte;
+	}
+
+	public void setDaoLogAlerte(IDAOLogAlerte daoLogAlerte) {
+		this.daoLogAlerte = daoLogAlerte;
 	}
 	
 	
