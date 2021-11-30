@@ -321,7 +321,7 @@ public class App {
 		if (happyHour()) {
 
 			
-			for(Boisson b1 : daoB.findAllByBar(Bar.getId_bar())) 
+			for(Boisson b1 : daoB.findAllByBar(Context.getInstance().getBar().getId_bar())) 
 			{
 				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHThh())*1.2);
 			}
@@ -363,7 +363,7 @@ public class App {
 
 	public static void main(String[] args) {
 
-		menuPrincipal();
+		choixBar();
 
 	}
 

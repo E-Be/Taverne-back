@@ -95,8 +95,7 @@ public class Bar {
 
 	@Override
 	public String toString() {
-		return "Bar [id_bar=" + id_bar + ", nom=" + nom + ", stocks=" + stocks + ", events=" + events + ", employes="
-				+ employes + ", interventions=" + interventions + "]";
+		return "Bar [id_bar=" + id_bar + ", nom=" + nom + "]";
 	}
 
 	
