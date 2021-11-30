@@ -59,12 +59,12 @@ public class Stock {
 		this.seuil_limite = seuil_limite;
 	}
 
-	public List<Article> getArticle() {
+	public List<Article> getArticles() {
 		return articles;
 	}
 
-	public void setArticle(List<Article> article) {
-		this.articles = article;
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
 	}
 
 	public Bar getBar() {
@@ -78,10 +78,10 @@ public class Stock {
 	public void utiliserVolume(double volume) 
 	{
 		this.volumeTot-=volume;
-		if(this.volumeTot<=seuil_limite) 
+		/*if(this.volumeTot<=seuil_limite) 
 		{
-			System.out.println("ATTENTION ....");
-		}
+			System.out.println("ATTENTION LE STOCK EST FAIBLE");
+		}*/
 	}
 	
 	public void ajouterVolume(double volume) 
