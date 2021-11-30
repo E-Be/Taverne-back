@@ -13,7 +13,7 @@ public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_stock;
-	private int qte;
+	private double volumeTot;
 	private int seuil_limite;
 	
 	@ManyToOne
@@ -25,10 +25,13 @@ public class Stock {
 	private Bar bar;
 	
 	public Stock() {}
-	
-	public Stock(int qte, int seuil_limite) {
-		this.qte = qte;
-		this.seuil_limite=seuil_limite;
+
+	public Stock(int qte, int seuil_limite, Article article, Bar bar) {
+		super();
+		this.volumeTot = qte;
+		this.seuil_limite = seuil_limite;
+		this.article = article;
+		this.bar = bar;
 	}
 
 	public int getId_stock() {
@@ -39,12 +42,12 @@ public class Stock {
 		this.id_stock = id_stock;
 	}
 
-	public int getQte() {
-		return qte;
+	public double getVolumeTot() {
+		return volumeTot;
 	}
 
 	public void setQte(int qte) {
-		this.qte = qte;
+		this.volumeTot = qte;
 	}
 
 	public int getSeuil_limite() {
@@ -70,10 +73,19 @@ public class Stock {
 	public void setBar(Bar bar) {
 		this.bar = bar;
 	}
+	
+	public void utiliserVolume(double volume) 
+	{
+		this.volumeTot-=volume;
+		if(this.volumeTot<=seuil_limite) 
+		{
+			System.out.println("ATTENTION ....");
+		}
+	}
 
 	@Override
 	public String toString() {
-		return "Stock [id_stock=" + id_stock + ", qte=" + qte + ", seuil_limite=" + seuil_limite + ", article="
+		return "Stock [id_stock=" + id_stock + ", qte=" + volumeTot + ", seuil_limite=" + seuil_limite + ", article="
 				+ article + ", bar=" + bar + "]";
 	}
 

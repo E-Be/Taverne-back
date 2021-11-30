@@ -27,14 +27,7 @@ public class CarteFidelite {
 	
 	public CarteFidelite() {}
 	
-	public CarteFidelite(Client owner) {
-		this.owner = owner;
-		this.nbPoints = 0;
-		owner.setCarte(this);
-	}
-	
-	public CarteFidelite(Client owner, int points) {
-		this.owner = owner;
+	public CarteFidelite(int points) {
 		this.nbPoints = points;
 	}
 	

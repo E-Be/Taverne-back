@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import fonctionnalitees.Achat;
 import idao.jpa.IDAOAchat;
+import inventaire.Stock;
 import inventaire.Utilisation;
 import fonctionnalitees.Achat;
 import util.Context;
@@ -42,7 +43,15 @@ public class DAOAchat implements IDAOAchat {
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
-
+		//Recup les ingredients de la boisson, pour chaque ingredient, baisser le stock
+		List<Utilisation> utils = objet.getBoisson().getUtilisations();
+		for(Utilisation u : utils) 
+		{
+			double	 volumeUtilise = u.getVolume();
+			Stock stock = u.getIngredient();
+			stock.utiliserVolume(volumeUtilise);
+			stock=Context.getInstance().getDaoStock().save(stock);
+		}
 		objet=em.merge(objet);
 
 		em.getTransaction().commit();

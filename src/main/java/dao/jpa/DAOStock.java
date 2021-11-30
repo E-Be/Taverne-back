@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import fonctionnalitees.Events;
 import idao.jpa.IDAO;
 import idao.jpa.IDAOStock;
+import inventaire.Article;
 import inventaire.Stock;
 import util.Context;
 
@@ -75,6 +76,15 @@ public class DAOStock implements IDAOStock{
 		List<Stock> objets = myQuery.getResultList();
 		em.close();
 		return objets;
+	}
+
+	@Override
+	public void approvisioner(Article article) {
+	
+		//Find un stock concernant cet article
+		//y ajouter le volume acheté
+		//save ce stock
+		
 	}
 
 }
