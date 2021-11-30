@@ -85,7 +85,7 @@ public class App {
 			System.out.println(b);
 		}
 		
-		int id_bar = saisieInt("Dans quel Bar voulez vous aller ? (numéro id)");
+		int id_bar = saisieInt("Dans quel Bar voulez vous aller ? (numero id)");
 		Bar bar = context.getInstance().getDaoBar().findById(id_bar);
 		context.setBar(bar); 
 		menuPrincipal();
@@ -330,7 +330,7 @@ public class App {
 
 		else {
 
-			for(Boisson b1 : daoB.findAllByBar(Bar.getId_bar())) 
+			for(Boisson b1 : daoB.findAllByBar(Context.getInstance().getBar().getId_bar())) 
 			{
 				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHT())*1.2);
 			}
