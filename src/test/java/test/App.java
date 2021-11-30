@@ -173,9 +173,25 @@ public class App {
 	}
 
 	private static void menuEmploye() {
-		// TODO Auto-generated method stub
+		quiEstCe();
+		System.out.println("--------- Menu Employé ---------");
+		System.out.println("1 - Accéder au planning");
+		System.out.println("2 - Consulter stock");
+		System.out.println("3 - Consulter la carte");
+		System.out.println("5 - Se déconnecter");
+
+		int choix = saisieInt("Quel est votre choix?");
+		switch (choix) {
+		case 1: consulterEvenements(); break;
+		case 2: consulterStock(); break;  //créer méthode consulter stock
+		case 3: consulterCartes(); break;
+		case 4: context.setConnected(null); menuPrincipal(); break;
+		}
+		menuAdmin();
 
 	}
+
+	
 
 	private static void menuClient() {
 		quiEstCe();
@@ -266,11 +282,18 @@ public class App {
 	}
 
 	private static void consulterEvenements() {
-		// TODO Auto-generated method stub
+		//Consultation des evenements liés au bar
+		
+		
 
 	}
 
 	private static void consulterCartes() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	private static void consulterStock() {
 		// TODO Auto-generated method stub
 
 	}
