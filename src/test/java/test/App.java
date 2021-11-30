@@ -292,10 +292,12 @@ public class App {
 	}
 	
 	private static void creerCarteFidelite() {
-		CarteFidelite newCarte = new CarteFidelite((Client)context.getConnected());
-		context.getDaoCarteFidelite().save(newCarte);
-		context.getDaoCompte().save(context.getConnected());
-		System.out.println("Carte de fid�lit� cr��e!");
+		Client c = (Client) Context.getInstance().getConnected();
+		CarteFidelite newCarte = new CarteFidelite();
+		newCarte=context.getDaoCarteFidelite().save(newCarte);
+		c.setCarte(newCarte);
+		context.getDaoCompte().save(c);
+		System.out.println("Carte de fidelité créée!");
 		carteFidelite();
 	}
 
@@ -330,7 +332,7 @@ public class App {
 
 		else {
 
-			for(Boisson b1 : daoB.findAllByBar(Bar.getId_bar())) 
+			for(Boisson b1 : daoB.findAllByBar(Context.getInstance().getBar().getId_bar())) 
 			{
 				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHT())*1.2);
 			}

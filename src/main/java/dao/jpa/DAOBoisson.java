@@ -69,7 +69,7 @@ public class DAOBoisson implements IDAOBoisson{
 	public List<Boisson> findAllByBar(int id) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Boisson where d_bar = :id");
+		Query myQuery = em.createQuery("from Boisson where id_bar = :id");
 		myQuery.setParameter("id", id);
 		List<Boisson> objets = myQuery.getResultList();
 		em.close();
