@@ -25,6 +25,7 @@ public abstract class Boisson{
 	protected String nom;
 	protected double prixHT;
 	protected double prixHTHappy;
+	private TypeArticle type;
 	protected double tva;
 	
 	
@@ -33,11 +34,12 @@ public abstract class Boisson{
 	
 	public Boisson() {}
 
-	public Boisson(String nom, double prixHT, double prixHTHappy, double tva) {
+	public Boisson(String nom, double prixHT, double prixHTHappy, TypeArticle type) {
 		this.nom = nom;
 		this.prixHT = prixHT;
 		this.prixHTHappy = prixHTHappy;
-		this.tva = tva;
+		this.type = type;
+		this.tva = type.tva;
 	}
 
 	public int getId() {
@@ -94,6 +96,14 @@ public abstract class Boisson{
 
 	public void setLocalisations(List<Bar> localisations) {
 		this.localisations = localisations;
+	}
+
+	public TypeArticle getType() {
+		return type;
+	}
+
+	public void setType(TypeArticle type) {
+		this.type = type;
 	}
 
 	@Override

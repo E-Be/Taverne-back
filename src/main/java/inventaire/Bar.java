@@ -40,7 +40,7 @@ public class Bar {
 		this.nom = nom;
 		this.stock = stock;
 		this.employes = employes;
-		this.interventions=interventions;
+		this.interventions = interventions;
 	}
 
 	public int getId_bar() {

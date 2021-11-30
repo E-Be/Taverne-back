@@ -1,4 +1,5 @@
 package inventaire;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -10,12 +11,12 @@ import javax.persistence.OneToMany;
 public class BoissonSolo extends Boisson {
 	
 	@OneToMany
-	protected List<Article> sources;
+	protected List<Article> sources = new ArrayList<Article>();
 	protected int quantite;
 	protected int seuilLimite;
 
-	public BoissonSolo(String nom,double prixHT,double prixHThh, TVA tva) {
-		super(nom,prixHT,prixHThh, tva.tva);
+	public BoissonSolo(String nom,double prixHT,double prixHThh, TypeArticle type) {
+		super(nom,prixHT,prixHThh,type);
 	}	
 	
 	public BoissonSolo() {}

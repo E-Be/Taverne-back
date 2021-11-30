@@ -14,7 +14,7 @@ public class Cocktail extends Boisson{
 	private List<Article> composants = new ArrayList<Article>();
 	
 	public Cocktail(String nom, double prixHT, double prixHThh) {
-		super(nom, prixHT, prixHThh, TVA.Alcool.tva);
+		super(nom, prixHT, prixHThh, TypeArticle.Cocktail);
 	}
 	
 	public Cocktail() {
@@ -29,8 +29,5 @@ public class Cocktail extends Boisson{
 		this.composants = composants;
 	}
 	
-	
-
-
 }
 
