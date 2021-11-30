@@ -4,6 +4,11 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import java.util.ArrayList;
+
 import comptes.Admin;
 import comptes.Client;
 import comptes.Compte;
@@ -11,22 +16,23 @@ import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
 import inventaire.Boisson;
-
 import idao.jpa.IDAOBoisson;
 import dao.jpa.DAOBoisson;
 import fonctionnalitees.CarteFidelite;
 import util.Context;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+
+
 public class App {
 	
 	static Context context = Context.getInstance();
+	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	
 	static IDAOBoisson daoB = Context.getInstance().getDaoBoisson();
-	static IDAOPlanete daoP =Context.getInstance().getDaoPlanete();
-	static IDAOTrajet daoT = Context.getInstance().getDaoTrajet();
-	static IDAOVaisseau daoV = Context.getInstance().getDaoVaisseau();
-	static IDAOPassager daoPassager = Context.getInstance().getDaoPassager();
-
+	
 
 	public static String saisieString(String msg) {
 		Scanner sc = new Scanner(System.in);
@@ -286,23 +292,32 @@ public class App {
 	}
 
 	public static void consulterCartes() {
-	 
 		
-//		if (happyHour()) {}
-		for(Boisson b1 : daoB.findAll()) {
-			//System.out.println("Boisson " + b.getNom() + ", prix: " + (b.getPrixHThh())*1.2 );
-			System.out.println(b1);
+		EntityManager em = emf.createEntityManager();
+
+		Query myQuery = em.createQuery("SELECT p from Personnage p where p.familier.nom like :monAttribut");
+		myQuery.setParameter("monAttribut", "%e%");
+
+		List<Boisson> boissons = myQuery.getResultList();
+
+		if (happyHour()) {
+
+			for(Boisson b1 : boissons) 
+			{
+				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHThh())*1.2);
+			}
+			em.close();
 		}
-		
-		
-//		else {
-//			for(Boisson b1 : daoB.findAll()) {
-//				
-//				System.out.println("Boisson " + b.getNom() + ", prix: " + (b.getPrixHT())*1.2);
-//				
-//		}
-//		}
-		
+
+		else {
+
+			for(Boisson b1 : boissons) { 
+				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHT())*1.2);
+			}
+		}
+		em.close();
+
+
 
 	}
 	
