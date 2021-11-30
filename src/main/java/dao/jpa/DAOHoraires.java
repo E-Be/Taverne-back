@@ -11,10 +11,10 @@ import util.Context;
 
 public class DAOHoraires implements IDAOHoraires{
 	
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Horaires findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Horaires objet = em.find(Horaires.class, id);
 		em.close();
@@ -23,7 +23,7 @@ public class DAOHoraires implements IDAOHoraires{
 
 	@Override
 	public List<Horaires> findAll() {
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 
 		EntityManager em = emf.createEntityManager();
 	
@@ -35,6 +35,7 @@ public class DAOHoraires implements IDAOHoraires{
 
 	@Override
 	public Horaires save(Horaires objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -49,6 +50,7 @@ public class DAOHoraires implements IDAOHoraires{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Horaires objet = em.find(Horaires.class, id);
 

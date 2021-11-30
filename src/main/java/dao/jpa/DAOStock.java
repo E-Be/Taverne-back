@@ -14,10 +14,10 @@ import util.Context;
 
 public class DAOStock implements IDAOStock{
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Stock findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Stock objet = em.find(Stock.class, id);
 		em.close();
@@ -27,7 +27,7 @@ public class DAOStock implements IDAOStock{
 	@Override
 	public List<Stock> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Stock> objets = em.createQuery("from Stock").getResultList();
@@ -38,6 +38,7 @@ public class DAOStock implements IDAOStock{
 
 	@Override
 	public Stock save(Stock objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -52,6 +53,7 @@ public class DAOStock implements IDAOStock{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Stock objet = em.find(Stock.class, id);
 
@@ -66,6 +68,7 @@ public class DAOStock implements IDAOStock{
 
 	@Override
 	public List<Stock> findAllByBar(int id_bar) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Stock where id_bar = :id");
 		myQuery.setParameter("id", id_bar);

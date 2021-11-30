@@ -12,10 +12,10 @@ import util.Context;
 
 public class DAOBar implements IDAOBar{
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Bar findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Bar objet = em.find(Bar.class, id);
 		em.close();
@@ -25,7 +25,7 @@ public class DAOBar implements IDAOBar{
 	@Override
 	public List<Bar> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Bar> objets = em.createQuery("from Bar").getResultList();
@@ -36,6 +36,7 @@ public class DAOBar implements IDAOBar{
 
 	@Override
 	public Bar save(Bar objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -50,6 +51,7 @@ public class DAOBar implements IDAOBar{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Bar objet = em.find(Bar.class, id);
 

@@ -14,11 +14,10 @@ import util.Context;
 
 public class DAOEvents implements IDAOEvents{
 	
-	
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Events findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Events objet = em.find(Events.class, id);
 		em.close();
@@ -28,7 +27,7 @@ public class DAOEvents implements IDAOEvents{
 	@Override
 	public List<Events> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Events> objets = em.createQuery("from Events").getResultList();
@@ -39,6 +38,7 @@ public class DAOEvents implements IDAOEvents{
 
 	@Override
 	public Events save(Events objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -53,6 +53,7 @@ public class DAOEvents implements IDAOEvents{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Events objet = em.find(Events.class, id);
 
@@ -67,6 +68,7 @@ public class DAOEvents implements IDAOEvents{
 
 	@Override
 	public List<Events> findAllByJour(LocalDate jour) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Events where jour = :jour");
 		myQuery.setParameter("jour", jour);
@@ -77,6 +79,7 @@ public class DAOEvents implements IDAOEvents{
 
 	@Override
 	public List<Events> findAllByEmploye(int id_employe) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Events where id_emp =:id");
 		myQuery.setParameter("id", id_employe);
@@ -87,6 +90,7 @@ public class DAOEvents implements IDAOEvents{
 
 	@Override
 	public List<Events> findAllByHoraires(int id_horaires) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Events where id_horaires =:id");
 		myQuery.setParameter("id", id_horaires);

@@ -16,11 +16,9 @@ import util.Context;
 
 public class DAOIntervention implements IDAOIntervention {
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
-
 	
 	public List<Intervention> findByArtiste (String artiste) {
-		
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		
 		List<Intervention> interventions = new ArrayList<Intervention>();
@@ -42,6 +40,7 @@ public class DAOIntervention implements IDAOIntervention {
 	
 	@Override
 	public Intervention findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Intervention objet = em.find(Intervention.class, id);
 		em.close();
@@ -50,7 +49,7 @@ public class DAOIntervention implements IDAOIntervention {
 
 	@Override
 	public List<Intervention> findAll() {
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 
 		EntityManager em = emf.createEntityManager();
 	
@@ -62,6 +61,7 @@ public class DAOIntervention implements IDAOIntervention {
 
 	@Override
 	public Intervention save(Intervention objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -76,6 +76,7 @@ public class DAOIntervention implements IDAOIntervention {
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Stock objet = em.find(Stock.class, id);
 

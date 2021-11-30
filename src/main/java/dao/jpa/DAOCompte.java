@@ -14,10 +14,10 @@ import util.Context;
 
 public class DAOCompte implements IDAOCompte {
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	
 	@Override
 	public Compte findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Compte objet = em.find(Compte.class, id);
 		em.close();
@@ -27,7 +27,7 @@ public class DAOCompte implements IDAOCompte {
 	@Override
 	public List<Compte> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		List<Compte> objets = em.createQuery("from Compte").getResultList();
@@ -38,6 +38,7 @@ public class DAOCompte implements IDAOCompte {
 
 	@Override
 	public Compte save(Compte objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -52,6 +53,7 @@ public class DAOCompte implements IDAOCompte {
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Compte objet = em.find(Compte.class, id);
 
@@ -67,6 +69,7 @@ public class DAOCompte implements IDAOCompte {
 	@Override
 	public Compte connect(String login, String password) {
 		Compte connected = null;
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		Query query = em.createQuery("from Compte c where c.login=:log and c.password=:pass");
@@ -83,6 +86,7 @@ public class DAOCompte implements IDAOCompte {
 	}
 	
 	public List<Compte> findByTypeCompte(String typeCompte) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		
 		EntityManager em = emf.createEntityManager();
 		
