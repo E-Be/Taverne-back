@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import fonctionnalitees.Events;
 import idao.jpa.IDAOEvents;
-import idao.jpa.IDAOEvents;
 import util.Context;
 
 public class DAOEvents implements IDAOEvents{
@@ -88,14 +87,4 @@ public class DAOEvents implements IDAOEvents{
 		return objets;
 	}
 
-	@Override
-	public List<Events> findAllByHoraires(int id_horaires) {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Events where id_horaires =:id");
-		myQuery.setParameter("id", id_horaires);
-		List<Events> objets = myQuery.getResultList();
-		em.close();
-		return objets;
-	}
 }

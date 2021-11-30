@@ -1,6 +1,7 @@
 package fonctionnalitees;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,24 +27,23 @@ public class Events {
 	private Bar bar;
 	
 	@ManyToOne
-	@JoinColumn(name="id_horaires")
-	private Horaires horaires;
-	
-	@ManyToOne
 	@JoinColumn(name="id_emp")
 	private Employe emp;
 	private LocalDate jour;
+	private LocalTime debut;
+	private LocalTime fin;
 	
 	@Column(nullable = true)
 	private String remarque;
 	
 	public Events() {}
 
-	public Events(Bar bar, Horaires horaires, Employe emp, LocalDate jour, String remarque) {
+	public Events(Bar bar, Employe emp, LocalDate jour, LocalTime debut, LocalTime fin, String remarque) {
 		this.bar = bar;
-		this.horaires = horaires;
 		this.emp = emp;
 		this.jour = jour;
+		this.debut = debut;
+		this.fin = fin;
 		this.remarque = remarque;
 	}
 
@@ -61,14 +61,6 @@ public class Events {
 
 	public void setBar(Bar bar) {
 		this.bar = bar;
-	}
-
-	public Horaires getHoraires() {
-		return horaires;
-	}
-
-	public void setHoraires(Horaires horaires) {
-		this.horaires = horaires;
 	}
 
 	public Employe getEmp() {
@@ -94,11 +86,30 @@ public class Events {
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
+	
+	public LocalTime getDebut() {
+		return debut;
+	}
+
+	public void setDebut(LocalTime debut) {
+		this.debut = debut;
+	}
+
+	public LocalTime getFin() {
+		return fin;
+	}
+
+	public void setFin(LocalTime fin) {
+		this.fin = fin;
+	}
 
 	@Override
 	public String toString() {
-		return "Events [id=" + id + ", bar=" + bar + ", horaires=" + horaires + ", emp=" + emp + ", journee=" + jour
-				+ ", remarque=" + remarque + "]";
+		return "Events [id=" + id + ", bar=" + bar + ", emp=" + emp + ", jour=" + jour + ", debut=" + debut + ", fin="
+				+ fin + ", remarque=" + remarque + "]";
 	}
+	
+	
+
 	
 }
