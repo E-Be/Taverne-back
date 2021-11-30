@@ -95,7 +95,7 @@ public class DAOIntervention implements IDAOIntervention {
 	public List<Intervention> findAllByStatut(StatutIntervention statut) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Intervention where statut = :statut");
+		Query myQuery = em.createQuery("from Intervention where statut like :statut");
 		myQuery.setParameter("statut", statut);
 		List<Intervention> objets = myQuery.getResultList();
 		em.close();

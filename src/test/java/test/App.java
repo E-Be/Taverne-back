@@ -1,12 +1,11 @@
 package test;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 import comptes.Admin;
 import comptes.Client;
@@ -15,17 +14,13 @@ import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
 import fonctionnalitees.CarteFidelite;
-import idao.jpa.IDAOBoisson;
-import inventaire.Bar;
-import inventaire.Boisson;
-import inventaire.Bar;
-import inventaire.Stock;
-
+import fonctionnalitees.Intervention;
+import fonctionnalitees.StatutIntervention;
 import idao.jpa.IDAOBoisson;
 import idao.jpa.IDAOStock;
-
-import dao.jpa.DAOBoisson;
-import fonctionnalitees.CarteFidelite;
+import inventaire.Bar;
+import inventaire.Boisson;
+import inventaire.Stock;
 import util.Context;
 
 
@@ -153,9 +148,9 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Intervennant ---------");
 		System.out.println("1 - Modifier mes informations");
-		System.out.println("2 - Proposer un �v�nement");
-		System.out.println("3 - Consulter les �v�nements � venir");
-		System.out.println("4 - Se d�connecter");
+		System.out.println("2 - Proposer un évènement");
+		System.out.println("3 - Consulter les évènements à venir");
+		System.out.println("4 - Se déconnecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -169,8 +164,15 @@ public class App {
 	}
 
 	private static void proposerEvenement() {
-		// TODO Auto-generated method stub
 		
+		int cout = saisieInt("Combien coutera l'intervention ?");
+		int prix = saisieInt("quel sera le prix pour le client ?");
+		LocalDateTime debut = LocalDateTime.now();
+		LocalDateTime fin = LocalDateTime.now();
+		String type = saisieString("Quel type d'intervention ?");
+		Intervention intervention = new Intervention(debut, fin, type, cout, prix, (Intervenant) context.getInstance().getConnected(), Context.getInstance().getBar());
+		Context.getInstance().getDaoIntervention().save(intervention);
+		System.out.println("Votre intervention a été proposée. Nous vous préviendrons si nous acceptions.");
 	}
 
 	private static void menuFournisseur() {
@@ -183,10 +185,10 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Admin ---------");
 		System.out.println("1 - Modifier un compte");
-		System.out.println("2 - Consulter les propositions d'�v�nement");
+		System.out.println("2 - Consulter les propositions d'évènement");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les �v�nements � venir");
-		System.out.println("5 - Se d�connecter");
+		System.out.println("4 - Consulter les évènements à venir");
+		System.out.println("5 - Se déconnecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -312,10 +314,11 @@ public class App {
 	}
 
 	private static void consulterEvenements() {
-		//Consultation des evenements lies aux bars
-		//Consultation des horaires des employes
 		
-		
+		List<Intervention> interventions = Context.getInstance().getDaoIntervention().findAllByStatut(StatutIntervention.Acceptée);
+		for(Intervention i : interventions) {
+			System.out.println(i);
+		}
 
 	}
 
