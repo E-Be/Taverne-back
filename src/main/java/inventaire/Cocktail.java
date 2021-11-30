@@ -6,14 +6,14 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Alcool")
-public class Alcool extends Boisson{
+public class Cocktail extends Boisson{
 	
 	
-	public Alcool(String nom, double prixHT, double prixHThh, Bar bar, List<Utilisation> utilisations) {
+	public Cocktail(String nom, double prixHT, double prixHThh, Bar bar, List<Utilisation> utilisations) {
 		super(nom, prixHT, prixHThh,1.2, bar, utilisations);
 	}
 	
-	public Alcool() {
+	public Cocktail() {
 		
 	}
 

@@ -1,11 +1,15 @@
 package inventaire;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Stock {
@@ -16,11 +20,11 @@ public class Stock {
 	private int qte;
 	private int seuil_limite;
 	
-	@ManyToOne
+	@OneToMany
 	@JoinColumn(name="id_article")
-	private Article article;
+	private List<Article> article;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="id_bar")
 	private Bar bar;
 	
@@ -55,12 +59,12 @@ public class Stock {
 		this.seuil_limite = seuil_limite;
 	}
 
-	public Article getArticle() {
+	public List<Article> getArticle() {
 		return article;
 	}
 
-	public void setArticle(Article article) {
-		this.article = article;
+	public void addArticle(Article article) {
+		this.article.add(article);
 	}
 
 	public Bar getBar() {

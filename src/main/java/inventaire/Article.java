@@ -14,13 +14,13 @@ import comptes.Fournisseur;
 @Table(name="Article")
 public class Article {
 
-	@Id//Obligatoire
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //Obligatoire*
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
 	private String nom;
 	private double cout;
-	private String type_produit;
-	private double volume;
+	private TypeArticle type;
+	private int quantite;
 	
 	
 	@ManyToOne
@@ -31,11 +31,11 @@ public class Article {
 	
 	
 
-	public Article(String nom, double cout, String type_produit, double volume, Fournisseur fournisseur) {
+	public Article(String nom, double cout, TypeArticle type, int volume, Fournisseur fournisseur) {
 		this.nom = nom;
 		this.cout = cout;
-		this.type_produit = type_produit;
-		this.volume = volume;
+		this.type = type;
+		this.quantite = volume;
 		this.fournisseur = fournisseur;
 	}
 
@@ -65,20 +65,20 @@ public class Article {
 		this.cout = cout;
 	}
 
-	public String getType_produit() {
-		return type_produit;
+	public TypeArticle getType_produit() {
+		return type;
 	}
 
-	public void setType_produit(String type_produit) {
-		this.type_produit = type_produit;
+	public void setType_produit(TypeArticle type) {
+		this.type = type;
 	}
 
-	public double getVolume() {
-		return volume;
+	public int getVolume() {
+		return quantite;
 	}
 
-	public void setVolume(double volume) {
-		this.volume = volume;
+	public void setVolume(int qte) {
+		this.quantite = qte;
 	}
 
 	public Fournisseur getFournisseur() {
@@ -93,8 +93,8 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", nom=" + nom + ", cout=" + cout + ", type_produit=" + type_produit + ", volume="
-				+ volume + ", fournisseur=" + fournisseur + "]";
+		return "Article [id=" + id + ", nom=" + nom + ", cout=" + cout + ", type_produit=" + type + ", volume="
+				+ quantite + ", fournisseur=" + fournisseur + "]";
 	}
 
 

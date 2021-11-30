@@ -23,7 +23,7 @@ public abstract class Boisson{
 	protected int id;
 	protected String nom;
 	protected double prixHT;
-	protected double prixHThh;
+	protected double prixHTHappy;
 	protected double tva;
 	
 	@ManyToOne
@@ -35,11 +35,11 @@ public abstract class Boisson{
 	
 	public Boisson() {}
 
-	public Boisson(String nom, double prixHT, double prixHThh, double tva, Bar bar,
+	public Boisson(String nom, double prixHT, double prixHTHappy, double tva, Bar bar,
 			List<Utilisation> utilisations) {
 		this.nom = nom;
 		this.prixHT = prixHT;
-		this.prixHThh = prixHThh;
+		this.prixHTHappy = prixHTHappy;
 		this.tva = tva;
 		this.bar = bar;
 		this.utilisations = utilisations;
@@ -70,11 +70,11 @@ public abstract class Boisson{
 	}
 
 	public double getPrixHThh() {
-		return prixHThh;
+		return prixHTHappy;
 	}
 
 	public void setPrixHThh(double prixHThh) {
-		this.prixHThh = prixHThh;
+		this.prixHTHappy = prixHThh;
 	}
 
 	public double getTva() {
@@ -103,7 +103,7 @@ public abstract class Boisson{
 
 	@Override
 	public String toString() {
-		return "Boisson [id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", prixHThh=" + prixHThh + ", tva=" + tva
+		return "Boisson [id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", prixHThh=" + prixHTHappy + ", tva=" + tva
 				+ ", bar=" + bar + ", utilisations=" + utilisations + "]";
 	}
 
