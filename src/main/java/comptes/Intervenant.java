@@ -55,8 +55,7 @@ private String artiste;
 
 	@Override
 	public String toString() {
-		return "Intervenant [entreprise=" + entreprise + ", artiste=" + artiste + ", interventions=" + interventions
-				+ "]";
+		return "Intervenant [entreprise=" + entreprise + ", artiste=" + artiste + "]";
 	}
 
 	

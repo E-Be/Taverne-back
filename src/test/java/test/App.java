@@ -15,6 +15,7 @@ import comptes.Fournisseur;
 import comptes.Intervenant;
 import fonctionnalitees.CarteFidelite;
 import fonctionnalitees.Intervention;
+import fonctionnalitees.StatutIntervention;
 import idao.jpa.IDAOBoisson;
 import idao.jpa.IDAOStock;
 import inventaire.Bar;
@@ -147,9 +148,9 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Intervennant ---------");
 		System.out.println("1 - Modifier mes informations");
-		System.out.println("2 - Proposer un �v�nement");
-		System.out.println("3 - Consulter les �v�nements � venir");
-		System.out.println("4 - Se d�connecter");
+		System.out.println("2 - Proposer un évènement");
+		System.out.println("3 - Consulter les évènements à venir");
+		System.out.println("4 - Se déconnecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -184,10 +185,10 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Admin ---------");
 		System.out.println("1 - Modifier un compte");
-		System.out.println("2 - Consulter les propositions d'�v�nement");
+		System.out.println("2 - Consulter les propositions d'évènement");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les �v�nements � venir");
-		System.out.println("5 - Se d�connecter");
+		System.out.println("4 - Consulter les évènements à venir");
+		System.out.println("5 - Se déconnecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -313,10 +314,11 @@ public class App {
 	}
 
 	private static void consulterEvenements() {
-		//Consultation des evenements lies aux bars
-		//Consultation des horaires des employes
 		
-		
+		List<Intervention> interventions = Context.getInstance().getDaoIntervention().findAllByStatut(StatutIntervention.Acceptée);
+		for(Intervention i : interventions) {
+			System.out.println(i);
+		}
 
 	}
 

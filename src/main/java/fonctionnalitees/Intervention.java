@@ -51,7 +51,6 @@ public class Intervention {
 
 	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, String typeIntervention, int coutIntervenant,
 			int prixClient, Intervenant intervenant, Bar bar) {
-		super();
 		this.hDebut = hDebut;
 		this.hFin = hFin;
 		this.typeIntervention = typeIntervention;
