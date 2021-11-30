@@ -100,7 +100,7 @@ public class App {
 		System.out.println("1 - Connexion");
 		System.out.println("2 - Inscription");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les �v�nements � venir");
+		System.out.println("4 - Consulter les évènements à venir");
 		System.out.println("5 - Changer de Bar");
 		System.out.println("6 - Quitter l'application");
 
@@ -303,10 +303,10 @@ public class App {
 
 	private static void infoCompte(Compte c) {
 		if (c instanceof Fournisseur || (c instanceof Intervenant && ((Intervenant)c).getEntreprise() != null) ) {
-			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant � " 
+			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant à " 
 					+ c.getPrenom() + " " + c.getNom() + " (" + c.getMail() + ").\nEntreprise: " + ((Fournisseur)c).getEntreprise() + "." );
 		} else {
-			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant � " 
+			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant à " 
 					+ c.getPrenom() + " " + c.getNom() + " (" + c.getMail() + ").");	
 		}
 	}
@@ -355,7 +355,7 @@ public class App {
 	
 
 	private static void quiEstCe() {
-		System.out.println("Vous �tes connect� en tant que: " + context.getConnected().getPrenom() + " " + context.getConnected().getNom() + ".");
+		System.out.println("Vous êtes connecté en tant que: " + context.getConnected().getPrenom() + " " + context.getConnected().getNom() + ".");
 	}
 	
 	private static boolean happyHour() {
