@@ -11,5 +11,4 @@ public interface IDAOEvents extends IDAO<Events,Integer> {
 	
 	public List<Events> findAllByEmploye(int id_employe);
 	
-	public List<Events> findAllByHoraires(int id_horaires);
 }
