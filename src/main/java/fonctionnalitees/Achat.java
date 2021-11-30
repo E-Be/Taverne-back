@@ -12,9 +12,12 @@ import javax.persistence.ManyToOne;
 
 import comptes.Client;
 import inventaire.Boisson;
+import util.Context;
 
 @Entity
 public class Achat {
+	
+	static Context context = Context.getInstance();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +38,12 @@ public class Achat {
 		this.dateAchat = dateAchat;
 		this.boisson = boisson;
 		this.client = client;
+	}
+	
+	public Achat(Boisson boisson) {
+		this.dateAchat = LocalDate.now();
+		this.boisson = boisson;
+		this.client = (Client)context.getConnected();
 	}
 
 	public int getId() {

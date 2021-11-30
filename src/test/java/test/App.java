@@ -10,20 +10,6 @@ import comptes.Compte;
 import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
-
-
-import dao.jpa.DAOCompte;
-import dao.jpa.DAOAchat;
-import dao.jpa.DAOArticle;
-import dao.jpa.DAOCompte;
-import dao.jpa.DAOCompte;
-
-
-import idao.jpa.IDAOCompte;
-import idao.jpa.IDAOAchat;
-import idao.jpa.IDAOArticle;
-import idao.jpa.IDAOBar;
-import idao.jpa.IDAOBoisson;
 import fonctionnalitees.CarteFidelite;
 import util.Context;
 
