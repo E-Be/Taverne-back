@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 @Entity
-@DiscriminatorValue("Alcool")
+@DiscriminatorValue("Cocktail")
 public class Cocktail extends Boisson{
 	
 	@ManyToMany
@@ -18,7 +18,6 @@ public class Cocktail extends Boisson{
 	}
 	
 	public Cocktail() {
-		
 	}
 
 	public List<Article> getComposants() {
@@ -28,6 +27,5 @@ public class Cocktail extends Boisson{
 	public void setComposants(List<Article> composants) {
 		this.composants = composants;
 	}
-	
 }
 

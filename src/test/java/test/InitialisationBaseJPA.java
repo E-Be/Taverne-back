@@ -24,8 +24,9 @@ public class InitialisationBaseJPA {
 		// TODO Auto-generated method stub
 		
 		List<Intervention> interventions = new ArrayList<Intervention>();
-		Bar bar = new Bar("Le Bar", null, null, null);
+		Bar bar = new Bar("Le Bar");
 		bar=Context.getInstance().getDaoBar().save(bar);
+		Context.getInstance().setBar(bar);
 		
 		Intervenant i1 = new Intervenant ("OLICARD", "Fabien", "Master", "Mentaliste", "fabien@olicard.com","Fabien_OLICARD", "mentalism&Co",null);
 		

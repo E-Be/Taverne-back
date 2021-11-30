@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-@DiscriminatorValue("Soft")
+@DiscriminatorValue("BoissonSolo")
 public class BoissonSolo extends Boisson {
 	
 	@OneToMany
