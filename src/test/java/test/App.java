@@ -16,7 +16,12 @@ import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
 import inventaire.Boisson;
+import inventaire.Bar;
+import inventaire.Stock;
+
 import idao.jpa.IDAOBoisson;
+import idao.jpa.IDAOStock;
+
 import dao.jpa.DAOBoisson;
 import fonctionnalitees.CarteFidelite;
 import util.Context;
@@ -28,10 +33,12 @@ import javax.persistence.Query;
 
 public class App {
 	
+	static IDAOBoisson daoB = Context.getInstance().getDaoBoisson();
+	static IDAOStock daoS = Context.getInstance().getDaoStock();
+	
 	static Context context = Context.getInstance();
 	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	
-	static IDAOBoisson daoB = Context.getInstance().getDaoBoisson();
 	
 
 	public static String saisieString(String msg) {
@@ -292,39 +299,39 @@ public class App {
 	}
 
 	public static void consulterCartes() {
-		
-		EntityManager em = emf.createEntityManager();
-
-		Query myQuery = em.createQuery("SELECT * from Boisson");
-//		myQuery.setParameter("monAttribut", "%e%");
-
-		List<Boisson> boissons = myQuery.getResultList();
 
 		if (happyHour()) {
 
-			for(Boisson b1 : boissons) 
+			
+			for(Boisson b1 : daoB.findAllByBar(Bar.getId_bar())) 
 			{
 				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHThh())*1.2);
 			}
-			em.close();
+			
 		}
 
 		else {
 
-			for(Boisson b1 : boissons) { 
+			for(Boisson b1 : daoB.findAllByBar(Bar.getId_bar())) 
+			{
 				System.out.println(b1.getNom()+ "prix: " + (b1.getPrixHT())*1.2);
 			}
 		}
-		em.close();
+		
 
 
 
 	}
 	
 	private static void consulterStock() {
-		// TODO Auto-generated method stub
-
+		
+		for(Stock s : daoS.findAll()) 
+		{
+			System.out.println("Article:" +s.getArticles()+ "Volume total: " +s.getVolumeTot()+ "Seuil  limite: " + s.getSeuil_limite());
+		}
 	}
+	
+	
 
 	private static void quiEstCe() {
 		System.out.println("Vous êtes connecté en tant que: " + context.getConnected().getPrenom() + " " + context.getConnected().getNom() + ".");
