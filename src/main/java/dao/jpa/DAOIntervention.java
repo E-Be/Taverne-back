@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import fonctionnalitees.Intervention;
 import fonctionnalitees.StatutIntervention;
 import idao.jpa.IDAOIntervention;
+import inventaire.Bar;
 import inventaire.Stock;
 import util.Context;
 
@@ -92,11 +93,12 @@ public class DAOIntervention implements IDAOIntervention {
 
 
 	@Override
-	public List<Intervention> findAllByStatut(StatutIntervention statut) {
+	public List<Intervention> findAllByStatutAndBar(StatutIntervention statut, Bar bar){
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("from Intervention where statut like :statut");
+		Query myQuery = em.createQuery("from Intervention where statut like :statut and id_bar =:id");
 		myQuery.setParameter("statut", statut);
+		myQuery.setParameter("id", bar.getId_bar());
 		List<Intervention> objets = myQuery.getResultList();
 		em.close();
 		return objets;

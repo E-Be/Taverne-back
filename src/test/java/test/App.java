@@ -337,7 +337,7 @@ public class App {
 
 	private static void consulterEvenements(StatutIntervention statut) {
 		
-		List<Intervention> interventions = Context.getInstance().getDaoIntervention().findAllByStatut(statut);
+		List<Intervention> interventions = Context.getInstance().getDaoIntervention().findAllByStatutAndBar(statut,Context.getInstance().getBar());
 		for(Intervention i : interventions) {
 			System.out.println(i);
 		}
