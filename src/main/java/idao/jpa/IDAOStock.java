@@ -9,6 +9,6 @@ import inventaire.Stock;
 public interface IDAOStock extends IDAO<Stock,Integer> {
 
 	public List<Stock> findAllByBar(int id_bar);
-	public void approvisioner(Article article);
+	
 	
 }

@@ -1,6 +1,8 @@
 package inventaire;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,9 @@ public class Article {
 	private int id;
 	private String nom;
 	private double cout;
-	private String type_produit;
+	
+	@Enumerated(EnumType.STRING)
+	private TypeArticle type_produit;
 	private double volume;
 	
 	
@@ -31,7 +35,7 @@ public class Article {
 	
 	
 
-	public Article(String nom, double cout, String type_produit, double volume, Fournisseur fournisseur) {
+	public Article(String nom, double cout, TypeArticle type_produit, double volume, Fournisseur fournisseur) {
 		this.nom = nom;
 		this.cout = cout;
 		this.type_produit = type_produit;
@@ -65,11 +69,11 @@ public class Article {
 		this.cout = cout;
 	}
 
-	public String getType_produit() {
+	public TypeArticle getType_produit() {
 		return type_produit;
 	}
 
-	public void setType_produit(String type_produit) {
+	public void setType_produit(TypeArticle type_produit) {
 		this.type_produit = type_produit;
 	}
 

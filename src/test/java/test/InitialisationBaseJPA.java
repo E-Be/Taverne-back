@@ -22,6 +22,7 @@ import inventaire.Bar;
 import inventaire.Boisson;
 import inventaire.Soft;
 import inventaire.Stock;
+import inventaire.TypeArticle;
 import inventaire.Utilisation;
 import util.Context;
 
@@ -69,17 +70,27 @@ public class InitialisationBaseJPA {
 		f3 = Context.getInstance().getDaoCompte().save(f3);
 		Compte f4 = new Fournisseur ("GILET","Pascal", "Heineken","Heineken","Beer@Heineken.com","Heineken");
 		f4 = Context.getInstance().getDaoCompte().save(f4);
-		Article biere = new Article("Biere",12.0,"Biere", 25.0, (Fournisseur)f1);
+		Article biere = new Article("Biere",12.0,TypeArticle.Biere, 25.0, (Fournisseur)f1);
 		biere = Context.getInstance().getDaoArticle().save(biere);
-		Article coca =  new Article("Coca",12.0,"Soda", 25.0, (Fournisseur)f2);
+		Article coca =  new Article("Coca",12.0,TypeArticle.Coca, 25.0, (Fournisseur)f2);
 		coca = Context.getInstance().getDaoArticle().save(coca);
 		
+		List<Article> bieres = new ArrayList<Article>();
+		bieres.add(biere);
 		
-		Stock biereStock = new Stock(50, 10, biere, bar);
-		biereStock = Context.getInstance().getDaoStock().save(biereStock);
+		List<Article> cocas = new ArrayList<Article>();
+		cocas.add(coca);
 		
-		Stock cocaStock = new Stock(50, 10, coca, bar);
-		cocaStock = Context.getInstance().getDaoStock().save(cocaStock);
+		
+		//Stock biereStock = new Stock(50, 10, bieres, bar);
+		//biereStock = Context.getInstance().getDaoStock().save(biereStock);
+		
+		//Stock cocaStock = new Stock(50, 10, cocas, bar);
+		//cocaStock = Context.getInstance().getDaoStock().save(cocaStock);
+		
+		Stock cocaStock=Context.getInstance().getDaoBar().approvisioner(coca, bar);
+		cocaStock=Context.getInstance().getDaoBar().approvisioner(coca, bar);
+		Stock biereStock=Context.getInstance().getDaoBar().approvisioner(biere, bar);
 		
 		Boisson demiBiere = new Alcool("Demi de Biere", 5, 5, bar,null);
 		demiBiere = Context.getInstance().getDaoBoisson().save(demiBiere);
@@ -104,10 +115,10 @@ public class InitialisationBaseJPA {
 		client = Context.getInstance().getDaoCompte().save(client);
 		
 		
-		
+		/*
 		Achat achat = new Achat(LocalDate.now(), bouteilleCoca, (Client) client);
 		Context.getInstance().getDaoAchat().save(achat);
-		
+		*/
 		
 	}
 

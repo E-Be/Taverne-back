@@ -6,10 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import fonctionnalitees.Events;
-import idao.jpa.IDAO;
 import idao.jpa.IDAOStock;
-import inventaire.Article;
 import inventaire.Stock;
 import util.Context;
 
@@ -30,26 +27,17 @@ public class DAOStock implements IDAOStock{
 
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-	
+
 		List<Stock> objets = em.createQuery("from Stock").getResultList();
 		em.close();
 		return objets;
-		
+
 	}
 
 	@Override
 	public Stock save(Stock objet) {
-		EntityManagerFactory emf = Context.getInstance().getEmf();
-		EntityManager em = emf.createEntityManager();
 
-		em.getTransaction().begin();
-
-		objet=em.merge(objet);
-
-		em.getTransaction().commit();
-		em.close();
-
-		return objet;
+		return null;
 	}
 
 	@Override
@@ -59,9 +47,9 @@ public class DAOStock implements IDAOStock{
 		Stock objet = em.find(Stock.class, id);
 
 		em.getTransaction().begin();
-		
+
 		em.remove(objet);
-		
+
 		em.getTransaction().commit();
 		em.close();
 
@@ -78,14 +66,7 @@ public class DAOStock implements IDAOStock{
 		return objets;
 	}
 
-	@Override
-	public void approvisioner(Article article) {
 	
-		//Find un stock concernant cet article
-		//y ajouter le volume acheté
-		//save ce stock
-		
-	}
 
 }
 
