@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
-
-import java.util.ArrayList;
 
 import comptes.Admin;
 import comptes.Client;
@@ -15,15 +14,11 @@ import comptes.Compte;
 import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
-import inventaire.Boisson;
-import idao.jpa.IDAOBoisson;
-import dao.jpa.DAOBoisson;
 import fonctionnalitees.CarteFidelite;
+import idao.jpa.IDAOBoisson;
+import inventaire.Bar;
+import inventaire.Boisson;
 import util.Context;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 
 public class App {
@@ -72,13 +67,32 @@ public class App {
 
 	}
 
+	public static void choixBar() {
+		
+		List<Bar> bars=Context.getInstance().getDaoBar().findAll();
+		System.out.println("Bonjour, la liste des bars est :");
+		for(Bar b : bars) {
+			System.out.println(b);
+		}
+		
+		int id_bar = saisieInt("Dans quel Bar voulez vous aller ? (numÃ©ro id)");
+		Bar bar = context.getInstance().getDaoBar().findById(id_bar);
+		context.setBar(bar); 
+		menuPrincipal();
+		
+		}
+	
 	public static void menuPrincipal() {
+		
+		
+		
 		System.out.println("Bienvenue dans la taverne!");
 		System.out.println("1 - Connexion");
 		System.out.println("2 - Inscription");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les événements à venir");
-		System.out.println("5 - Quitter l'application");
+		System.out.println("4 - Consulter les ï¿½vï¿½nements ï¿½ venir");
+		System.out.println("5 - Changer de Bar");
+		System.out.println("6 - Quitter l'application");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -86,7 +100,8 @@ public class App {
 		case 2: inscription(); break;
 		case 3: consulterCartes(); break;
 		case 4: consulterEvenements(); break;
-		case 5: System.exit(0); break;
+		case 5: choixBar(); break;
+		case 6: System.exit(0); break;
 		}
 		menuPrincipal();
 	}
@@ -128,9 +143,9 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Intervennant ---------");
 		System.out.println("1 - Modifier mes informations");
-		System.out.println("2 - Proposer un événement");
-		System.out.println("3 - Consulter les événements à venir");
-		System.out.println("4 - Se déconnecter");
+		System.out.println("2 - Proposer un ï¿½vï¿½nement");
+		System.out.println("3 - Consulter les ï¿½vï¿½nements ï¿½ venir");
+		System.out.println("4 - Se dï¿½connecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -158,10 +173,10 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Admin ---------");
 		System.out.println("1 - Modifier un compte");
-		System.out.println("2 - Consulter les propositions d'événement");
+		System.out.println("2 - Consulter les propositions d'ï¿½vï¿½nement");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les événements à venir");
-		System.out.println("5 - Se déconnecter");
+		System.out.println("4 - Consulter les ï¿½vï¿½nements ï¿½ venir");
+		System.out.println("5 - Se dï¿½connecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -177,16 +192,16 @@ public class App {
 
 	private static void menuEmploye() {
 		quiEstCe();
-		System.out.println("--------- Menu Employé ---------");
-		System.out.println("1 - Accéder au planning");
+		System.out.println("--------- Menu Employï¿½ ---------");
+		System.out.println("1 - Accï¿½der au planning");
 		System.out.println("2 - Consulter stock");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("5 - Se déconnecter");
+		System.out.println("5 - Se dï¿½connecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
 		case 1: consulterEvenements(); break;
-		case 2: consulterStock(); break;  //créer méthode consulter stock
+		case 2: consulterStock(); break;  //crï¿½er mï¿½thode consulter stock
 		case 3: consulterCartes(); break;
 		case 4: context.setConnected(null); menuPrincipal(); break;
 		}
@@ -200,10 +215,10 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Client ---------");
 		System.out.println("1 - Modifier mes informations");
-		System.out.println("2 - Ma carte de fidélité");
+		System.out.println("2 - Ma carte de fidï¿½litï¿½");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les événements à venir");
-		System.out.println("5 - Se déconnecter");
+		System.out.println("4 - Consulter les ï¿½vï¿½nements ï¿½ venir");
+		System.out.println("5 - Se dï¿½connecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -225,7 +240,7 @@ public class App {
 				for (Compte c : lCompte) {
 					infoCompte(c);
 				}
-				int idMod = saisieInt("Veuillez saisir l'ID du compte à modifier:");
+				int idMod = saisieInt("Veuillez saisir l'ID du compte ï¿½ modifier:");
 				System.out.println("Vous modifiez le compte:");
 				Compte modC = context.getDaoCompte().findById(idMod);
 				infoCompte(modC);
@@ -241,7 +256,7 @@ public class App {
 				if (modC != null) {
 					modC.setId(idMod);
 					context.getDaoCompte().save(modC);
-					System.out.println("Compte mis à jour!");
+					System.out.println("Compte mis ï¿½ jour!");
 					System.out.println("------------------");
 				}
 			}
@@ -270,22 +285,22 @@ public class App {
 		CarteFidelite newCarte = new CarteFidelite((Client)context.getConnected());
 		context.getDaoCarteFidelite().save(newCarte);
 		context.getDaoCompte().save(context.getConnected());
-		System.out.println("Carte de fidélité créée!");
+		System.out.println("Carte de fidï¿½litï¿½ crï¿½ï¿½e!");
 		carteFidelite();
 	}
 
 	private static void infoCompte(Compte c) {
 		if (c instanceof Fournisseur || (c instanceof Intervenant && ((Intervenant)c).getEntreprise() != null) ) {
-			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant à " 
+			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant ï¿½ " 
 					+ c.getPrenom() + " " + c.getNom() + " (" + c.getMail() + ").\nEntreprise: " + ((Fournisseur)c).getEntreprise() + "." );
 		} else {
-			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant à " 
+			System.out.println("Compte " + c.getClass().getSimpleName() + ", ID: " + c.getId() + " appartenant ï¿½ " 
 					+ c.getPrenom() + " " + c.getNom() + " (" + c.getMail() + ").");	
 		}
 	}
 
 	private static void consulterEvenements() {
-		//Consultation des evenements liés au bar
+		//Consultation des evenements liï¿½s au bar
 		
 		
 
@@ -327,7 +342,7 @@ public class App {
 	}
 
 	private static void quiEstCe() {
-		System.out.println("Vous êtes connecté en tant que: " + context.getConnected().getPrenom() + " " + context.getConnected().getNom() + ".");
+		System.out.println("Vous ï¿½tes connectï¿½ en tant que: " + context.getConnected().getPrenom() + " " + context.getConnected().getNom() + ".");
 	}
 	
 	private static boolean happyHour() {
