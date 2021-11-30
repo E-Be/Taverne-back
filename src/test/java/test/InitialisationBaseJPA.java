@@ -67,9 +67,9 @@ public class InitialisationBaseJPA {
 		biere = Context.getInstance().getDaoArticle().save(biere);
 		Article coca =  new Article("Coca",12.0,TypeArticle.Coca, 36, (Fournisseur)f2);
 		coca = Context.getInstance().getDaoArticle().save(coca);
-		Stock stockBar = new Stock(bar);
-		stockBar.addArticle(coca);
-		stockBar.addArticle(biere);
+		bar.addArticle(coca);
+		bar.addArticle(biere);
+		stockBar = Context.getInstance().getDaoStock().save(stockBar);
 		
 		
 		

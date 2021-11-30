@@ -1,11 +1,14 @@
 package inventaire;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -22,20 +25,18 @@ public class Bar {
 	private int id_bar;
 	private String nom;
 	
-	@OneToOne(mappedBy = "bar")
-	Stock stock;
+	@ManyToMany (mappedBy = "localisations")
+	private List<Boisson> stock = new ArrayList<Boisson>();
 	
 	@OneToMany (mappedBy = "bar")
-	List<Employe> employes;
+	private List<Employe> employes = new ArrayList<Employe>();
 	
-	/////
 	@OneToMany(mappedBy = "bar")
-	List<Intervention> interventions;
-	////
+	private List<Intervention> interventions = new ArrayList<Intervention>();
 	
 	public Bar() {}
 
-	public Bar(String nom, Stock stock, List<Employe> employes,List<Intervention> interventions) {
+	public Bar(String nom, List<Boisson> stock, List<Employe> employes,List<Intervention> interventions) {
 		this.nom = nom;
 		this.stock = stock;
 		this.employes = employes;
@@ -58,12 +59,12 @@ public class Bar {
 		this.nom = nom;
 	}
 
-	public Stock getStock() {
+	public List<Boisson> getStock() {
 		return stock;
 	}
 
-	public void setStocks(Stock stocks) {
-		this.stock = stocks;
+	public void addArticle(Boisson boisson) {
+		stock.add(boisson);
 	}
 
 	public List<Employe> getEmployes() {

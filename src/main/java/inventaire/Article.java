@@ -1,6 +1,8 @@
 package inventaire;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +21,7 @@ public class Article {
 	private int id;
 	private String nom;
 	private double cout;
+	@Enumerated(EnumType.STRING)
 	private TypeArticle type;
 	private int quantite;
 	

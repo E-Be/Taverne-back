@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 @DiscriminatorColumn(name="Type_Boisson")
 public abstract class Boisson{
 	
+	static List<Boisson> boissons = new ArrayList<Boisson>();
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
@@ -27,7 +29,7 @@ public abstract class Boisson{
 	
 	
 	@ManyToMany
-	protected List<Stock> localisations = new ArrayList<Stock>();
+	protected List<Bar> localisations = new ArrayList<Bar>();
 	
 	public Boisson() {}
 
@@ -76,6 +78,22 @@ public abstract class Boisson{
 
 	public void setTva(double tva) {
 		this.tva = tva;
+	}
+
+	public double getPrixHTHappy() {
+		return prixHTHappy;
+	}
+
+	public void setPrixHTHappy(double prixHTHappy) {
+		this.prixHTHappy = prixHTHappy;
+	}
+
+	public List<Bar> getLocalisations() {
+		return localisations;
+	}
+
+	public void setLocalisations(List<Bar> localisations) {
+		this.localisations = localisations;
 	}
 
 	@Override
