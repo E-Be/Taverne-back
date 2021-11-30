@@ -297,7 +297,7 @@ public class App {
 		newCarte=context.getDaoCarteFidelite().save(newCarte);
 		c.setCarte(newCarte);
 		context.getDaoCompte().save(c);
-		System.out.println("Carte de fidelité créée!");
+		System.out.println("Carte de fidelité créée ç!");
 		carteFidelite();
 	}
 
@@ -312,7 +312,8 @@ public class App {
 	}
 
 	private static void consulterEvenements() {
-		//Consultation des evenements li�s au bar
+		//Consultation des evenements lies aux bars
+		//Consultation des horaires des employes
 		
 		
 
