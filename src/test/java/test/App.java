@@ -10,33 +10,12 @@ import comptes.Compte;
 import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
-
-
-import dao.jpa.DAOCompte;
-import dao.jpa.DAOAchat;
-import dao.jpa.DAOArticle;
-import dao.jpa.DAOCompte;
-import dao.jpa.DAOCompte;
-
-
-import idao.jpa.IDAOCompte;
-import idao.jpa.IDAOAchat;
-import idao.jpa.IDAOArticle;
-import idao.jpa.IDAOBar;
-import idao.jpa.IDAOBoisson;
 import fonctionnalitees.CarteFidelite;
 import util.Context;
 
 public class App {
-
-	static Compte connected;
 	
-	static IDAOCompte daoC = Context.getInstance().getDaoCompte();
-	static IDAOAchat daoA =Context.getInstance().getDaoAchat();
-	static IDAOArticle daoT = Context.getInstance().getDaoArticle();
-	static IDAOBar daoV = Context.getInstance().getDaoBar();
-	static IDAOBoisson daoBoisson = Context.getInstance().getDaoBoisson();
-
+	static Context context = Context.getInstance();
 
 	public static String saisieString(String msg) {
 		Scanner sc = new Scanner(System.in);
@@ -99,9 +78,9 @@ public class App {
 		String login = saisieString("Saisir votre login");
 		String password = saisieString("Saisir votre password");
 		String typeCompte;
-		connected = daoC.connect(login, password);
-		if (connected != null) {
-			typeCompte = connected.getClass().getSimpleName(); 
+		context.setConnected(context.getDaoCompte().connect(login, password));
+		if (context.getConnected() != null) {
+			typeCompte = context.getConnected().getClass().getSimpleName(); 
 		} else {typeCompte = "Null"; }
 
 		switch (typeCompte.toString()) {
@@ -122,7 +101,7 @@ public class App {
 		String password = saisieString("Veuillez saisir votre mot de passe.");
 		String mail = saisieString("Veuillez saisir votre adresse email.");
 		Client newClient = new Client(nom,prenom,login,password,mail);
-		daoC.insert(newClient);
+		context.getDaoCompte().save(newClient);
 		seConnecter();
 
 	}
@@ -141,7 +120,7 @@ public class App {
 		case 1: modifierCompte(); break;
 		case 2: proposerEvenement(); break;
 		case 3: consulterEvenements(); break;
-		case 4: connected = null; menuPrincipal(); break;
+		case 4: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuIntervenant();
 
@@ -173,16 +152,32 @@ public class App {
 		case 2: carteFidelite(); break;
 		case 3: consulterCartes(); break;
 		case 4: consulterEvenements(); break;
-		case 5: connected = null; menuPrincipal(); break;
+		case 5: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuAdmin();
 
 	}
 
 	private static void menuEmploye() {
-		// TODO Auto-generated method stub
+		quiEstCe();
+		System.out.println("--------- Menu Employé ---------");
+		System.out.println("1 - Accéder au planning");
+		System.out.println("2 - Consulter stock");
+		System.out.println("3 - Consulter la carte");
+		System.out.println("5 - Se déconnecter");
+
+		int choix = saisieInt("Quel est votre choix?");
+		switch (choix) {
+		case 1: consulterEvenements(); break;
+		case 2: consulterStock(); break;  //créer méthode consulter stock
+		case 3: consulterCartes(); break;
+		case 4: context.setConnected(null); menuPrincipal(); break;
+		}
+		menuAdmin();
 
 	}
+
+	
 
 	private static void menuClient() {
 		quiEstCe();
@@ -199,35 +194,36 @@ public class App {
 		case 2: carteFidelite(); break;
 		case 3: consulterCartes(); break;
 		case 4: consulterEvenements(); break;
-		case 5: connected = null; menuPrincipal(); break;
+		case 5: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuClient();
 	}
 
 	private static void modifierCompte() {
-		if (connected instanceof Admin) {
+		if (context.getConnected() instanceof Admin) {
 			boolean choix = saisieBoolean("Voulez vous modifier le type d'un compte existant?");
 			if (choix) {
 				System.out.println("Voici la liste des comptes existants:");
-				List<Compte> lCompte = daoC.findAll();
+				List<Compte> lCompte = context.getDaoCompte().findAll();
 				for (Compte c : lCompte) {
 					infoCompte(c);
 				}
 				int idMod = saisieInt("Veuillez saisir l'ID du compte à modifier:");
 				System.out.println("Vous modifiez le compte:");
-				Compte modC = daoC.findById(idMod);
+				Compte modC = context.getDaoCompte().findById(idMod);
 				infoCompte(modC);
 				String typeCompte = saisieString("Choississez le nouveaux type parmis: Admin, Employe, Fournisseur, Intervenant, Client.");
 				switch (typeCompte) {
-				case "Client": modC = new Client(modC.getId(), modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
-				case "Admin": modC = new Admin(modC.getId(), modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
-				case "Employe": modC = new Employe(modC.getId(), modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
-				case "Fournisseur": modC = new Fournisseur(modC.getId(), modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail(), null); break;
-				case "Intervenant": modC = new Intervenant(modC.getId(), modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
+				case "Client": modC = new Client(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
+				case "Admin": modC = new Admin(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
+				case "Employe": modC = new Employe(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail(), null, null); break;
+				case "Fournisseur": modC = new Fournisseur(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail(), null); break;
+				case "Intervenant": modC = new Intervenant(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail(), null, null, null); break;
 				default: modC = null; break;
 				}
 				if (modC != null) {
-					daoC.update(modC);
+					modC.setId(idMod);
+					context.getDaoCompte().save(modC);
 					System.out.println("Compte mis à jour!");
 					System.out.println("------------------");
 				}
@@ -235,18 +231,18 @@ public class App {
 		}
 		
 		System.out.println("Voici vos informations: ");
-		infoCompte(daoC.findById(connected.getId()));
-		connected.setNom(saisieString("Saisissez votre nouveau nom."));
-		connected.setPrenom(saisieString("Saisissez votre nouveau prenom."));
-		connected.setLogin(saisieString("Saisissez votre nouveau login."));
-		connected.setPassword(saisieString("Saisissez votre nouveau password."));
-		connected.setMail(saisieString("Saisissez votre nouveau mail."));
-		daoC.update(connected);
+		infoCompte(context.getDaoCompte().findById(context.getConnected().getId()));
+		context.getConnected().setNom(saisieString("Saisissez votre nouveau nom."));
+		context.getConnected().setPrenom(saisieString("Saisissez votre nouveau prenom."));
+		context.getConnected().setLogin(saisieString("Saisissez votre nouveau login."));
+		context.getConnected().setPassword(saisieString("Saisissez votre nouveau password."));
+		context.getConnected().setMail(saisieString("Saisissez votre nouveau mail."));
+		context.getDaoCompte().save(context.getConnected());
 	}
 
 	private static void carteFidelite() {
 		// TODO Auto-generated method stub
-		if (((Client)connected).getCarte() == null) {
+		if (((Client)context.getConnected()).getCarte() == null) {
 			creerCarteFidelite();
 		} else { 
 			
@@ -254,9 +250,9 @@ public class App {
 	}
 	
 	private static void creerCarteFidelite() {
-		CarteFidelite newCarte = new CarteFidelite((Client)connected);
-		daoCarte.insert(newCarte);
-		daoC.update(connected);
+		CarteFidelite newCarte = new CarteFidelite((Client)context.getConnected());
+		context.getDaoCarteFidelite().save(newCarte);
+		context.getDaoCompte().save(context.getConnected());
 		System.out.println("Carte de fidélité créée!");
 		carteFidelite();
 	}
@@ -272,7 +268,9 @@ public class App {
 	}
 
 	private static void consulterEvenements() {
-		// TODO Auto-generated method stub
+		//Consultation des evenements liés au bar
+		
+		
 
 	}
 
@@ -280,9 +278,14 @@ public class App {
 		// TODO Auto-generated method stub
 
 	}
+	
+	private static void consulterStock() {
+		// TODO Auto-generated method stub
+
+	}
 
 	private static void quiEstCe() {
-		System.out.println("Vous êtes connecté en tant que: " + connected.getPrenom() + " " + connected.getNom() + ".");
+		System.out.println("Vous êtes connecté en tant que: " + context.getConnected().getPrenom() + " " + context.getConnected().getNom() + ".");
 	}
 	
 	private static boolean happyHour() {
