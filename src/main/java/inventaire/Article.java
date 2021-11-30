@@ -25,14 +25,11 @@ public class Article {
 	private TypeArticle type;
 	private int quantite;
 	
-	
 	@ManyToOne
 	@JoinColumn(name="id_fournisseur")
 	private Fournisseur fournisseur;
 	
 	public Article(){}
-	
-	
 
 	public Article(String nom, double cout, TypeArticle type, int qte, Fournisseur fournisseur) {
 		this.nom = nom;
@@ -41,8 +38,6 @@ public class Article {
 		this.quantite = qte;
 		this.fournisseur = fournisseur;
 	}
-
-
 
 	public int getId() {
 		return id;

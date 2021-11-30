@@ -11,7 +11,6 @@ import comptes.Compte;
 import comptes.Intervenant;
 import fonctionnalitees.Intervention;
 import idao.jpa.IDAOIntervention;
-import inventaire.Stock;
 import util.Context;
 
 public class DAOIntervention implements IDAOIntervention {
@@ -78,7 +77,7 @@ public class DAOIntervention implements IDAOIntervention {
 	public void delete(Integer id) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-		Stock objet = em.find(Stock.class, id);
+		Intervention objet = em.find(Intervention.class, id);
 
 		em.getTransaction().begin();
 		

@@ -13,7 +13,6 @@ import dao.jpa.DAOCompte;
 import dao.jpa.DAOEmploye;
 import dao.jpa.DAOEvents;
 import dao.jpa.DAOIntervention;
-import dao.jpa.DAOStock;
 import idao.jpa.IDAOAchat;
 import idao.jpa.IDAOArticle;
 import idao.jpa.IDAOBar;
@@ -23,7 +22,6 @@ import idao.jpa.IDAOCompte;
 import idao.jpa.IDAOEmploye;
 import idao.jpa.IDAOEvents;
 import idao.jpa.IDAOIntervention;
-import idao.jpa.IDAOStock;
 
 public class Context {
 
@@ -39,7 +37,6 @@ public class Context {
 	private IDAOEmploye daoEmploye = new DAOEmploye();
 	private IDAOEvents daoEvents = new DAOEvents();
 	private IDAOIntervention daoIntervention = new DAOIntervention();
-	private IDAOStock daoStock = new DAOStock();
 	
 	
 
@@ -95,14 +92,6 @@ public class Context {
 
 	public void setEmf(EntityManagerFactory emf) {
 		this.emf = emf;
-	}
-
-	public IDAOStock getDaoStock() {
-		return daoStock;
-	}
-
-	public void setDaoStock(IDAOStock daoStock) {
-		this.daoStock = daoStock;
 	}
 
 	public IDAOAchat getDaoAchat() {

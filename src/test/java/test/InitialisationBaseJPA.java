@@ -15,7 +15,6 @@ import fonctionnalitees.Events;
 import fonctionnalitees.Intervention;
 import inventaire.Article;
 import inventaire.Bar;
-import inventaire.Stock;
 import inventaire.TypeArticle;
 import util.Context;
 
@@ -67,9 +66,9 @@ public class InitialisationBaseJPA {
 		biere = Context.getInstance().getDaoArticle().save(biere);
 		Article coca =  new Article("Coca",12.0,TypeArticle.Coca, 36, (Fournisseur)f2);
 		coca = Context.getInstance().getDaoArticle().save(coca);
-		bar.addArticle(coca);
-		bar.addArticle(biere);
-		stockBar = Context.getInstance().getDaoStock().save(stockBar);
+//		bar.addArticle(coca);
+//		bar.addArticle(biere);
+//		stockBar = Context.getInstance().getDaoStock().save(stockBar);
 		
 		
 		

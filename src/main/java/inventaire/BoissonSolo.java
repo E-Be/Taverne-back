@@ -14,7 +14,6 @@ public class BoissonSolo extends Boisson {
 	protected int quantite;
 	protected int seuilLimite;
 
-
 	public BoissonSolo(String nom,double prixHT,double prixHThh, TVA tva) {
 		super(nom,prixHT,prixHThh, tva.tva);
 	}	
