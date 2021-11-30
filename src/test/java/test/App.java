@@ -124,7 +124,7 @@ public class App {
 		case 1: seConnecter(); break;
 		case 2: inscription(); break;
 		case 3: consulterCartes(); break;
-		case 4: consulterEvenements(); break;
+		case 4: consulterEvenements(StatutIntervention.Acceptée); break;
 		case 5: choixBar(); break;
 		case 6: System.exit(0); break;
 		}
@@ -176,7 +176,7 @@ public class App {
 		switch (choix) {
 		case 1: modifierCompte(); break;
 		case 2: proposerEvenement(); break;
-		case 3: consulterEvenements(); break;
+		case 3: consulterEvenements(StatutIntervention.Acceptée); break;
 		case 4: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuIntervenant();
@@ -215,7 +215,7 @@ public class App {
 		case 1: modifierCompte(); break;
 		case 2: carteFidelite(); break;
 		case 3: consulterCartes(); break;
-		case 4: consulterEvenements(); break;
+		case 4: consulterEvenements(StatutIntervention.Acceptée); break;
 		case 5: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuAdmin();
@@ -226,7 +226,7 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Employ� ---------");
 		System.out.println("1 - Acc�der au planning");
-		System.out.println("2 - Consulter les evenements");
+		System.out.println("2 - Consulter les evenements à venir");
 		System.out.println("3 - Consulter stock");
 		System.out.println("4 - Consulter la carte");
 		System.out.println("5 - Se d�connecter");
@@ -234,7 +234,7 @@ public class App {
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
 		case 1: consulterHoraires(); break;
-		case 2: consulterEvenements(); break;
+		case 2: consulterEvenements(StatutIntervention.Acceptée); break;
 		case 3: consulterStock(); break;  //cr�er m�thode consulter stock
 		case 4: consulterCartes(); break;
 		case 5: context.setConnected(null); menuPrincipal(); break;
@@ -249,9 +249,9 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Client ---------");
 		System.out.println("1 - Modifier mes informations");
-		System.out.println("2 - Ma carte de fid�lit�");
+		System.out.println("2 - Ma carte de fidélité");
 		System.out.println("3 - Consulter la carte");
-		System.out.println("4 - Consulter les �v�nements � venir");
+		System.out.println("4 - Consulter les évènements à venir");
 		System.out.println("5 - Se d�connecter");
 
 		int choix = saisieInt("Quel est votre choix?");
@@ -259,7 +259,7 @@ public class App {
 		case 1: modifierCompte(); break;
 		case 2: carteFidelite(); break;
 		case 3: consulterCartes(); break;
-		case 4: consulterEvenements(); break;
+		case 4: consulterEvenements(StatutIntervention.Acceptée); break;
 		case 5: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuClient();
@@ -335,9 +335,9 @@ public class App {
 		}
 	}
 
-	private static void consulterEvenements() {
+	private static void consulterEvenements(StatutIntervention statut) {
 		
-		List<Intervention> interventions = Context.getInstance().getDaoIntervention().findAllByStatut(StatutIntervention.Acceptée);
+		List<Intervention> interventions = Context.getInstance().getDaoIntervention().findAllByStatut(statut);
 		for(Intervention i : interventions) {
 			System.out.println(i);
 		}
