@@ -3,21 +3,23 @@ package util;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import comptes.Compte;
+import dao.jpa.DAOAchat;
+import dao.jpa.DAOArticle;
+import dao.jpa.DAOBar;
+import dao.jpa.DAOBoisson;
+import dao.jpa.DAOCompte;
+import dao.jpa.DAOIntervention;
 import dao.jpa.DAOStock;
+import dao.jpa.DAOUtilisation;
 import idao.jpa.IDAOAchat;
 import idao.jpa.IDAOArticle;
 import idao.jpa.IDAOBar;
 import idao.jpa.IDAOBoisson;
 import idao.jpa.IDAOCompte;
+import idao.jpa.IDAOIntervention;
 import idao.jpa.IDAOStock;
 import idao.jpa.IDAOUtilisation;
-import dao.jpa.DAOBoisson;
-import dao.jpa.DAOCompte;
-import dao.jpa.DAOUtilisation;
-import dao.jpa.DAOAchat;
-import dao.jpa.DAOBar;
-import dao.jpa.DAOArticle;
-import comptes.Compte;
 
 public class Context {
 
@@ -31,6 +33,7 @@ public class Context {
 	private IDAOAchat daoAchat = new DAOAchat();
 	private IDAOBar daoBar = new DAOBar();
 	private IDAOArticle daoArticle = new DAOArticle();
+	private IDAOIntervention daoIntervention = new DAOIntervention();
 	
 
 
@@ -125,6 +128,14 @@ public class Context {
 
 	public void setDaoArticle(IDAOArticle daoArticle) {
 		this.daoArticle = daoArticle;
+	}
+
+	public IDAOIntervention getDaoIntervention() {
+		return daoIntervention;
+	}
+
+	public void setDaoIntervention(IDAOIntervention daoIntervention) {
+		this.daoIntervention = daoIntervention;
 	}
 	
 	
