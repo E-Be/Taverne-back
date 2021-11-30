@@ -14,10 +14,10 @@ import util.Context;
 public class DAOEmploye implements IDAOEmploye{
 	
 	
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Employe findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Employe objet = em.find(Employe.class, id);
 		em.close();
@@ -26,7 +26,7 @@ public class DAOEmploye implements IDAOEmploye{
 
 	@Override
 	public List<Employe> findAll() {
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 
 		EntityManager em = emf.createEntityManager();
 	
@@ -38,6 +38,7 @@ public class DAOEmploye implements IDAOEmploye{
 
 	@Override
 	public Employe save(Employe objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -52,6 +53,7 @@ public class DAOEmploye implements IDAOEmploye{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Employe objet = em.find(Employe.class, id);
 
@@ -66,6 +68,7 @@ public class DAOEmploye implements IDAOEmploye{
 
 	@Override
 	public List<Employe> findAllByBar(int id_bar) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Employe where id_bar = :id");
 		myQuery.setParameter("id", id_bar);

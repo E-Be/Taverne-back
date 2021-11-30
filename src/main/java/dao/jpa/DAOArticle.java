@@ -13,10 +13,10 @@ import util.Context;
 
 public class DAOArticle implements IDAOArticle {
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Article findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Article objet = em.find(Article.class, id);
 		em.close();
@@ -26,7 +26,7 @@ public class DAOArticle implements IDAOArticle {
 	@Override
 	public List<Article> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Article> objets = em.createQuery("from Article").getResultList();
@@ -37,6 +37,7 @@ public class DAOArticle implements IDAOArticle {
 
 	@Override
 	public Article save(Article objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -51,6 +52,7 @@ public class DAOArticle implements IDAOArticle {
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Article objet = em.find(Article.class, id);
 
@@ -65,6 +67,7 @@ public class DAOArticle implements IDAOArticle {
 
 	@Override
 	public List<Article> findAllByTypeProduit(String typeProduit) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Article where type_produit like :TypeProduit");
 		myQuery.setParameter("TypeProduit", typeProduit);
@@ -75,6 +78,7 @@ public class DAOArticle implements IDAOArticle {
 
 	@Override
 	public List<Article> findAllByFournisseur(int id_fournisseur) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Article where id_fournisseur = :id");
 		myQuery.setParameter("id", id_fournisseur);

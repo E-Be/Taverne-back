@@ -15,10 +15,10 @@ import util.Context;
 public class DAOUtilisation implements IDAOUtilisation{
 
 	
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Utilisation findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Utilisation objet = em.find(Utilisation.class, id);
 		em.close();
@@ -27,7 +27,7 @@ public class DAOUtilisation implements IDAOUtilisation{
 
 	@Override
 	public List<Utilisation> findAll() {
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 
 		EntityManager em = emf.createEntityManager();
 	
@@ -39,6 +39,7 @@ public class DAOUtilisation implements IDAOUtilisation{
 
 	@Override
 	public Utilisation save(Utilisation objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -53,6 +54,7 @@ public class DAOUtilisation implements IDAOUtilisation{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Utilisation objet = em.find(Utilisation.class, id);
 
@@ -67,6 +69,7 @@ public class DAOUtilisation implements IDAOUtilisation{
 	
 	@Override
 	public List<Utilisation> findAllByBoisson(int id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Query myQuery = em.createQuery("from Utilisation where boisson = :id");
 		myQuery.setParameter("id", id);
