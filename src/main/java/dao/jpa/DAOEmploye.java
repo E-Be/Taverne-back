@@ -82,7 +82,7 @@ public class DAOEmploye implements IDAOEmploye{
 	public List<Employe> findAllByHoraire(LocalTime heure) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-		Query myQuery = em.createQuery("Select distinct e from Employe e join e.events where debut <= :heure && fin >= :heure");
+		Query myQuery = em.createQuery("Select distinct e from Employe e join e.events where events.debut <= :heure && events.fin >= :heure");
 		myQuery.setParameter("heure", heure);
 		List<Employe> objets = myQuery.getResultList();
 		em.close();
