@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Scanner;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -22,12 +24,14 @@ import idao.jpa.IDAOCompte;
 import idao.jpa.IDAOEmploye;
 import idao.jpa.IDAOEvents;
 import idao.jpa.IDAOIntervention;
+import inventaire.Bar;
 
 public class Context {
 
 
 	//elements lies a NOTRE PROJET//
 	private Compte connected;
+	private Bar bar;
 	private IDAOAchat daoAchat = new DAOAchat();
 	private IDAOArticle daoArticle = new DAOArticle();
 	private IDAOBar daoBar = new DAOBar();
@@ -68,6 +72,14 @@ public class Context {
 
 	public void setConnected(Compte connected) {
 		this.connected = connected;
+	}
+
+	public Bar getBar() {
+		return bar;
+	}
+
+	public void setBar(Bar bar) {
+		this.bar = bar;
 	}
 
 	public IDAOBoisson getDaoBoisson() {
@@ -150,10 +162,43 @@ public class Context {
 		this.daoEmploye = daoEmploye;
 	}
 	
-	
+	public static String saisieString(String msg) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(msg);
+		String valeur = sc.nextLine();
+		return valeur;
+	}
 
-	
-	///
+	public static int saisieInt(String msg) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(msg);
+		int valeur = sc.nextInt();
+		return valeur;
+	}
+
+	public static double saisieDouble(String msg) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(msg);
+		double valeur = sc.nextDouble();
+		return valeur;
+	}
+
+	public static boolean saisieBoolean(String msg) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(msg + " (oui/non)");
+		String valeur = sc.nextLine();
+		boolean reponse = true;
+		if (valeur.equalsIgnoreCase("oui")) {
+			reponse = true;
+		} else if (valeur.equalsIgnoreCase("non")) {
+			reponse = false;
+		} else {
+			reponse = saisieBoolean(msg);
+		}
+
+		return reponse;
+
+	}
 	
 	
 	

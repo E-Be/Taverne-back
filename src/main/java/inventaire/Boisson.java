@@ -41,6 +41,15 @@ public abstract class Boisson{
 		this.type = type;
 		this.tva = type.tva;
 	}
+	
+	public Boisson(String nom, double prixHT, double prixHTHappy, TypeArticle type, Bar bar) {
+		this.nom = nom;
+		this.prixHT = prixHT;
+		this.prixHTHappy = prixHTHappy;
+		this.type = type;
+		this.tva = type.tva;
+		localisations.add(bar);
+	}
 
 	public int getId() {
 		return id;

@@ -71,11 +71,11 @@ public class Article {
 		this.type = type;
 	}
 
-	public int getVolume() {
+	public int getQte() {
 		return quantite;
 	}
 
-	public void setVolume(int qte) {
+	public void setQte(int qte) {
 		this.quantite = qte;
 	}
 

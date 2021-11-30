@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import comptes.Employe;
 import fonctionnalitees.Events;
 import fonctionnalitees.Intervention;
+import util.Context;
 
 
 @Entity
@@ -81,6 +82,24 @@ public class Bar {
 
 	public void setInterventions(List<Intervention> interventions) {
 		this.interventions = interventions;
+	}
+	
+	public boolean addArticle(Article article) {
+		for (Boisson b : stock) {
+			if (b instanceof BoissonSolo) {
+				for (Article a : ((BoissonSolo)b).getSources()) {
+					if (a == article) {
+						((BoissonSolo) b).setQte(((BoissonSolo) b).getQte() + a.getQte());
+						return true;
+					}
+				}
+			}
+			
+		}
+		Boisson b = new BoissonSolo(article.getNom(), Context.getInstance().saisieInt("Prix hors taxe:"), Context.getInstance().saisieInt("Prix hors taxe en Happy Hour:")
+				, article.getType_produit(), article, article.getQte(), Context.getInstance().saisieInt("Saisissez le seuil limite:"), Context.getInstance().getBar() );
+		Context.getInstance().getBar().getStock().add(b);
+		return true;
 	}
 
 	@Override

@@ -19,7 +19,39 @@ public class BoissonSolo extends Boisson {
 		super(nom,prixHT,prixHThh,type);
 	}	
 	
+	public BoissonSolo(String nom,double prixHT,double prixHThh, TypeArticle type, Article source, int qte, int seuil, Bar bar) {
+		super(nom,prixHT,prixHThh,type, bar);
+		sources.add(source);
+		quantite = qte;
+		seuilLimite = seuil;
+	}	
+	
 	public BoissonSolo() {}
+
+	public List<Article> getSources() {
+		return sources;
+	}
+
+	public void setSources(List<Article> sources) {
+		this.sources = sources;
+	}
+
+	public int getQte() {
+		return quantite;
+	}
+
+	public void setQte(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public int getSeuilLimite() {
+		return seuilLimite;
+	}
+
+	public void setSeuilLimite(int seuilLimite) {
+		this.seuilLimite = seuilLimite;
+	}
+	
 	
 	
 }
