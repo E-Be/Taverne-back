@@ -12,7 +12,6 @@ import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
 import fonctionnalitees.Events;
-import fonctionnalitees.Horaires;
 import fonctionnalitees.Intervention;
 import inventaire.Article;
 import inventaire.Bar;
@@ -43,15 +42,17 @@ public class InitialisationBaseJPA {
 		Compte admin = new Admin("admin", "admin", "root", "root", "admin@mail.com");
 		Context.getInstance().getDaoCompte().save(admin);
 		
-		Horaires horaire = new Horaires(LocalTime.now(), LocalTime.now(), null);
-		horaire = Context.getInstance().getDaoHoraires().save(horaire);
-		List<Horaires> horaires = new ArrayList<Horaires>();
-		horaires.add(horaire);
-		Events event1 = new Events(bar, horaire, null, LocalDate.now(), "C'est un horaire");
-		event1=Context.getInstance().getDaoEvents().save(event1);
+		Compte employe = new Employe("employe","employe","titi","titi", "employe@employe.com", bar, null);
+		
+		
+		Events event1 = new Events(bar, null,LocalDate.now(),LocalTime.now(),LocalTime.now(),"remarque");
 		List<Events> events = new ArrayList<Events>();
 		events.add(event1);
-		Compte employe = new Employe("employe","employe","titi","titi", "employe@employe.com", bar, events);
+		employe = Context.getInstance().getDaoCompte().save(employe);
+		
+		((Employe) employe).setEvents(events);
+		event1.setEmp((Employe)employe);
+		event1=Context.getInstance().getDaoEvents().save(event1);
 		
 		Compte f1 = new Fournisseur ("PELTIER","Pascal", "Metro","Cash","metrcash&carry@metro.com","MetroCash&CarryFrance");
 		f1 = Context.getInstance().getDaoCompte().save(f1);

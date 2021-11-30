@@ -12,7 +12,6 @@ import dao.jpa.DAOCarteFidelite;
 import dao.jpa.DAOCompte;
 import dao.jpa.DAOEmploye;
 import dao.jpa.DAOEvents;
-import dao.jpa.DAOHoraires;
 import dao.jpa.DAOIntervention;
 import dao.jpa.DAOStock;
 import dao.jpa.DAOUtilisation;
@@ -24,7 +23,6 @@ import idao.jpa.IDAOCarteFidelite;
 import idao.jpa.IDAOCompte;
 import idao.jpa.IDAOEmploye;
 import idao.jpa.IDAOEvents;
-import idao.jpa.IDAOHoraires;
 import idao.jpa.IDAOIntervention;
 import idao.jpa.IDAOStock;
 import idao.jpa.IDAOUtilisation;
@@ -42,7 +40,6 @@ public class Context {
 	private IDAOCompte daoCompte = new DAOCompte();
 	private IDAOEmploye daoEmploye = new DAOEmploye();
 	private IDAOEvents daoEvents = new DAOEvents();
-	private IDAOHoraires daoHoraires = new DAOHoraires();
 	private IDAOIntervention daoIntervention = new DAOIntervention();
 	private IDAOStock daoStock = new DAOStock();
 	private IDAOUtilisation daoUtilisation = new DAOUtilisation();
@@ -157,14 +154,6 @@ public class Context {
 
 	public void setDaoEvents(IDAOEvents daoEvents) {
 		this.daoEvents = daoEvents;
-	}
-
-	public IDAOHoraires getDaoHoraires() {
-		return daoHoraires;
-	}
-
-	public void setDaoHoraires(IDAOHoraires daoHoraires) {
-		this.daoHoraires = daoHoraires;
 	}
 
 	public IDAOCarteFidelite getDaoCarteFidelite() {
