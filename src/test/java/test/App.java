@@ -95,12 +95,12 @@ public class App {
 	public static void choixEmploye() {
 			
 			List<Employe> employes=Context.getInstance().getDaoEmploye().findAll();
-			System.out.println("Bonjour, la liste des employes est :");
+			System.out.println("Bonjour, la liste des employés est :");
 			for(Employe e: employes) {
 				System.out.println(e);
 			}
 			
-			int id_employe = saisieInt("Quel employe êtes-vous ? (numero id)");
+			int id_employe = saisieInt("Quel employé êtes-vous ? (numero id)");
 			Employe employe = context.getInstance().getDaoEmploye().findById(id_employe);
 			context.setEmploye(employe); 
 			menuPrincipal();
@@ -192,7 +192,7 @@ public class App {
 		String type = saisieString("Quel type d'intervention ?");
 		Intervention intervention = new Intervention(debut, fin, type, cout, prix, (Intervenant) context.getInstance().getConnected(), Context.getInstance().getBar());
 		Context.getInstance().getDaoIntervention().save(intervention);
-		System.out.println("Votre intervention a été proposée. Nous vous préviendrons si nous acceptions.");
+		System.out.println("Votre intervention a été proposée. Nous vous préviendrons si nous acceptons.");
 	}
 
 	private static void menuFournisseur() {
@@ -224,12 +224,12 @@ public class App {
 
 	private static void menuEmploye() {
 		quiEstCe();
-		System.out.println("--------- Menu Employ� ---------");
-		System.out.println("1 - Acc�der au planning");
-		System.out.println("2 - Consulter les evenements à venir");
+		System.out.println("--------- Menu Employé ---------");
+		System.out.println("1 - Accéder au planning");
+		System.out.println("2 - Consulter les évènements à venir");
 		System.out.println("3 - Consulter stock");
 		System.out.println("4 - Consulter la carte");
-		System.out.println("5 - Se d�connecter");
+		System.out.println("5 - Se déconnecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -252,7 +252,7 @@ public class App {
 		System.out.println("2 - Ma carte de fidélité");
 		System.out.println("3 - Consulter la carte");
 		System.out.println("4 - Consulter les évènements à venir");
-		System.out.println("5 - Se d�connecter");
+		System.out.println("5 - Se déconnecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
@@ -274,11 +274,11 @@ public class App {
 				for (Compte c : lCompte) {
 					infoCompte(c);
 				}
-				int idMod = saisieInt("Veuillez saisir l'ID du compte � modifier:");
+				int idMod = saisieInt("Veuillez saisir l'ID du compte à modifier:");
 				System.out.println("Vous modifiez le compte:");
 				Compte modC = context.getDaoCompte().findById(idMod);
 				infoCompte(modC);
-				String typeCompte = saisieString("Choississez le nouveaux type parmis: Admin, Employe, Fournisseur, Intervenant, Client.");
+				String typeCompte = saisieString("Choississez le nouveaux type parmi: Admin, Employe, Fournisseur, Intervenant, Client.");
 				switch (typeCompte) {
 				case "Client": modC = new Client(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
 				case "Admin": modC = new Admin(modC.getNom(), modC.getPrenom(), modC.getLogin(), modC.getPassword(), modC.getMail()); break;
@@ -290,7 +290,7 @@ public class App {
 				if (modC != null) {
 					modC.setId(idMod);
 					context.getDaoCompte().save(modC);
-					System.out.println("Compte mis � jour!");
+					System.out.println("Compte mis à jour!");
 					System.out.println("------------------");
 				}
 			}
@@ -321,7 +321,7 @@ public class App {
 		newCarte=context.getDaoCarteFidelite().save(newCarte);
 		c.setCarte(newCarte);
 		context.getDaoCompte().save(c);
-		System.out.println("Carte de fidelité créée çâ!");
+		System.out.println("Carte de fidelité créée !");
 		carteFidelite();
 	}
 
