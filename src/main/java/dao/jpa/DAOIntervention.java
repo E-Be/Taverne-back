@@ -7,9 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import comptes.Compte;
-import comptes.Intervenant;
 import fonctionnalitees.Intervention;
+import fonctionnalitees.StatutIntervention;
 import idao.jpa.IDAOIntervention;
 import inventaire.Stock;
 import util.Context;
@@ -87,6 +86,20 @@ public class DAOIntervention implements IDAOIntervention {
 		em.getTransaction().commit();
 		em.close();
 
+	}
+
+
+
+
+	@Override
+	public List<Intervention> findAllByStatut(StatutIntervention statut) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Intervention where statut = :statut");
+		myQuery.setParameter("statut", statut);
+		List<Intervention> objets = myQuery.getResultList();
+		em.close();
+		return objets;
 	}
 
 	
