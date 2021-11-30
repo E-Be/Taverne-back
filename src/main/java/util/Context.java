@@ -8,7 +8,9 @@ import dao.jpa.DAOAchat;
 import dao.jpa.DAOArticle;
 import dao.jpa.DAOBar;
 import dao.jpa.DAOBoisson;
+import dao.jpa.DAOCarteFidelite;
 import dao.jpa.DAOCompte;
+import dao.jpa.DAOEmploye;
 import dao.jpa.DAOEvents;
 import dao.jpa.DAOHoraires;
 import dao.jpa.DAOIntervention;
@@ -18,7 +20,9 @@ import idao.jpa.IDAOAchat;
 import idao.jpa.IDAOArticle;
 import idao.jpa.IDAOBar;
 import idao.jpa.IDAOBoisson;
+import idao.jpa.IDAOCarteFidelite;
 import idao.jpa.IDAOCompte;
+import idao.jpa.IDAOEmploye;
 import idao.jpa.IDAOEvents;
 import idao.jpa.IDAOHoraires;
 import idao.jpa.IDAOIntervention;
@@ -30,16 +34,20 @@ public class Context {
 
 	//elements lies a NOTRE PROJET//
 	private Compte connected;
-	private IDAOBoisson daoBoisson = new DAOBoisson();
-	private IDAOStock daoStock = new DAOStock();
-	private IDAOCompte daoCompte = new DAOCompte();
-	private IDAOUtilisation daoUtilisation = new DAOUtilisation();
 	private IDAOAchat daoAchat = new DAOAchat();
-	private IDAOBar daoBar = new DAOBar();
 	private IDAOArticle daoArticle = new DAOArticle();
-	private IDAOIntervention daoIntervention = new DAOIntervention();
+	private IDAOBar daoBar = new DAOBar();
+	private IDAOBoisson daoBoisson = new DAOBoisson();
+	private IDAOCarteFidelite daoCarteFidelite = new DAOCarteFidelite();
+	private IDAOCompte daoCompte = new DAOCompte();
+	private IDAOEmploye daoEmploye = new DAOEmploye();
 	private IDAOEvents daoEvents = new DAOEvents();
 	private IDAOHoraires daoHoraires = new DAOHoraires();
+	private IDAOIntervention daoIntervention = new DAOIntervention();
+	private IDAOStock daoStock = new DAOStock();
+	private IDAOUtilisation daoUtilisation = new DAOUtilisation();
+	
+	
 
 
 	/////
@@ -157,6 +165,22 @@ public class Context {
 
 	public void setDaoHoraires(IDAOHoraires daoHoraires) {
 		this.daoHoraires = daoHoraires;
+	}
+
+	public IDAOCarteFidelite getDaoCarteFidelite() {
+		return daoCarteFidelite;
+	}
+
+	public void setDaoCarteFidelite(IDAOCarteFidelite daoCarteFidelite) {
+		this.daoCarteFidelite = daoCarteFidelite;
+	}
+
+	public IDAOEmploye getDaoEmploye() {
+		return daoEmploye;
+	}
+
+	public void setDaoEmploye(IDAOEmploye daoEmploye) {
+		this.daoEmploye = daoEmploye;
 	}
 	
 	
