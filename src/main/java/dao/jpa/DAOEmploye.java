@@ -8,7 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import comptes.Employe;
-import fonctionnalitees.Events;
 import idao.jpa.IDAOEmploye;
 import util.Context;
 
