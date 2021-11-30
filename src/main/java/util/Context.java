@@ -9,6 +9,8 @@ import dao.jpa.DAOArticle;
 import dao.jpa.DAOBar;
 import dao.jpa.DAOBoisson;
 import dao.jpa.DAOCompte;
+import dao.jpa.DAOEvents;
+import dao.jpa.DAOHoraires;
 import dao.jpa.DAOIntervention;
 import dao.jpa.DAOStock;
 import dao.jpa.DAOUtilisation;
@@ -17,6 +19,8 @@ import idao.jpa.IDAOArticle;
 import idao.jpa.IDAOBar;
 import idao.jpa.IDAOBoisson;
 import idao.jpa.IDAOCompte;
+import idao.jpa.IDAOEvents;
+import idao.jpa.IDAOHoraires;
 import idao.jpa.IDAOIntervention;
 import idao.jpa.IDAOStock;
 import idao.jpa.IDAOUtilisation;
@@ -34,7 +38,8 @@ public class Context {
 	private IDAOBar daoBar = new DAOBar();
 	private IDAOArticle daoArticle = new DAOArticle();
 	private IDAOIntervention daoIntervention = new DAOIntervention();
-	
+	private IDAOEvents daoEvents = new DAOEvents();
+	private IDAOHoraires daoHoraires = new DAOHoraires();
 
 
 	/////
@@ -136,6 +141,22 @@ public class Context {
 
 	public void setDaoIntervention(IDAOIntervention daoIntervention) {
 		this.daoIntervention = daoIntervention;
+	}
+
+	public IDAOEvents getDaoEvents() {
+		return daoEvents;
+	}
+
+	public void setDaoEvents(IDAOEvents daoEvents) {
+		this.daoEvents = daoEvents;
+	}
+
+	public IDAOHoraires getDaoHoraires() {
+		return daoHoraires;
+	}
+
+	public void setDaoHoraires(IDAOHoraires daoHoraires) {
+		this.daoHoraires = daoHoraires;
 	}
 	
 	

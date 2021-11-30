@@ -26,6 +26,7 @@ public class InitialisationBaseJPA {
 		
 		List<Intervention> interventions = new ArrayList<Intervention>();
 		Bar bar = new Bar("Le Bar", null, null, null, null);
+		bar=Context.getInstance().getDaoBar().save(bar);
 		
 		Intervenant i1 = new Intervenant ("OLICARD", "Fabien", "Master", "Mentaliste", "fabien@olicard.com","Fabien_OLICARD", "mentalism&Co",null);
 		
@@ -33,18 +34,21 @@ public class InitialisationBaseJPA {
 		Compte i3 = new Intervenant ("Salut","Hello","Wazaa","Yo","Atchoum","Bingo","Ciao", interventions);
 		Context.getInstance().getDaoCompte().save(i1);
 		Context.getInstance().getDaoCompte().save(i2);
-		Context.getInstance().getDaoCompte().save(i3);
+		i3= Context.getInstance().getDaoCompte().save(i3);
 		
-		Intervention inter1 = new Intervention (LocalDateTime.now(), LocalDateTime.now(), "barmaid", 250, 105,i2, bar);
+		Intervention inter1 = new Intervention (LocalDateTime.now(), LocalDateTime.now(), "barmaid", 250, 105, (Intervenant) i3, bar);
 		interventions.add(inter1);
 		Context.getInstance().getDaoIntervention().save(inter1);
 		
 		Compte admin = new Admin("admin", "admin", "root", "root", "admin@mail.com");
+		Context.getInstance().getDaoCompte().save(admin);
 		
 		Horaires horaire = new Horaires(LocalTime.now(), LocalTime.now(), null);
+		horaire = Context.getInstance().getDaoHoraires().save(horaire);
 		List<Horaires> horaires = new ArrayList<Horaires>();
 		horaires.add(horaire);
 		Events event1 = new Events(bar, horaire, null, LocalDate.now(), "C'est un horaire");
+		event1=Context.getInstance().getDaoEvents().save(event1);
 		List<Events> events = new ArrayList<Events>();
 		events.add(event1);
 		Compte employe = new Employe("employe","employe","titi","titi", "employe@employe.com", bar, events);
@@ -64,7 +68,6 @@ public class InitialisationBaseJPA {
 		f2=Context.getInstance().getDaoCompte().save(f2);
 		coca.setFournisseur((Fournisseur) f2);
 		Context.getInstance().getDaoArticle().save(coca);
-		admin=Context.getInstance().getDaoCompte().save(admin);
 		
 		
 		
