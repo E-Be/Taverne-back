@@ -28,12 +28,14 @@ import idao.jpa.IDAOIntervention;
 import idao.jpa.IDAOLogAlerte;
 import idao.jpa.IDAOStock;
 import idao.jpa.IDAOUtilisation;
+import inventaire.Bar;
 
 public class Context {
 
 
 	//elements lies a NOTRE PROJET//
 	private Compte connected;
+	private Bar bar;
 	private IDAOAchat daoAchat = new DAOAchat();
 	private IDAOArticle daoArticle = new DAOArticle();
 	private IDAOBar daoBar = new DAOBar();
@@ -78,6 +80,15 @@ public class Context {
 
 	public void setConnected(Compte connected) {
 		this.connected = connected;
+	}
+
+	
+	public Bar getBar() {
+		return bar;
+	}
+
+	public void setBar(Bar bar) {
+		this.bar = bar;
 	}
 
 	public IDAOBoisson getDaoBoisson() {

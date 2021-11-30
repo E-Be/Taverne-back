@@ -36,8 +36,6 @@ public class DAOStock implements IDAOStock{
 
 	@Override
 	public Stock save(Stock objet) {
-		
-		
 		return null;
 	}
 
@@ -67,6 +65,15 @@ public class DAOStock implements IDAOStock{
 		return objets;
 	}
 
+	public List<Stock> findAllLimitNull(){
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("from Stock where seuil_limite = :id");
+		myQuery.setParameter("id", null);
+		List<Stock> objets = myQuery.getResultList();
+		em.close();
+		return objets;
+	}
 	
 
 }
