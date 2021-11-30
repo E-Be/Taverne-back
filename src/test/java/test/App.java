@@ -85,7 +85,7 @@ public class App {
 			System.out.println(b);
 		}
 		
-		int id_bar = saisieInt("Dans quel Bar voulez vous aller ? (numéro id)");
+		int id_bar = saisieInt("Dans quel Bar voulez vous aller ? (numero id)");
 		Bar bar = context.getInstance().getDaoBar().findById(id_bar);
 		context.setBar(bar); 
 		menuPrincipal();
