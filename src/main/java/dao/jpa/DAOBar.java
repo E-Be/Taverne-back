@@ -85,7 +85,7 @@ public class DAOBar implements IDAOBar{
 		q.setParameter("id", bar.getId_bar());
 
 		Stock stock;
-		List<Article> articles=new ArrayList();;
+		List<Article> articles=new ArrayList();
 		try
 		{
 			stock= (Stock) q.getSingleResult();
