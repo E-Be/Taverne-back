@@ -156,10 +156,6 @@ public class Context {
 		this.daoEvents = daoEvents;
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Develop
 	public IDAOCarteFidelite getDaoCarteFidelite() {
 		return daoCarteFidelite;
 	}
