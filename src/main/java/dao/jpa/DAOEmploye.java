@@ -1,5 +1,6 @@
 package dao.jpa;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -75,5 +76,17 @@ public class DAOEmploye implements IDAOEmploye{
 		List<Employe> objets = myQuery.getResultList();
 		em.close();
 		return objets;
+	}
+
+	@Override
+	public List<Employe> findAllByHoraire(LocalTime heure) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
+		EntityManager em = emf.createEntityManager();
+		Query myQuery = em.createQuery("Select distinct e from Employe e join e.events where debut <= :heure && fin >= :heure");
+		myQuery.setParameter("heure", heure);
+		List<Employe> objets = myQuery.getResultList();
+		em.close();
+		return objets;
+		// TODO Auto-generated method stub
 	}
 }
