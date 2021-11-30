@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,6 +32,9 @@ public class Intervention {
 	@Column(nullable = true)
 	private int prixClient;
 	
+	@Enumerated(EnumType.STRING)
+	private StatutIntervention statut;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "id_intervenant", nullable = false)
@@ -43,8 +48,10 @@ public class Intervention {
 	public Intervention() {}
 
 
+
 	public Intervention(LocalDateTime hDebut, LocalDateTime hFin, String typeIntervention, int coutIntervenant,
 			int prixClient, Intervenant intervenant, Bar bar) {
+		super();
 		this.hDebut = hDebut;
 		this.hFin = hFin;
 		this.typeIntervention = typeIntervention;
@@ -52,13 +59,19 @@ public class Intervention {
 		this.prixClient = prixClient;
 		this.intervenant = intervenant;
 		this.bar = bar;
+		this.statut = StatutIntervention.EnAttente;
 	}
 
 
 
+	public StatutIntervention getStatut() {
+		return statut;
+	}
 
 
-
+	public void setStatut(StatutIntervention statut) {
+		this.statut = statut;
+	}
 
 	@Override
 	public String toString() {
