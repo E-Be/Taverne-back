@@ -29,6 +29,7 @@ import idao.jpa.IDAOLogAlerte;
 import idao.jpa.IDAOStock;
 import idao.jpa.IDAOUtilisation;
 import inventaire.Bar;
+import comptes.Employe;
 
 public class Context {
 
@@ -36,6 +37,7 @@ public class Context {
 	//elements lies a NOTRE PROJET//
 	private Compte connected;
 	private Bar bar;
+	private Employe employe;
 	private IDAOAchat daoAchat = new DAOAchat();
 	private IDAOArticle daoArticle = new DAOArticle();
 	private IDAOBar daoBar = new DAOBar();
@@ -89,6 +91,15 @@ public class Context {
 
 	public void setBar(Bar bar) {
 		this.bar = bar;
+	}
+	
+
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
 	}
 
 	public IDAOBoisson getDaoBoisson() {
@@ -194,6 +205,7 @@ public class Context {
 	public void setDaoLogAlerte(IDAOLogAlerte daoLogAlerte) {
 		this.daoLogAlerte = daoLogAlerte;
 	}
+	
 	
 	
 

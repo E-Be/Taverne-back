@@ -15,7 +15,11 @@ import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
 import fonctionnalitees.CarteFidelite;
+
 import idao.jpa.IDAOBoisson;
+import idao.jpa.IDAOEvents;
+
+
 import inventaire.Bar;
 import inventaire.Boisson;
 import inventaire.Bar;
@@ -33,6 +37,7 @@ public class App {
 	
 	static IDAOBoisson daoB = Context.getInstance().getDaoBoisson();
 	static IDAOStock daoS = Context.getInstance().getDaoStock();
+	static IDAOEvents daoE = Context.getInstance().getDaoEvents();
 	
 	static Context context = Context.getInstance();
 	static EntityManagerFactory emf = Context.getInstance().getEmf();
@@ -91,6 +96,22 @@ public class App {
 		menuPrincipal();
 		
 		}
+	
+	
+	public static void choixEmploye() {
+			
+			List<Employe> employes=Context.getInstance().getDaoEmploye().findAll();
+			System.out.println("Bonjour, la liste des employes est :");
+			for(Employe e: employes) {
+				System.out.println(e);
+			}
+			
+			int id_employe = saisieInt("Quel employe êtes-vous ? (numero id)");
+			Employe employe = context.getInstance().getDaoEmploye().findById(id_employe);
+			context.setEmploye(employe); 
+			menuPrincipal();
+			
+			}
 	
 	public static void menuPrincipal() {
 		
@@ -204,16 +225,18 @@ public class App {
 		quiEstCe();
 		System.out.println("--------- Menu Employ� ---------");
 		System.out.println("1 - Acc�der au planning");
-		System.out.println("2 - Consulter stock");
-		System.out.println("3 - Consulter la carte");
+		System.out.println("2 - Consulter les evenements");
+		System.out.println("3 - Consulter stock");
+		System.out.println("4 - Consulter la carte");
 		System.out.println("5 - Se d�connecter");
 
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
-		case 1: consulterEvenements(); break;
-		case 2: consulterStock(); break;  //cr�er m�thode consulter stock
-		case 3: consulterCartes(); break;
-		case 4: context.setConnected(null); menuPrincipal(); break;
+		case 1: consulterHoraires(); break;
+		case 2: consulterEvenements(); break;
+		case 3: consulterStock(); break;  //cr�er m�thode consulter stock
+		case 4: consulterCartes(); break;
+		case 5: context.setConnected(null); menuPrincipal(); break;
 		}
 		menuAdmin();
 
@@ -318,6 +341,16 @@ public class App {
 		
 
 	}
+	
+	private static void consulterHoraires() {
+		
+		
+//		daoH.findById(Context.getInstance().getEmploye().getId_employe());
+		
+
+	}
+	
+	
 
 	public static void consulterCartes() {
 
