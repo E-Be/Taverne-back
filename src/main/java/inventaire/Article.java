@@ -31,11 +31,11 @@ public class Article {
 	
 	
 
-	public Article(String nom, double cout, TypeArticle type, int volume, Fournisseur fournisseur) {
+	public Article(String nom, double cout, TypeArticle type, int qte, Fournisseur fournisseur) {
 		this.nom = nom;
 		this.cout = cout;
 		this.type = type;
-		this.quantite = volume;
+		this.quantite = qte;
 		this.fournisseur = fournisseur;
 	}
 

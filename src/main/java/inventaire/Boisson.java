@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 
 @Entity
@@ -30,18 +29,13 @@ public abstract class Boisson{
 	@ManyToMany
 	protected List<Stock> localisations = new ArrayList<Stock>();
 	
-	@OneToMany(mappedBy="boisson")
-	protected List<Utilisation> utilisations;
-	
 	public Boisson() {}
 
-	public Boisson(String nom, double prixHT, double prixHTHappy, double tva, List<Utilisation> utilisations) {
+	public Boisson(String nom, double prixHT, double prixHTHappy, double tva) {
 		this.nom = nom;
 		this.prixHT = prixHT;
 		this.prixHTHappy = prixHTHappy;
 		this.tva = tva;
-
-		this.utilisations = utilisations;
 	}
 
 	public int getId() {
@@ -83,21 +77,11 @@ public abstract class Boisson{
 	public void setTva(double tva) {
 		this.tva = tva;
 	}
-	
-	
-
-	public List<Utilisation> getUtilisations() {
-		return utilisations;
-	}
-
-	public void setUtilisations(List<Utilisation> utilisations) {
-		this.utilisations = utilisations;
-	}
 
 	@Override
 	public String toString() {
 		return "Boisson [id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", prixHThh=" + prixHTHappy + ", tva=" + tva
-				+ ", utilisations=" + utilisations + "]";
+				+ "]";
 	}
 
 	

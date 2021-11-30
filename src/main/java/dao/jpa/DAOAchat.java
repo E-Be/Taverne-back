@@ -8,8 +8,6 @@ import javax.persistence.Query;
 
 import fonctionnalitees.Achat;
 import idao.jpa.IDAOAchat;
-import inventaire.Utilisation;
-import fonctionnalitees.Achat;
 import util.Context;
 
 public class DAOAchat implements IDAOAchat {

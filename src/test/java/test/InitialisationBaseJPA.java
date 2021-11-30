@@ -16,6 +16,7 @@ import fonctionnalitees.Intervention;
 import inventaire.Article;
 import inventaire.Bar;
 import inventaire.Stock;
+import inventaire.TypeArticle;
 import util.Context;
 
 public class InitialisationBaseJPA {
@@ -24,7 +25,7 @@ public class InitialisationBaseJPA {
 		// TODO Auto-generated method stub
 		
 		List<Intervention> interventions = new ArrayList<Intervention>();
-		Bar bar = new Bar("Le Bar", null, null, null, null);
+		Bar bar = new Bar("Le Bar", null, null, null);
 		bar=Context.getInstance().getDaoBar().save(bar);
 		
 		Intervenant i1 = new Intervenant ("OLICARD", "Fabien", "Master", "Mentaliste", "fabien@olicard.com","Fabien_OLICARD", "mentalism&Co",null);
@@ -62,11 +63,13 @@ public class InitialisationBaseJPA {
 		f3 = Context.getInstance().getDaoCompte().save(f3);
 		Compte f4 = new Fournisseur ("GILET","Pascal", "Heineken","Heineken","Beer@Heineken.com","Heineken");
 		f4 = Context.getInstance().getDaoCompte().save(f4);
-		Article biere = new Article("Biere",12.0,"Biere", 25.0, (Fournisseur)f1);
+		Article biere = new Article("Biere",12.0,TypeArticle.Bière, 50, (Fournisseur)f1);
 		biere = Context.getInstance().getDaoArticle().save(biere);
-		Article coca =  new Article("Coca",12.0,"Soda", 25.0, (Fournisseur)f2);
+		Article coca =  new Article("Coca",12.0,TypeArticle.Coca, 36, (Fournisseur)f2);
 		coca = Context.getInstance().getDaoArticle().save(coca);
-		Stock biereStock = new Stock(50, 10);
+		Stock stockBar = new Stock(bar);
+		stockBar.addArticle(coca);
+		stockBar.addArticle(biere);
 		
 		
 		

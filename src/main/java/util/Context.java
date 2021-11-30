@@ -14,7 +14,6 @@ import dao.jpa.DAOEmploye;
 import dao.jpa.DAOEvents;
 import dao.jpa.DAOIntervention;
 import dao.jpa.DAOStock;
-import dao.jpa.DAOUtilisation;
 import idao.jpa.IDAOAchat;
 import idao.jpa.IDAOArticle;
 import idao.jpa.IDAOBar;
@@ -25,7 +24,6 @@ import idao.jpa.IDAOEmploye;
 import idao.jpa.IDAOEvents;
 import idao.jpa.IDAOIntervention;
 import idao.jpa.IDAOStock;
-import idao.jpa.IDAOUtilisation;
 
 public class Context {
 
@@ -42,7 +40,6 @@ public class Context {
 	private IDAOEvents daoEvents = new DAOEvents();
 	private IDAOIntervention daoIntervention = new DAOIntervention();
 	private IDAOStock daoStock = new DAOStock();
-	private IDAOUtilisation daoUtilisation = new DAOUtilisation();
 	
 	
 
@@ -106,14 +103,6 @@ public class Context {
 
 	public void setDaoStock(IDAOStock daoStock) {
 		this.daoStock = daoStock;
-	}
-
-	public IDAOUtilisation getDaoUtilisation() {
-		return daoUtilisation;
-	}
-
-	public void setDaoUtilisation(IDAOUtilisation daoUtilisation) {
-		this.daoUtilisation = daoUtilisation;
 	}
 
 	public IDAOAchat getDaoAchat() {

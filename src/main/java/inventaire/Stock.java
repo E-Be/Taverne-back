@@ -17,12 +17,10 @@ public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_stock;
-	private int qte;
-	private int seuil_limite;
 	
 	@OneToMany
 	@JoinColumn(name="id_article")
-	private List<Article> article;
+	private List<Article> articles;
 	
 	@OneToOne
 	@JoinColumn(name="id_bar")
@@ -30,9 +28,13 @@ public class Stock {
 	
 	public Stock() {}
 	
-	public Stock(int qte, int seuil_limite) {
-		this.qte = qte;
-		this.seuil_limite=seuil_limite;
+	public Stock(Bar bar, List<Article> stock) {
+		this.bar = bar;
+		this.articles = stock;
+	}
+	
+	public Stock(Bar bar) {
+		this.bar = bar;
 	}
 
 	public int getId_stock() {
@@ -43,28 +45,12 @@ public class Stock {
 		this.id_stock = id_stock;
 	}
 
-	public int getQte() {
-		return qte;
-	}
-
-	public void setQte(int qte) {
-		this.qte = qte;
-	}
-
-	public int getSeuil_limite() {
-		return seuil_limite;
-	}
-
-	public void setSeuil_limite(int seuil_limite) {
-		this.seuil_limite = seuil_limite;
-	}
-
-	public List<Article> getArticle() {
-		return article;
+	public List<Article> getArticles() {
+		return articles;
 	}
 
 	public void addArticle(Article article) {
-		this.article.add(article);
+		this.articles.add(article);
 	}
 
 	public Bar getBar() {
@@ -77,8 +63,7 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [id_stock=" + id_stock + ", qte=" + qte + ", seuil_limite=" + seuil_limite + ", article="
-				+ article + ", bar=" + bar + "]";
+		return "Stock [id_stock=" + id_stock + ", article=" + articles + ", bar=" + bar + "]";
 	}
 
 
