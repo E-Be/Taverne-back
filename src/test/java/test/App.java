@@ -213,7 +213,7 @@ public class App {
 		int choix = saisieInt("Quel est votre choix?");
 		switch (choix) {
 		case 1: modifierCompte(); break;
-		case 2: carteFidelite(); break;
+		case 2: consulterEvenements(StatutIntervention.EnAttente); break;
 		case 3: consulterCartes(); break;
 		case 4: consulterEvenements(StatutIntervention.Acceptée); break;
 		case 5: context.setConnected(null); menuPrincipal(); break;
