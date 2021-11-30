@@ -10,12 +10,23 @@ import comptes.Compte;
 import comptes.Employe;
 import comptes.Fournisseur;
 import comptes.Intervenant;
+import inventaire.Boisson;
+
+import idao.jpa.IDAOBoisson;
+import dao.jpa.DAOBoisson;
 import fonctionnalitees.CarteFidelite;
 import util.Context;
 
 public class App {
 	
 	static Context context = Context.getInstance();
+	
+	static IDAOBoisson daoB = Context.getInstance().getDaoBoisson();
+	static IDAOPlanete daoP =Context.getInstance().getDaoPlanete();
+	static IDAOTrajet daoT = Context.getInstance().getDaoTrajet();
+	static IDAOVaisseau daoV = Context.getInstance().getDaoVaisseau();
+	static IDAOPassager daoPassager = Context.getInstance().getDaoPassager();
+
 
 	public static String saisieString(String msg) {
 		Scanner sc = new Scanner(System.in);
@@ -274,8 +285,24 @@ public class App {
 
 	}
 
-	private static void consulterCartes() {
-		// TODO Auto-generated method stub
+	public static void consulterCartes() {
+	 
+		
+//		if (happyHour()) {}
+		for(Boisson b1 : daoB.findAll()) {
+			//System.out.println("Boisson " + b.getNom() + ", prix: " + (b.getPrixHThh())*1.2 );
+			System.out.println(b1);
+		}
+		
+		
+//		else {
+//			for(Boisson b1 : daoB.findAll()) {
+//				
+//				System.out.println("Boisson " + b.getNom() + ", prix: " + (b.getPrixHT())*1.2);
+//				
+//		}
+//		}
+		
 
 	}
 	
