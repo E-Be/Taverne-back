@@ -36,7 +36,8 @@ public class DAOStock implements IDAOStock{
 
 	@Override
 	public Stock save(Stock objet) {
-
+		
+		
 		return null;
 	}
 

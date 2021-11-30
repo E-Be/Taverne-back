@@ -14,7 +14,7 @@ import fonctionnalitees.Achat;
 import util.Context;
 
 public class DAOAchat implements IDAOAchat {
-	
+
 
 	@Override
 	public Achat findById(Integer id) {
@@ -30,15 +30,17 @@ public class DAOAchat implements IDAOAchat {
 
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
-	
+
 		List<Achat> objets = em.createQuery("from Achat").getResultList();
 		em.close();
 		return objets;
-		
+
 	}
 
 	@Override
 	public Achat save(Achat objet) {
+
+		/*
 		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
@@ -56,8 +58,8 @@ public class DAOAchat implements IDAOAchat {
 
 		em.getTransaction().commit();
 		em.close();
-
-		return objet;
+		 */
+		return null;
 	}
 
 	@Override
@@ -67,14 +69,14 @@ public class DAOAchat implements IDAOAchat {
 		Achat objet = em.find(Achat.class, id);
 
 		em.getTransaction().begin();
-		
+
 		em.remove(objet);
-		
+
 		em.getTransaction().commit();
 		em.close();
 
 	}
-	
+
 	@Override
 	public List<Achat> findAllByClient(int id) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();

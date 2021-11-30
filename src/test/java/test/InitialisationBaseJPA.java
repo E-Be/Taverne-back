@@ -95,21 +95,32 @@ public class InitialisationBaseJPA {
 		Boisson demiBiere = new Alcool("Demi de Biere", 5, 5, bar,null);
 		demiBiere = Context.getInstance().getDaoBoisson().save(demiBiere);
 		
-		Utilisation biere25 = new Utilisation (25, biereStock, demiBiere);
+		Utilisation biere25 = new Utilisation (0.25, biereStock, demiBiere);
 		biere25 = Context.getInstance().getDaoUtilisation().save(biere25);
+		List<Utilisation> recetteBiere = new ArrayList<Utilisation>();
+		recetteBiere.add(biere25);
+		demiBiere.setUtilisations(recetteBiere);
 		
 		Boisson bouteilleCoca = new Soft("Bouteille de coca", 4,4,bar,null);
 		bouteilleCoca = Context.getInstance().getDaoBoisson().save(bouteilleCoca);
 		
-		Utilisation coca33 = new Utilisation (25, cocaStock, bouteilleCoca);
+		Utilisation coca33 = new Utilisation (0.33, cocaStock, bouteilleCoca);
 		coca33 = Context.getInstance().getDaoUtilisation().save(coca33);
 		
-		
+		List<Utilisation> recetteCoca = new ArrayList<Utilisation>();
+		recetteCoca.add(coca33);
+		bouteilleCoca.setUtilisations(recetteCoca);
 		
 		CarteFidelite carteBob = new CarteFidelite(0);
 		carteBob = Context.getInstance().getDaoCarteFidelite().save(carteBob);
 		
 		Compte client = new Client("Bob", "Dylan", "toto", "toto", "bobdylan@mail.com");
+		((Client)client).setCarte(carteBob);
+		client = Context.getInstance().getDaoCompte().save(client);
+		
+		Achat achatClientCoca = Context.getInstance().getDaoBar().achatBoisson((Client) client, bouteilleCoca);
+		Achat achatClientBiere = Context.getInstance().getDaoBar().achatBoisson((Client) client, demiBiere);
+		
 		
 		((Client)client).setCarte(carteBob);
 		client = Context.getInstance().getDaoCompte().save(client);
