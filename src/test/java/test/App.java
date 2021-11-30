@@ -295,8 +295,8 @@ public class App {
 		
 		EntityManager em = emf.createEntityManager();
 
-		Query myQuery = em.createQuery("SELECT p from Personnage p where p.familier.nom like :monAttribut");
-		myQuery.setParameter("monAttribut", "%e%");
+		Query myQuery = em.createQuery("SELECT * from Boisson");
+//		myQuery.setParameter("monAttribut", "%e%");
 
 		List<Boisson> boissons = myQuery.getResultList();
 
