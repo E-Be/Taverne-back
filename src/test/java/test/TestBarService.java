@@ -1,6 +1,5 @@
 package test;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -12,18 +11,25 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import config.AppConfig;
+import inventaire.Article;
 import inventaire.Bar;
-import inventaire.TypeArticle;
+import inventaire.Stock;
 import repository.ArticleRepository;
 import repository.BarRepository;
 import repository.StockRepository;
+import service.BarService;
+import service.StockService;
+
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })
 @Rollback(true)
 @Transactional
-class TestStockRepo {
-
+class TestBarService {
+	
+	@Autowired
+	private StockService stockService;
+	
 	@Autowired
 	private StockRepository stockRepo;
 	
@@ -31,28 +37,25 @@ class TestStockRepo {
 	private BarRepository barRepo;
 	
 	@Autowired
+	private BarService barService;
+	
+	@Autowired
 	private ArticleRepository articleRepo;
-
-//	@Test
-//	public void testContextSpring() {
-//		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-//		assertNotNull(ctx);
-//	}
+	
 	
 	@Test
-	public void testStockRepo() {
-		assertNotNull(stockRepo);
+	void testApprovisionner() {
+		Article article = articleRepo.findById(1L).orElseThrow(RuntimeException::new);
+		Bar bar= barService.getById(1L);
+		Stock stockAvant = stockService.getByTypeArticle(article.getTypeProduit(), bar);
+		barService.approvisionner(article, bar);
+		Stock stockApres = stockService.getByTypeArticle(article.getTypeProduit(), bar);
+		assertEquals(stockAvant.getVolumeTot()+article.getVolume(), stockApres.getVolumeTot());
 	}
 
 	@Test
-	void testFindAllLimitNull() {
-		assertNotNull(stockRepo.findAllLimitNull());
-	}
-	
-	@Test
-	void testFindTypeArticle() {
-		Bar bar = barRepo.findById(1L).get();
-		assertNotNull(stockRepo.findByTypeArticle(TypeArticle.Biere, bar));
+	void testAchatBoisson() {
+		fail("Not yet implemented");
 	}
 
 }

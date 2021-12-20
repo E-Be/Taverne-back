@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @PropertySource("classpath:infos.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "repository" })
+@EnableJpaRepositories(basePackages = { "repository"})
 public class AppConfig {
 
 	@Autowired
@@ -44,7 +44,6 @@ public class AppConfig {
 		emf.setDataSource(dataSource);
 		emf.setPackagesToScan("comptes", "inventaire", "fonctionnalitees");
 		emf.setJpaVendorAdapter(vendorAdapter);
-		System.out.println("test");
 		emf.setJpaProperties(this.hibernateProperties());
 		return emf;
 	}
