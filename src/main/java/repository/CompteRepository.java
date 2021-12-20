@@ -28,10 +28,7 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	@Query("from Intervenant")
 	List<Compte> findIntervenant();
 	
-	@Transactional
-	@Modifying
-	@Query("update Compte c set c=:compte where c.id=:id")
-	void updateAll(@Param("id")Long id, @Param("compte") Compte compte);
+	List<Compte> findByNom(String nom);
 
 	@Transactional
 	@Modifying
