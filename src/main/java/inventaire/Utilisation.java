@@ -13,7 +13,7 @@ public class Utilisation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private double Volume;
 	
 	@OneToOne
@@ -33,11 +33,11 @@ public class Utilisation {
 		this.boisson = boisson;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
