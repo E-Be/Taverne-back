@@ -21,7 +21,7 @@ import repository.CompteRepository;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })
-@Rollback(false)
+@Rollback(true)
 @Transactional
 class TestCompteRepo {
 
