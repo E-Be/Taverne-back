@@ -1,6 +1,8 @@
 package inventaire;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,26 +20,26 @@ public class Bar {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_bar;
+	private Long id_bar;
 	private String nom;
 	
 	@OneToMany(mappedBy = "bar")
-	List<Stock> stocks;
+	Set<Stock> stocks;
 	
 	@OneToMany (mappedBy = "bar")
-	List<Events> events;
+	Set<Events> events;
 	
 	@OneToMany (mappedBy = "bar")
-	List<Employe> employes;
+	Set<Employe> employes;
 	
 	/////
 	@OneToMany(mappedBy = "bar")
-	List<Intervention> interventions;
+	Set<Intervention> interventions;
 	////
 	
 	public Bar() {}
 
-	public Bar(String nom, List<Stock> stocks, List<Events> events, List<Employe> employes,List<Intervention> interventions) {
+	public Bar(String nom, Set<Stock> stocks, Set<Events> events, Set<Employe> employes, Set<Intervention> interventions) {
 		this.nom = nom;
 		this.stocks = stocks;
 		this.events = events;
@@ -45,11 +47,11 @@ public class Bar {
 		this.interventions=interventions;
 	}
 
-	public int getId_bar() {
+	public Long getId_bar() {
 		return id_bar;
 	}
 
-	public void setId_bar(int id_bar) {
+	public void setId_bar(Long id_bar) {
 		this.id_bar = id_bar;
 	}
 
@@ -61,35 +63,35 @@ public class Bar {
 		this.nom = nom;
 	}
 
-	public List<Stock> getStocks() {
+	public Set<Stock> getStocks() {
 		return stocks;
 	}
 
-	public void setStocks(List<Stock> stocks) {
+	public void setStocks(Set<Stock> stocks) {
 		this.stocks = stocks;
 	}
 
-	public List<Events> getEvents() {
+	public Set<Events> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<Events> events) {
+	public void setEvents(Set<Events> events) {
 		this.events = events;
 	}
 
-	public List<Employe> getEmployes() {
+	public Set<Employe> getEmployes() {
 		return employes;
 	}
 
-	public void setEmployes(List<Employe> employes) {
+	public void setEmployes(Set<Employe> employes) {
 		this.employes = employes;
 	}
 
-	public List<Intervention> getInterventions() {
+	public Set<Intervention> getInterventions() {
 		return interventions;
 	}
 
-	public void setInterventions(List<Intervention> interventions) {
+	public void setInterventions(Set<Intervention> interventions) {
 		this.interventions = interventions;
 	}
 
@@ -97,6 +99,25 @@ public class Bar {
 	public String toString() {
 		return "Bar [id_bar=" + id_bar + ", nom=" + nom + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_bar);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bar other = (Bar) obj;
+		return Objects.equals(id_bar, other.id_bar);
+	}
+
+	
 
 	
 

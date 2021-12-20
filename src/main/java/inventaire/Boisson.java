@@ -1,5 +1,6 @@
 package inventaire;
-import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public abstract class Boisson{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected Long id;
 	protected String nom;
 	protected double prixHT;
 	protected double prixHThh;
@@ -31,12 +32,12 @@ public abstract class Boisson{
 	protected Bar bar;
 	
 	@OneToMany(mappedBy="boisson")
-	protected List<Utilisation> utilisations;
+	protected Set<Utilisation> utilisations;
 	
 	public Boisson() {}
 
 	public Boisson(String nom, double prixHT, double prixHThh, double tva, Bar bar,
-			List<Utilisation> utilisations) {
+			Set<Utilisation> utilisations) {
 		this.nom = nom;
 		this.prixHT = prixHT;
 		this.prixHThh = prixHThh;
@@ -45,11 +46,11 @@ public abstract class Boisson{
 		this.utilisations = utilisations;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -93,11 +94,11 @@ public abstract class Boisson{
 		this.bar = bar;
 	}
 
-	public List<Utilisation> getUtilisations() {
+	public Set<Utilisation> getUtilisations() {
 		return utilisations;
 	}
 
-	public void setUtilisations(List<Utilisation> utilisations) {
+	public void setUtilisations(Set<Utilisation> utilisations) {
 		this.utilisations = utilisations;
 	}
 
@@ -106,6 +107,32 @@ public abstract class Boisson{
 		return "Boisson [id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", prixHThh=" + prixHThh + ", tva=" + tva
 				+ ", bar=" + bar + ", utilisations=" + utilisations + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(bar, id, nom, prixHT, prixHThh, tva, utilisations);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Boisson other = (Boisson) obj;
+		return Objects.equals(bar, other.bar) && Objects.equals(id, other.id) && Objects.equals(nom, other.nom)
+				&& Double.doubleToLongBits(prixHT) == Double.doubleToLongBits(other.prixHT)
+				&& Double.doubleToLongBits(prixHThh) == Double.doubleToLongBits(other.prixHThh)
+				&& Double.doubleToLongBits(tva) == Double.doubleToLongBits(other.tva)
+				&& Objects.equals(utilisations, other.utilisations);
+	}
+	
+	
+	
+	
+	
 
 	
 	

@@ -1,6 +1,7 @@
 package inventaire;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +13,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import dao.jpa.DAOLogAlerte;
-import util.Context;
 
 @Entity
 public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_stock;
+	private Long id_stock;
 	private double volumeTot;
 	private Integer seuil_limite;
 
@@ -40,11 +40,11 @@ public class Stock {
 		this.bar = bar;
 	}
 
-	public int getId_stock() {
+	public Long getId_stock() {
 		return id_stock;
 	}
 
-	public void setId_stock(int id_stock) {
+	public void setId_stock(Long id_stock) {
 		this.id_stock = id_stock;
 	}
 
@@ -103,6 +103,23 @@ public class Stock {
 	public String toString() {
 		return "Stock [id_stock=" + id_stock + ", qte=" + volumeTot + ", seuil_limite=" + seuil_limite + ", article="
 				+ articles + ", bar=" + bar + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_stock);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stock other = (Stock) obj;
+		return Objects.equals(id_stock, other.id_stock);
 	}
 
 
