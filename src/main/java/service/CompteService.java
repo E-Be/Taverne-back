@@ -8,7 +8,7 @@ import exception.CompteException;
 import repository.CompteRepository;
 
 @Service
-public class CompteServive {
+public class CompteService {
 	
 	@Autowired
 	private CompteRepository compteRepo;
