@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import exception.EvenementException;
 import repository.BarRepository;
+import repository.EvenementRepository;
 
 @Service
 public class EvenementService {
@@ -19,20 +20,75 @@ public class EvenementService {
 	@Autowired
 	private EmployeRepository employeRepository;
 
-
-	public void getbyLocaldate(LocalDate jour) {
+//RECHERCHE
+	public findByLocalDate (LocalDate jour){
 		if(jour!=null)
-			return evenementRepo.getbyLocaldate(jour).orElseThrow(EvenementException::new);
+		return evenementRepo.findByLocalDate(jour).orElseThrow(EvenementException::new);
+		
+		
 	}
+	
+	public findByBar (Bar bar) {
+		
+	}
+	
+	public findByEmploye{
+		
+	}
+	
+	
+	
+	//UPDATE
+	public void updateLocalDate{
+		
+	}
+	
+	public void updateLocalTimeDebut{
+		
+	}
+	
+	public void updateLocalTimeFin{
+		
+	}
+	
+	public void updateBar{
+		
+	}
+	
+	public void updateEmploye{
+		
+	}
+	
+	public void updateRemarque{
+		
+	}
+	
+	
+	
+	//DELETE
+	
+	public void deleteById{
+		
+	}
+	
+	
+	
+	
+	
+	
+//	public void getbyLocaldate(LocalDate jour) {
+//		if(jour!=null)
+//			return evenementRepo.getbyLocaldate(jour).orElseThrow(EvenementException::new);
+//	}
 
-	public void getById (Long id) {
-		Check.checkLong(id);
-		return evenementRepo.getById(id).orElseThrow(EvenementException::new);
-		}
-	
-	
-	
-	
-	
+//	public void getById (Long id) {
+//		Check.checkLong(id);
+//		return evenementRepo.getById(id).orElseThrow(EvenementException::new);
+//	}
+
+
+
+
+
 
 }
