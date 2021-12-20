@@ -3,6 +3,7 @@ package fonctionnalitees;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,7 @@ public class Events {
 	@ManyToOne
 	@JoinColumn(name="id_emp")
 	private Employe emp;
+	
 	private LocalDate jour;
 	private LocalTime debut;
 	private LocalTime fin;
@@ -107,6 +109,23 @@ public class Events {
 	public String toString() {
 		return "Events [id=" + id + ", bar=" + bar + ", emp=" + emp + ", jour=" + jour + ", debut=" + debut + ", fin="
 				+ fin + ", remarque=" + remarque + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Events other = (Events) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 	
