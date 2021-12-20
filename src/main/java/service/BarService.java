@@ -40,8 +40,8 @@ public class BarService {
 	@Autowired
 	private BoissonRepository boissonRepo;
 	
-	@Autowired
-	private AchatService achatService;
+//	@Autowired
+//	private AchatService achatService;
 	
 	public Bar getById(long id) {
 		Check.checkLong(id);
@@ -61,18 +61,18 @@ public class BarService {
 		}
 	}
 	
-	public void achatBoisson(Client client, Boisson boisson) {
-		if (boisson.getUtilisations()==null) {
-			throw new BoissonException();
-		}
-		Set <Utilisation> utils = boisson.getUtilisations();
-		for(Utilisation u : utils)
-		{
-			double volumeUtilise = u.getVolume();
-			Stock stock = u.getIngredient();
-			stockService.utiliserVolume(volumeUtilise, stock);
-		}
-		achatService.save(new Achat(LocalDate.now(), boisson, client));
-	}
+//	public void achatBoisson(Client client, Boisson boisson) {
+//		if (boisson.getUtilisations()==null) {
+//			throw new BoissonException();
+//		}
+//		Set <Utilisation> utils = boisson.getUtilisations();
+//		for(Utilisation u : utils)
+//		{
+//			double volumeUtilise = u.getVolume();
+//			Stock stock = u.getIngredient();
+//			stockService.utiliserVolume(volumeUtilise, stock);
+//		}
+//		achatService.save(new Achat(LocalDate.now(), boisson, client));
+//	}
 
 }

@@ -19,6 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@ComponentScan(basePackages = {"service"})
 @PropertySource("classpath:infos.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "repository"})
