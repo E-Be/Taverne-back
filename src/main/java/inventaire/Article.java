@@ -18,7 +18,7 @@ public class Article {
 
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Obligatoire*
-	private int id;
+	private Long id;
 	private String nom;
 	private double cout;
 	
@@ -45,11 +45,11 @@ public class Article {
 
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
