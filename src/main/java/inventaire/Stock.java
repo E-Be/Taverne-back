@@ -1,8 +1,9 @@
 package inventaire;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,20 +13,19 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import dao.jpa.DAOLogAlerte;
-
 @Entity
 public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_stock;
+	@Column(name="id_stock")
+	private Long idStock;
 	private double volumeTot;
 	private Integer seuil_limite;
 
 	@ManyToMany
 	@JoinTable(name = "Articles_de_stock")
-	private List<Article> articles;
+	private Set<Article> articles;
 
 	@ManyToOne
 	@JoinColumn(name="id_bar")
@@ -33,27 +33,27 @@ public class Stock {
 
 	public Stock() {}
 
-	public Stock(double volumeTot, Integer seuil_limite, List<Article> articles, Bar bar) {
+	public Stock(double volumeTot, Integer seuil_limite, Set<Article> articles, Bar bar) {
 		this.volumeTot = volumeTot;
 		this.seuil_limite = seuil_limite;
 		this.articles = articles;
 		this.bar = bar;
 	}
 
-	public Long getId_stock() {
-		return id_stock;
+	public Long getIdStock() {
+		return idStock;
 	}
 
-	public void setId_stock(Long id_stock) {
-		this.id_stock = id_stock;
+	public void setIdStock(Long id_stock) {
+		this.idStock = id_stock;
 	}
 
 	public double getVolumeTot() {
 		return volumeTot;
 	}
 
-	public void setQte(int qte) {
-		this.volumeTot = qte;
+	public void setVolumeTot(double volumeTot) {
+		this.volumeTot = volumeTot;
 	}
 
 	public Integer getSeuil_limite() {
@@ -64,11 +64,11 @@ public class Stock {
 		this.seuil_limite = seuil_limite;
 	}
 
-	public List<Article> getArticles() {
+	public Set<Article> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(List<Article> articles) {
+	public void setArticles(Set<Article> articles) {
 		this.articles = articles;
 	}
 
@@ -101,13 +101,13 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [id_stock=" + id_stock + ", qte=" + volumeTot + ", seuil_limite=" + seuil_limite + ", article="
+		return "Stock [id_stock=" + idStock + ", qte=" + volumeTot + ", seuil_limite=" + seuil_limite + ", article="
 				+ articles + ", bar=" + bar + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_stock);
+		return Objects.hash(idStock);
 	}
 
 	@Override
@@ -119,7 +119,7 @@ public class Stock {
 		if (getClass() != obj.getClass())
 			return false;
 		Stock other = (Stock) obj;
-		return Objects.equals(id_stock, other.id_stock);
+		return Objects.equals(idStock, other.idStock);
 	}
 
 
