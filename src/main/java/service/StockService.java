@@ -41,7 +41,9 @@ public class StockService {
 	public void ajouterVolume(double volume, Stock stock) {
 		Check.checkNegatif(volume);
 		Check.checkLong(stock.getIdStock());
-		stock.setVolumeTot(stock.getVolumeTot() + volume);
+		double newVolume = stock.getVolumeTot()+volume;
+		stock.setVolumeTot(newVolume);
+		stockRepo.save(stock);
 	}
 
 }

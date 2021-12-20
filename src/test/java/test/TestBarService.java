@@ -47,10 +47,10 @@ class TestBarService {
 	void testApprovisionner() {
 		Article article = articleRepo.findById(1L).orElseThrow(RuntimeException::new);
 		Bar bar= barService.getById(1L);
-		Stock stockAvant = stockService.getByTypeArticle(article.getTypeProduit(), bar);
+		double volumeAvant = stockService.getByTypeArticle(article.getTypeProduit(), bar).getVolumeTot();
 		barService.approvisionner(article, bar);
-		Stock stockApres = stockService.getByTypeArticle(article.getTypeProduit(), bar);
-		assertEquals(stockAvant.getVolumeTot()+article.getVolume(), stockApres.getVolumeTot());
+		double volumeApres = stockService.getByTypeArticle(article.getTypeProduit(), bar).getVolumeTot();
+		assertEquals(volumeAvant+article.getVolume(), volumeApres);
 	}
 
 	@Test

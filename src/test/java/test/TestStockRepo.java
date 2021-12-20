@@ -3,6 +3,8 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import config.AppConfig;
+import inventaire.Article;
 import inventaire.Bar;
+import inventaire.Stock;
 import inventaire.TypeArticle;
 import repository.ArticleRepository;
 import repository.BarRepository;
@@ -52,7 +56,8 @@ class TestStockRepo {
 	@Test
 	void testFindTypeArticle() {
 		Bar bar = barRepo.findById(1L).get();
-		assertNotNull(stockRepo.findByTypeArticle(TypeArticle.Biere, bar));
+		Stock stock = stockRepo.findByTypeArticle(TypeArticle.Biere, bar).get();
+		assertEquals(stockRepo.findById(2L).get(),stock);
 	}
 
 }
