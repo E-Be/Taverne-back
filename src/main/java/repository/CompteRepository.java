@@ -15,11 +15,6 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
 	@Query("from Compte c where c.Type_Compte=:type")
 	List<Compte> findByTypeCompte(@Param("type") String type);
-	
-	@Transactional
-	@Modifying
-	@Query("update Compte c set c=:compte where c.id=:id")
-	void updateAll(@Param("id")Long id, @Param("compte") Compte compte);
 
 	@Transactional
 	@Modifying
