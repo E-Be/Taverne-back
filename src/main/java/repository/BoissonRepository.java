@@ -17,9 +17,9 @@ public interface BoissonRepository extends JpaRepository<Boisson, Long> {
 
 	List<Boisson> findByBar(String nom);
 
-	List<Boisson> findByAchat(boolean vivant);
+	//List<Boisson> findByAchat(boolean vivant);
 	
-	List<Boisson> findByUtilisation(boolean vivant);
+	//List<Boisson> findByUtilisations(boolean vivant);
 	
 	
 

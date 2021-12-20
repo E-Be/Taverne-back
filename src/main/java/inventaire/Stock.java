@@ -85,7 +85,7 @@ public class Stock {
 
 		try {
 			if(this.volumeTot<=seuil_limite) {
-				Context.getInstance().getDaoLogAlerte().creerAlerte(this);
+				//Context.getInstance().getDaoLogAlerte().creerAlerte(this);
 			}
 		}
 		catch(Exception e) {

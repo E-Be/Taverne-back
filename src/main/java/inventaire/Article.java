@@ -1,5 +1,6 @@
 package inventaire;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,7 +24,8 @@ public class Article {
 	private double cout;
 	
 	@Enumerated(EnumType.STRING)
-	private TypeArticle type_produit;
+	@Column(name="type_produit")
+	private TypeArticle typeProduit;
 	private double volume;
 	
 	
@@ -38,7 +40,7 @@ public class Article {
 	public Article(String nom, double cout, TypeArticle type_produit, double volume, Fournisseur fournisseur) {
 		this.nom = nom;
 		this.cout = cout;
-		this.type_produit = type_produit;
+		this.typeProduit = type_produit;
 		this.volume = volume;
 		this.fournisseur = fournisseur;
 	}
@@ -69,13 +71,19 @@ public class Article {
 		this.cout = cout;
 	}
 
-	public TypeArticle getType_produit() {
-		return type_produit;
+	
+
+	public TypeArticle getTypeProduit() {
+		return typeProduit;
 	}
 
-	public void setType_produit(TypeArticle type_produit) {
-		this.type_produit = type_produit;
+
+
+	public void setTypeProduit(TypeArticle typeProduit) {
+		this.typeProduit = typeProduit;
 	}
+
+
 
 	public double getVolume() {
 		return volume;
@@ -93,13 +101,6 @@ public class Article {
 		this.fournisseur = fournisseur;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", nom=" + nom + ", cout=" + cout + ", type_produit=" + type_produit + ", volume="
-				+ volume + ", fournisseur=" + fournisseur + "]";
-	}
 
 
 	
