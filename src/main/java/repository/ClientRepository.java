@@ -1,20 +1,20 @@
-package repository;
-
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-import comptes.Client;
-import comptes.Compte;
-import fonctionnalitees.CarteFidelite;
-
-public interface ClientRepository extends JpaRepository<Client, Long> {
-	
+//package repository;
+//
+//import java.util.List;
+//
+//import javax.transaction.Transactional;
+//
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.Modifying;
+//import org.springframework.data.jpa.repository.Query;
+//import org.springframework.data.repository.query.Param;
+//
+//import comptes.Client;
+//import comptes.Compte;
+//import fonctionnalitees.CarteFidelite;
+//
+//public interface ClientRepository extends JpaRepository<Client, Long> {
+//	
 //	@Transactional
 //	@Modifying
 //	@Query("update Compte c set c.carte=:carte where c.id=:id")
@@ -25,5 +25,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 //	
 //	@Query("from Compte c left join fetch compte.carte as carteF where carteF.nbPoints=>:pts")
 //	List<Compte> findMorePoints(@Param("pts") int pts);
-
-}
+//
+//}
