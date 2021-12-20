@@ -1,6 +1,5 @@
 package test;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -12,31 +11,20 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import config.AppConfig;
-import repository.StockRepository;
+import repository.CarteFideliteRepository;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })
 @Rollback(true)
 @Transactional
-class TestStockRepo {
-
-	@Autowired
-	private StockRepository stockRepo;
-
-//	@Test
-//	public void testContextSpring() {
-//		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-//		assertNotNull(ctx);
-//	}
+class TestCarteFideliteRepo {
 	
-	@Test
-	public void testStockRepo() {
-		assertNotNull(stockRepo);
-	}
+	@Autowired
+	private CarteFideliteRepository carteFideliteRepo;
 
 	@Test
-	void testFindAllLimitNull() {
-		assertNotNull(stockRepo.findAllLimitNull());
+	void test() {
+		assertNotNull(carteFideliteRepo);
 	}
 
 }

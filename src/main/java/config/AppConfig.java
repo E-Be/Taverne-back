@@ -20,11 +20,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:infos.properties")
-@ComponentScan(basePackages = {"comptes","inventaire","fonctionalitees"})
+@ComponentScan(basePackages = {"service"})
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"repository"})
+@EnableJpaRepositories(basePackages = { "repository" })
 public class AppConfig {
-	
+
 	@Autowired
 	private Environment env;
 
@@ -43,8 +43,9 @@ public class AppConfig {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("comptes","inventaire","fonctionnalitees");
+		emf.setPackagesToScan("comptes", "inventaire", "fonctionnalitees");
 		emf.setJpaVendorAdapter(vendorAdapter);
+		System.out.println("test");
 		emf.setJpaProperties(this.hibernateProperties());
 		return emf;
 	}
@@ -64,6 +65,5 @@ public class AppConfig {
 		transactionManager.setEntityManagerFactory(emf);
 		return transactionManager;
 	}
-
 
 }

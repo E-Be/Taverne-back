@@ -13,13 +13,22 @@ import comptes.Compte;
 
 public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
-	@Query("from Compte c where c.Type_Compte=:type")
-	List<Compte> findByTypeCompte(@Param("type") String type);
+	@Query("from Admin")
+	List<Compte> findAdmin();
 	
-	@Transactional
-	@Modifying
-	@Query("update Compte c set c=:compte where c.id=:id")
-	void updateAll(@Param("id")Long id, @Param("compte") Compte compte);
+	@Query("from Client")
+	List<Compte> findClient();
+	
+	@Query("from Employe")
+	List<Compte> findEmploye();
+	
+	@Query("from Fournisseur")
+	List<Compte> findFournisseur();
+	
+	@Query("from Intervenant")
+	List<Compte> findIntervenant();
+	
+	List<Compte> findByNom(String nom);
 
 	@Transactional
 	@Modifying
