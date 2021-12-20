@@ -13,7 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import dao.jpa.DAOLogAlerte;
-import util.Context;
 
 @Entity
 public class Stock {
