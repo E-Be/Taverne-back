@@ -12,12 +12,16 @@ import inventaire.Boisson;
 public interface BoissonRepository extends JpaRepository<Boisson, Long> {
 
 	Optional<Boisson> findByNom(String nom);
+	
+	Optional<Boisson> findById(Long id);
 
 	List<Boisson> findByBar(String nom);
 
 	List<Boisson> findByAchat(boolean vivant);
 	
 	List<Boisson> findByUtilisation(boolean vivant);
+	
+	
 
 
 //	@Query("select distinct personnage from Personnage personnage left join fetch personnage.quetes as quete where personnage.id=:id")
