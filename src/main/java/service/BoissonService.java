@@ -40,11 +40,11 @@ public class BoissonService {
 		BoissonRepo.delete(BoissonEnBase);
 	}
 	
-	private static boolean happyHour() {
-		if (LocalTime.now().isAfter(LocalTime.parse("17:00:00")) && LocalTime.now().isBefore(LocalTime.parse("21:00:00"))) {
-			return true;
-		} else {return false;}	
-	}
+//	private static boolean happyHour() {
+//		if (LocalTime.now().isAfter(LocalTime.parse("17:00:00")) && LocalTime.now().isBefore(LocalTime.parse("21:00:00"))) {
+//			return true;
+//		} else {return false;}	
+//	}
 	
 //	public static void consulterCartes() {
 //
@@ -76,7 +76,5 @@ public class BoissonService {
 		return BoissonRepo.findAll();
 	}
 	
-	public List<Boisson> getAllByBar(){
-		return BoissonRepo.findAllByBar();
-	}
+	
 }
