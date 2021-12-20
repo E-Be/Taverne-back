@@ -1,6 +1,7 @@
 package fonctionnalitees;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Achat {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private LocalDate dateAchat;
 	
 	@ManyToOne
@@ -31,6 +32,27 @@ public class Achat {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="id_client")
 	private Client client;
+	
+	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(boisson, client, dateAchat, id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Achat other = (Achat) obj;
+		return Objects.equals(boisson, other.boisson) && Objects.equals(client, other.client)
+				&& Objects.equals(dateAchat, other.dateAchat) && Objects.equals(id, other.id);
+	}
 
 	public Achat() {	}
 
@@ -46,11 +68,11 @@ public class Achat {
 		//this.client = (Client)context.getConnected();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
