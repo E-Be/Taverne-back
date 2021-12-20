@@ -34,37 +34,12 @@ public class BoissonService {
 		// delete
 		// null maitre
 		Boisson BoissonEnBase = BoissonRepo.findById(Boisson.getId()).orElseThrow(BoissonException::new);
-		compagnonRepo.deleteByMaitre(BoissonEnBase);
+//		boissonRepo.deleteByBar(BoissonEnBase);
 		BoissonRepo.delete(BoissonEnBase);
 	}
 
 	// recuperation
 
-	public Boisson getBy(Long id) {
-		Check.checkLong(id);
-		return BoissonRepo.findById(id).orElseThrow(BoissonException::new);
-	}
-
-//	private void checkId(Long id) {
-//		if (id == null) {
-//			throw new BoissonException();
-//		}
-//	}
-
-	public Boisson getByIdWithQuetes(Long id) {
-		Check.checkLong(id);
-		return BoissonRepo.findByIdWithQuetes(id).orElseThrow(BoissonException::new);
-	}
-
-	public Boisson getByIdWithInventaire(Long id) {
-		Check.checkLong(id);
-		return BoissonRepo.findByIdWithInventaire(id).orElseThrow(BoissonException::new);
-	}
-
-	public Boisson getByIdWithInventaireAndQuetes(Long id) {
-		Check.checkLong(id);
-		return BoissonRepo.findByIdWithInventaireAndQuetes(id).orElseThrow(BoissonException::new);
-	}
 
 	public List<Boisson> getAll() {
 		return BoissonRepo.findAll();
