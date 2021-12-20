@@ -1,5 +1,7 @@
 package comptes;
 
+import java.util.Objects;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ public abstract class Compte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected Long id;
 	protected String nom;
 	protected String prenom;
 	protected String login;
@@ -72,11 +74,11 @@ public abstract class Compte {
 		this.mail = mail;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -85,6 +87,25 @@ public abstract class Compte {
 		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
 				+ password + ", mail=" + mail + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
 	
 	
 	
