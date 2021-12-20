@@ -23,4 +23,4 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 //	@Query("from Compte c left join fetch compte.carte as carteF where carteF.nbPoints=>:pts")
 //	List<Compte> findMorePoints(@Param("pts") int pts);
 //
-//}
+}
