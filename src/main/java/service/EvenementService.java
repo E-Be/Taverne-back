@@ -1,11 +1,14 @@
 package service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import exception.CompagnonException;
 import exception.EvenementException;
+import fonctionnalitees.Events;
 import repository.BarRepository;
 import repository.EvenementRepository;
 
@@ -20,75 +23,59 @@ public class EvenementService {
 	@Autowired
 	private EmployeRepository employeRepository;
 
-//RECHERCHE
-	public findByLocalDate (LocalDate jour){
-		if(jour!=null)
-		return evenementRepo.findByLocalDate(jour).orElseThrow(EvenementException::new);
-		
-		
+	//RECHERCHE
+	public List<Events> findByLocalDate (LocalDate jour){
+		if(jour!=null) {
+			return evenementRepo.findByLocalDate(jour);
+		}		
+		else {
+			throw new EvenementException();}
 	}
-	
+
 	public findByBar (Bar bar) {
-		
+
 	}
-	
+
 	public findByEmploye{
-		
+
 	}
-	
-	
-	
-	//UPDATE
-	public void updateLocalDate{
-		
-	}
-	
-	public void updateLocalTimeDebut{
-		
-	}
-	
-	public void updateLocalTimeFin{
-		
-	}
-	
-	public void updateBar{
-		
-	}
-	
-	public void updateEmploye{
-		
-	}
-	
-	public void updateRemarque{
-		
-	}
-	
-	
-	
-	//DELETE
-	
-	public void deleteById{
-		
-	}
-	
-	
-	
-	
-	
-	
-//	public void getbyLocaldate(LocalDate jour) {
-//		if(jour!=null)
-//			return evenementRepo.getbyLocaldate(jour).orElseThrow(EvenementException::new);
+
+
+//JORDAN : Pas besoin, Repository gère déjà (à tester quand même)
+//	//UPDATE
+//	public void updateLocalDate{
+//
 //	}
-
-//	public void getById (Long id) {
-//		Check.checkLong(id);
-//		return evenementRepo.getById(id).orElseThrow(EvenementException::new);
+//
+//	public void updateLocalTimeDebut{
+//
 //	}
-
-
-
-
-
+//
+//	public void updateLocalTimeFin{
+//
+//	}
+//
+//	public void updateBar{
+//
+//	}
+//
+//	public void updateEmploye{
+//
+//	}
+//
+//	public void updateRemarque{
+//
+//	}
+//
+//
+//
+//	//DELETE
+//
+//	public void deleteById{
+//
+//	}
+//
+//
+//
 
 }
