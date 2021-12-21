@@ -30,7 +30,7 @@ public class StockService {
 		stock.setVolumeTot(newVolume);
 
 		try {
-			if (newVolume <= stock.getSeuil_limite()) {
+			if (newVolume <= stock.getseuilLimite()) {
 				logAlerteService.creerAlerte(stock);
 			}
 		} catch (Exception e) {
