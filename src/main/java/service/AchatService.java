@@ -20,9 +20,9 @@ public class AchatService {
 	
 
 	public void creation(Achat achat) {
-		if (achat.getId() == null) {
-			throw new BoissonException();
-		}
+//		if (achat.getId() == null) {
+//			throw new BoissonException();
+//		}
 		achatRepo.save(achat);
 	}
 
