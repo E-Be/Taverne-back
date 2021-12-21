@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import exception.BoissonException;
+import inventaire.Bar;
 import inventaire.Boisson;
 import repository.BarRepository;
 import repository.BoissonRepository;
@@ -32,9 +33,7 @@ public class BoissonService {
 	}
 
 	public void suppression(Boisson boisson) {
-		// traitement sur le compagnon
-		// delete
-		// null maitre
+		//Check.checkLong(boisson.getId());
 		Boisson BoissonEnBase = BoissonRepo.findById(boisson.getId()).orElseThrow(BoissonException::new);
 //		boissonRepo.deleteByBar(BoissonEnBase);
 		BoissonRepo.delete(BoissonEnBase);
@@ -72,8 +71,9 @@ public class BoissonService {
 	// recuperation
 
 
-	public List<Boisson> getAll() {
-		return BoissonRepo.findAll();
+	public List<Boisson> getAllByBar(Bar bar) {
+		Check.checkLong(bar.getIdBar());
+		return BoissonRepo.findAllByBar(bar);
 	}
 	
 	

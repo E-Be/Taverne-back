@@ -21,7 +21,8 @@ public class Stock {
 	@Column(name="id_stock")
 	private Long idStock;
 	private double volumeTot;
-	private Integer seuil_limite;
+	@Column(name = "seuil_limite")
+	private Integer seuilLimite;
 
 	@ManyToMany
 	@JoinTable(name = "Articles_de_stock")
@@ -33,9 +34,9 @@ public class Stock {
 
 	public Stock() {}
 
-	public Stock(double volumeTot, Integer seuil_limite, Set<Article> articles, Bar bar) {
+	public Stock(double volumeTot, Integer seuilLimite, Set<Article> articles, Bar bar) {
 		this.volumeTot = volumeTot;
-		this.seuil_limite = seuil_limite;
+		this.seuilLimite = seuilLimite;
 		this.articles = articles;
 		this.bar = bar;
 	}
@@ -56,12 +57,12 @@ public class Stock {
 		this.volumeTot = volumeTot;
 	}
 
-	public Integer getSeuil_limite() {
-		return seuil_limite;
+	public Integer getseuilLimite() {
+		return seuilLimite;
 	}
 
-	public void setSeuil_limite(Integer seuil_limite) {
-		this.seuil_limite = seuil_limite;
+	public void setseuilLimite(Integer seuilLimite) {
+		this.seuilLimite = seuilLimite;
 	}
 
 	public Set<Article> getArticles() {
@@ -84,7 +85,7 @@ public class Stock {
 		this.volumeTot-=volume;
 
 		try {
-			if(this.volumeTot<=seuil_limite) {
+			if(this.volumeTot<=seuilLimite) {
 				//Context.getInstance().getDaoLogAlerte().creerAlerte(this);
 			}
 		}
@@ -101,7 +102,7 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [id_stock=" + idStock + ", qte=" + volumeTot + ", seuil_limite=" + seuil_limite + ", article="
+		return "Stock [id_stock=" + idStock + ", qte=" + volumeTot + ", seuilLimite=" + seuilLimite + ", article="
 				+ articles + ", bar=" + bar + "]";
 	}
 

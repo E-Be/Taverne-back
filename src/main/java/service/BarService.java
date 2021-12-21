@@ -56,7 +56,7 @@ public class BarService {
 			stockRepo.save(stock);
 
 		} catch (Exception e) {
-			System.out.println("Vouslez vous ajouter un nouveau stock ?");
+			System.out.println("Voulez vous ajouter un nouveau stock ?");
 			stockRepo.save(new Stock(article.getVolume(), null, Arrays.asList(article).stream().collect(Collectors.toSet()), bar));
 		}
 	}

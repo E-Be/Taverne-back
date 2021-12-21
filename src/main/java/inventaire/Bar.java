@@ -15,48 +15,48 @@ import comptes.Employe;
 import fonctionnalitees.Events;
 import fonctionnalitees.Intervention;
 
-
 @Entity
 public class Bar {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="id_bar")
+	@Column(name = "id_bar")
 	private Long idBar;
-	
+
 	private String nom;
-	
+
 	@OneToMany(mappedBy = "bar")
 	Set<Stock> stocks;
-	
-	@OneToMany (mappedBy = "bar")
+
+	@OneToMany(mappedBy = "bar")
 	Set<Events> events;
-	
-	@OneToMany (mappedBy = "bar")
+
+	@OneToMany(mappedBy = "bar")
 	Set<Employe> employes;
-	
+
 	/////
 	@OneToMany(mappedBy = "bar")
 	Set<Intervention> interventions;
 	////
-	
-	public Bar() {}
 
-	public Bar(String nom, Set<Stock> stocks, Set<Events> events, Set<Employe> employes, Set<Intervention> interventions) {
+	public Bar() {
+	}
+
+	public Bar(String nom, Set<Stock> stocks, Set<Events> events, Set<Employe> employes,
+			Set<Intervention> interventions) {
 		this.nom = nom;
 		this.stocks = stocks;
 		this.events = events;
 		this.employes = employes;
-		this.interventions=interventions;
+		this.interventions = interventions;
 	}
 
-	public Long getId_bar() {
-		return id_bar;
+	public Long getIdBar() {
+		return idBar;
 	}
 
-	public void setId_bar(Long id_bar) {
-		this.id_bar = id_bar;
+	public void setIdBar(Long idBar) {
+		this.idBar = idBar;
 	}
 
 	public String getNom() {
@@ -101,12 +101,13 @@ public class Bar {
 
 	@Override
 	public String toString() {
-		return "Bar [id_bar=" + id_bar + ", nom=" + nom + "]";
+		return "Bar [idBar=" + idBar + ", nom=" + nom + ", stocks=" + stocks + ", events=" + events + ", employes="
+				+ employes + ", interventions=" + interventions + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_bar);
+		return Objects.hash(idBar);
 	}
 
 	@Override
@@ -118,13 +119,7 @@ public class Bar {
 		if (getClass() != obj.getClass())
 			return false;
 		Bar other = (Bar) obj;
-		return Objects.equals(id_bar, other.id_bar);
+		return Objects.equals(idBar, other.idBar);
 	}
-
-	
-
-	
-
-	
 
 }
