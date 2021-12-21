@@ -6,9 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import exception.CompagnonException;
+import comptes.Employe;
 import exception.EvenementException;
 import fonctionnalitees.Events;
+import inventaire.Bar;
 import repository.BarRepository;
 import repository.EvenementRepository;
 
@@ -20,28 +21,28 @@ public class EvenementService {
 	private EvenementRepository evenementRepo;
 	@Autowired
 	private BarRepository barRepository;
-	@Autowired
-	private EmployeRepository employeRepository;
+	//@Autowired
+	//private EmployeRepository employeRepository;
 
 	//RECHERCHE
-	public List<Events> findByLocalDate (LocalDate jour){
+	public List<Events> getByJour (LocalDate jour){
 		if(jour!=null) {
-			return evenementRepo.findByLocalDate(jour);
+			return evenementRepo.findByJour(jour);
 		}		
 		else {
 			throw new EvenementException();}
 	}
 
-	public findByBar (Bar bar) {
-
+	public Events getByBar (Bar bar) {
+		return null;
 	}
 
-	public findByEmploye{
-
+	public Events getByEmploye(Employe emp){
+		return null;
 	}
 
 
-//JORDAN : Pas besoin, Repository gère déjà (à tester quand même)
+//JORDAN : Pas besoin, Repository gï¿½re dï¿½jï¿½ (ï¿½ tester quand mï¿½me)
 //	//UPDATE
 //	public void updateLocalDate{
 //

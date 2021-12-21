@@ -72,7 +72,7 @@ public class BarService {
 			Stock stock = u.getIngredient();
 			stockService.utiliserVolume(volumeUtilise, stock);
 		}
-		achatService.save(new Achat(LocalDate.now(), boisson, client));
+		achatService.creation(new Achat(LocalDate.now(), boisson, client));
 	}
 
 }

@@ -9,6 +9,7 @@ import repository.FournisseurRepository;
 
 @Service
 public class FournisseurService {
+	
 	@Autowired
 	private FournisseurRepository FournisseurRepo;
 	

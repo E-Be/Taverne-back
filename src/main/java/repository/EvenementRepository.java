@@ -21,22 +21,22 @@ public interface EvenementRepository extends JpaRepository<Events,Long> {
 
 	//Recherhe par :
 
-	//Pas besoin car déjà contenu dans l'outil
+	//Pas besoin car dï¿½jï¿½ contenu dans l'outil
 	//@Query("from Events c where c.id =:id")
 	//List<Events> findById(@Param("id") Long id);
 
 	//Jour
 	//@Query("select distinct Events from Events c where c.jour =:jour")
-	List<Events> findByLocalDate(@Param("jour") LocalDate jour);
+	List<Events> findByJour(LocalDate jour);
 	//Bar
 	//@Query("from Events c where c.bar=:bar")
 	List<Events> findByBar(Bar bar);
 	//Employe
 	//@Query("from Events c where c.emp=:emp")
-	List<Events> findByEmploye(@Param("emp") Employe emp);
+	List<Events> findByEmp(Employe emp);
 
 
-//JORDAN : Pas besoin, Repository gère déjà (à tester quand même)
+//JORDAN : Pas besoin, Repository gï¿½re dï¿½jï¿½ (ï¿½ tester quand mï¿½me)
 //	//Update
 //
 //	//JOUR

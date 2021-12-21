@@ -2,6 +2,7 @@ package repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,5 +17,5 @@ public interface FournisseurRepository extends JpaRepository<Fournisseur, Long>{
 
 	Optional<Fournisseur> findByEntreprise(String entreprise);
 	
-	List<Fournisseur> findByCatalogue(List<Article> catalogue);
+	//List<Fournisseur> findByCatalogue(Set<Article> catalogue);
 }
