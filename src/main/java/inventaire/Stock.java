@@ -21,7 +21,7 @@ public class Stock {
 	@Column(name="id_stock")
 	private Long idStock;
 	private double volumeTot;
-	@Column(name = "seuil-limite")
+	@Column(name = "seuil_limite")
 	private Integer seuilLimite;
 
 	@ManyToMany
