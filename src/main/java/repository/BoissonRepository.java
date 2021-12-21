@@ -16,7 +16,7 @@ public interface BoissonRepository extends JpaRepository<Boisson, Long> {
 	
 	Optional<Boisson> findById(Long id);
 
-	List<Boisson> findByBar(Bar bar);
+	List<Boisson> findAllByBar(Bar bar);
 	
 
 }

@@ -16,6 +16,8 @@ public interface AchatRepository extends JpaRepository<Achat, Long>{
 	
 	Optional<Achat> findByDateAchat(LocalDate dateAchat);
 	
-	Optional<Achat> findByClient(Client client);
+	Optional<Achat> findByClientAndId(Client client, Long id);
+	
+	List<Achat> findAllByClient(Client client);
 
 }
