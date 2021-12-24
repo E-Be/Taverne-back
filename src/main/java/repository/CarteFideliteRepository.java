@@ -1,5 +1,7 @@
 package repository;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +24,6 @@ public interface CarteFideliteRepository extends JpaRepository<CarteFidelite, Lo
 	@Query("update CarteFidelite cf set cf.owner=:client where cf.id=:id")
 	void updateClient(@Param("id") Long id, @Param("client")Client client);
 		
-	
+	Optional<CarteFidelite> findByOwner(Client owner);
 
 }

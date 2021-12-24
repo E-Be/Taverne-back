@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -23,11 +28,18 @@ public abstract class Compte {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(JsonViews.Common.class)
 	protected Long id;
+	@JsonView(JsonViews.Common.class)
 	protected String nom;
+	@JsonView(JsonViews.Common.class)
 	protected String prenom;
+	@JsonView(JsonViews.Common.class)
 	protected String login;
+	@JsonView(JsonViews.Common.class)
 	protected String password;
+	@JsonView(JsonViews.Common.class)
 	protected String mail;
+	@Version
+	protected int version;
 	
 	public Compte() {}
 
@@ -85,6 +97,14 @@ public abstract class Compte {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
