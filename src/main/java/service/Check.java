@@ -22,8 +22,13 @@ public class Check {
 	}
 	
 	public static void checkNegatif(double qte) {
-		//Attention, prévoir une méthode pour vérifier le négatif pour un integer
 		if (qte < 0) {
+			throw new CheckNegatifException();
+		}
+	}
+	
+	public static void checkNegatifNullOk(Integer qte) {
+		if(qte!=null && qte<0) {
 			throw new CheckNegatifException();
 		}
 	}

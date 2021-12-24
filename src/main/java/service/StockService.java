@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import exception.StockException;
 import model.inventaire.Bar;
 import model.inventaire.Stock;
@@ -52,6 +53,19 @@ public class StockService {
 	public Stock getByTypeArticle(TypeArticle typeArticle, Bar bar) {
 		return stockRepo.findByTypeArticle(typeArticle, bar).orElseThrow(StockException::new);
 	}
+	
+	public void delete(Stock stock) {
+		Check.checkLong(stock.getIdStock());
+		Stock stockEnBase = stockRepo.findById(stock.getIdStock()).orElseThrow(StockException::new);
+		if (stockEnBase.getVolumeTot()!=0) {
+			throw new StockException();
+		}
+		stockRepo.delete(stock);
+	}
+	
+	public void delete(Long id) {
+		delete(getById(id));
+	}
 
 	public void utiliserVolume(double volume, Stock stock) {
 		Check.checkLong(stock.getIdStock());
@@ -59,7 +73,6 @@ public class StockService {
 		double newVolume = stock.getVolumeTot() - volume;
 		Check.checkNegatif(newVolume);
 		stock.setVolumeTot(newVolume);
-
 		try {
 			if (newVolume <= stock.getSeuilLimite()) {
 				logAlerteService.creerAlerte(stock);
@@ -79,7 +92,7 @@ public class StockService {
 	
 	public Stock updateSeuilLimite(Stock stock, Integer seuil) {
 		Check.checkLong(stock.getIdStock());
-		Check.checkNegatif(seuil); //Attention !! Prévoir une autre méthode pour vérifier que le seuil est négatif ou null
+		Check.checkNegatifNullOk(seuil);
 		Stock stockEnBase = getById(stock.getIdStock());
 		stock.setVersion(stockEnBase.getVersion());
 		stock.setSeuilLimite(seuil);
