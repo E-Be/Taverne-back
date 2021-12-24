@@ -13,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
 import model.comptes.Employe;
 import model.inventaire.Bar;
 
@@ -21,20 +24,27 @@ public class Events {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Evenement.class)
 	private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name="id_bar")
+	@JsonView(JsonViews.Evenement.class)
 	private Bar bar;
 	
 	@ManyToOne
 	@JoinColumn(name="id_emp")
+	@JsonView(JsonViews.Evenement.class)
 	private Employe emp;
 	
+	@JsonView(JsonViews.Evenement.class)
 	private LocalDate jour;
-	private LocalTime debut;
-	private LocalTime fin;
 	
+	@JsonView(JsonViews.Evenement.class)
+	private LocalTime debut;
+	@JsonView(JsonViews.Evenement.class)
+	private LocalTime fin;
+	@JsonView(JsonViews.Evenement.class)
 	@Column(nullable = true)
 	private String remarque;
 	
