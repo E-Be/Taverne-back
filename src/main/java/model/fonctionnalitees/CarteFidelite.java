@@ -8,6 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
 import model.comptes.Client;
 
 
@@ -17,11 +20,14 @@ public class CarteFidelite {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	private Long id;
 	
 	@OneToOne(mappedBy = "carte")
+	@JsonView(JsonViews.Common.class)
 	private Client owner;
 	
+	@JsonView(JsonViews.Common.class)
 	private int nbPoints;
 	
 	
