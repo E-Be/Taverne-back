@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import exception.EvenementException;
 import model.comptes.Employe;
 import model.fonctionnalitees.Events;
@@ -26,13 +25,18 @@ public class EvenementService {
 	private EmployeRepository employeRepo;
 
 	//RECHERCHE
-	public List<Employe> getAllEmp() {
-		return employeRepo.findAll();
+	
+	public List<Events> getAll() {
+		return evenementRepo.findAll();
 	}
-
-	public List<Bar> getAllBar() {
-		return barRepo.findAll();
-	}
+	
+//	public List<Employe> getAllEmp() {
+//		return employeRepo.findAll();
+//	}
+//
+//	public List<Bar> getAllBar() {
+//		return barRepo.findAll();
+//	}
 	
 	
 	
@@ -61,6 +65,20 @@ public class EvenementService {
 	}
 
 
+	public void creationOuModification(Events evenement) {
+		if (evenement.getId() == null) {
+			throw new EvenementException();
+		}
+		evenementRepo.save(evenement);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 //JORDAN : Pas besoin, Repository g�re d�j� (� tester quand m�me)
 //	//UPDATE
 //	public void updateLocalDate{
