@@ -1,17 +1,9 @@
 package repository;
 
+
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
 import model.comptes.Employe;
 import model.fonctionnalitees.Events;
 import model.inventaire.Bar;
@@ -21,7 +13,7 @@ public interface EvenementRepository extends JpaRepository<Events,Long> {
 
 	//Recherhe par :
 
-	//Pas besoin car d�j� contenu dans l'outil
+	//Pas besoin car dif contenu dans l'outil
 	//@Query("from Events c where c.id =:id")
 	//List<Events> findById(@Param("id") Long id);
 
