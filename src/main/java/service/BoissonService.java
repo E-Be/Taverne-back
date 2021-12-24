@@ -1,14 +1,15 @@
 package service;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import exception.BoissonException;
+import model.inventaire.Alcool;
 import model.inventaire.Bar;
 import model.inventaire.Boisson;
+import model.inventaire.Soft;
 import repository.BarRepository;
 import repository.BoissonRepository;
 
@@ -22,13 +23,42 @@ public class BoissonService {
 	private BoissonRepository BoissonRepo;
 	@Autowired
 	private BarRepository barRepo;
-//	@Autowired 
-//	private BarService barService;
+	@Autowired 
+	private BarService barService;
 	
-	public void creation(Boisson boisson) {
+	
+	//CREATE
+	
+	public void create(Boisson boisson) {
 		if (boisson.getNom() == null) {
 			throw new BoissonException();
 		}
+		BoissonRepo.save(boisson);
+	}
+	
+	public void create(Alcool alcool) {
+		if (alcool.getNom() == null) {
+			throw new BoissonException();
+		}
+		BoissonRepo.save(alcool);
+	}
+	
+	public void create(Soft soft) {
+		if (soft.getNom() == null) {
+			throw new BoissonException();
+		}
+		BoissonRepo.save(soft);
+	}
+	
+	//UPDATE
+	
+	public void update(Boisson boisson) {
+		if (boisson.getId() == null) {
+			throw new BoissonException();
+		}
+		Boisson boissonEnBase = getById(boisson.getId());
+		boisson.setVersion(boissonEnBase.getVersion());
+		
 		BoissonRepo.save(boisson);
 	}
 
@@ -39,41 +69,28 @@ public class BoissonService {
 		BoissonRepo.delete(BoissonEnBase);
 	}
 	
-//	private static boolean happyHour() {
-//		if (LocalTime.now().isAfter(LocalTime.parse("17:00:00")) && LocalTime.now().isBefore(LocalTime.parse("21:00:00"))) {
-//			return true;
-//		} else {return false;}	
+	public void suppression(Long id) {
+		suppression(getById(id));
+	}
+	
+
+	
+	public List<Boisson> getAllByBar(Bar bar) {
+		return BoissonRepo.findAllByBar(bar);
+	}
+	
+//	public List<Boisson> getAllByBar(Long id) {
+//		getAllByBar(getById(id));
 //	}
 	
-//	public static void consulterCartes() {
-//
-//		//Boisson boissonEnBase = BoissonRepo.findAllByBar(boisson.getId()).orElseThrow(BoissonException::new);
-//		
-//		if (happyHour()) {
-//
-//			
-//			for(Boisson boisson : BoissonRepo.findAllByBar(boisson.getBar().getId_bar())) 
-//			{
-//				System.out.println(boisson.getNom()+ "prix: " + (boisson.getPrixHThh())*1.2);
-//			}
-//			
-//		}
-//
-//		else {
-//
-//			for(Boisson boisson : BoissonRepo.findAllByBar(boisson.getBar().getId_bar())) 
-//			{
-//				System.out.println(boisson.getNom()+ "prix: " + (boisson.getPrixHT())*1.2);
-//			}
-//		}
-//	}
-
-	// recuperation
-
-
-	public List<Boisson> getAllByBar(Bar bar) {
-		Check.checkLong(bar.getIdBar());
-		return BoissonRepo.findAllByBar(bar);
+	
+	public List<Boisson> getAll() {
+		return BoissonRepo.findAll();
+	}
+	
+	public Boisson getById(Long id) {
+		Check.checkLong(id);
+		return BoissonRepo.findById(id).orElseThrow(BoissonException::new);
 	}
 	
 	
