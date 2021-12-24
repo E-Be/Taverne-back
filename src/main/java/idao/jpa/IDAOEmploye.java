@@ -3,7 +3,7 @@ package idao.jpa;
 import java.time.LocalTime;
 import java.util.List;
 
-import comptes.Employe;
+import model.comptes.Employe;
 
 public interface IDAOEmploye extends IDAO<Employe, Integer> {
 

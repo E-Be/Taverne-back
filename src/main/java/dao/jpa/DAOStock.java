@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import idao.jpa.IDAOStock;
-import inventaire.Stock;
+import model.inventaire.Stock;
 import util.Context;
 
 public class DAOStock implements IDAOStock{

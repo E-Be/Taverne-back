@@ -2,7 +2,7 @@ package idao.jpa;
 
 import java.util.List;
 
-import inventaire.Utilisation;
+import model.inventaire.Utilisation;
 
 public interface IDAOUtilisation extends IDAO<Utilisation, Integer> {
 

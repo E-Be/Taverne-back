@@ -1,4 +1,4 @@
-package inventaire;
+package model.inventaire;
 
 import java.util.Objects;
 

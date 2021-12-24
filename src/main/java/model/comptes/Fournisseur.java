@@ -1,4 +1,4 @@
-package comptes;
+package model.comptes;
 
 import java.util.List;
 import java.util.Set;
@@ -7,7 +7,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import inventaire.Article;
+import model.inventaire.Article;
 
 @Entity
 @DiscriminatorValue("Fournisseur")

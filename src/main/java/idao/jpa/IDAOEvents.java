@@ -3,7 +3,7 @@ package idao.jpa;
 import java.time.LocalDate;
 import java.util.List;
 
-import fonctionnalitees.Events;
+import model.fonctionnalitees.Events;
 
 public interface IDAOEvents extends IDAO<Events,Integer> {
 

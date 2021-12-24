@@ -1,4 +1,4 @@
-package fonctionnalitees;
+package model.fonctionnalitees;
 
 import java.time.LocalDateTime;
 
@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import comptes.Intervenant;
-import inventaire.Bar;
+import model.comptes.Intervenant;
+import model.inventaire.Bar;
 
 @Entity
 public class Intervention {

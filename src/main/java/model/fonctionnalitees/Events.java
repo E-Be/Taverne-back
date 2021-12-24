@@ -1,4 +1,4 @@
-package fonctionnalitees;
+package model.fonctionnalitees;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import comptes.Employe;
-import inventaire.Bar;
+import model.comptes.Employe;
+import model.inventaire.Bar;
 
 @Entity
 public class Events {

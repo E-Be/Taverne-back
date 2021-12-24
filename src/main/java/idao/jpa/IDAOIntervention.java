@@ -2,9 +2,9 @@ package idao.jpa;
 
 import java.util.List;
 
-import fonctionnalitees.Intervention;
-import fonctionnalitees.StatutIntervention;
-import inventaire.Bar;
+import model.fonctionnalitees.Intervention;
+import model.fonctionnalitees.StatutIntervention;
+import model.inventaire.Bar;
 
 public interface IDAOIntervention extends IDAO <Intervention,Integer>{
 

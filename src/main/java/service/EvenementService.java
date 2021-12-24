@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import comptes.Employe;
 import exception.EvenementException;
-import fonctionnalitees.Events;
-import inventaire.Bar;
+import model.comptes.Employe;
+import model.fonctionnalitees.Events;
+import model.inventaire.Bar;
 import repository.BarRepository;
 import repository.EvenementRepository;
 

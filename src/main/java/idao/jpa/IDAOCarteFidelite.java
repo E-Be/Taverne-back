@@ -2,7 +2,7 @@ package idao.jpa;
 
 import java.util.List;
 
-import fonctionnalitees.CarteFidelite;
+import model.fonctionnalitees.CarteFidelite;
 
 public interface IDAOCarteFidelite extends IDAO<CarteFidelite,Integer>{
 	

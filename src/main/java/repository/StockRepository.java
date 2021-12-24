@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import inventaire.Bar;
-import inventaire.Stock;
-import inventaire.TypeArticle;
+import model.inventaire.Bar;
+import model.inventaire.Stock;
+import model.inventaire.TypeArticle;
 
 public interface StockRepository extends JpaRepository<Stock, Long>{
 	

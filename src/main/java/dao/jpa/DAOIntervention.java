@@ -7,11 +7,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import fonctionnalitees.Intervention;
-import fonctionnalitees.StatutIntervention;
 import idao.jpa.IDAOIntervention;
-import inventaire.Bar;
-import inventaire.Stock;
+import model.fonctionnalitees.Intervention;
+import model.fonctionnalitees.StatutIntervention;
+import model.inventaire.Bar;
+import model.inventaire.Stock;
 import util.Context;
 
 public class DAOIntervention implements IDAOIntervention {

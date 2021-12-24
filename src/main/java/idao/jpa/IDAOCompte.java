@@ -2,7 +2,7 @@ package idao.jpa;
 
 import java.util.List;
 
-import comptes.Compte;
+import model.comptes.Compte;
 
 public interface IDAOCompte extends IDAO<Compte, Integer> {
 

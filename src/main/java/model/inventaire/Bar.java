@@ -1,4 +1,4 @@
-package inventaire;
+package model.inventaire;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,9 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import comptes.Employe;
-import fonctionnalitees.Events;
-import fonctionnalitees.Intervention;
+import model.comptes.Employe;
+import model.fonctionnalitees.Events;
+import model.fonctionnalitees.Intervention;
 
 @Entity
 public class Bar {

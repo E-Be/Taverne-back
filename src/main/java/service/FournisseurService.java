@@ -3,8 +3,8 @@ package service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import comptes.Fournisseur;
 import exception.FournisseurException;
+import model.comptes.Fournisseur;
 import repository.FournisseurRepository;
 
 @Service

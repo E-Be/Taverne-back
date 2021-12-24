@@ -3,8 +3,8 @@ package service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import comptes.Compte;
 import exception.CompteException;
+import model.comptes.Compte;
 import repository.CompteRepository;
 
 @Service

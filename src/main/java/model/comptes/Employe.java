@@ -1,4 +1,4 @@
-package comptes;
+package model.comptes;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import fonctionnalitees.Events;
-import inventaire.Bar;
+import model.fonctionnalitees.Events;
+import model.inventaire.Bar;
 
 @Entity
 @DiscriminatorValue("Employe")

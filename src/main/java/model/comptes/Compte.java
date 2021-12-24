@@ -1,4 +1,4 @@
-package comptes;
+package model.comptes;
 
 import java.util.Objects;
 

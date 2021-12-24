@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import exception.BoissonException;
-import inventaire.Bar;
-import inventaire.Boisson;
+import model.inventaire.Bar;
+import model.inventaire.Boisson;
 import repository.BarRepository;
 import repository.BoissonRepository;
 

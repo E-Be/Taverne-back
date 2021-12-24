@@ -1,4 +1,4 @@
-package inventaire;
+package model.inventaire;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import comptes.Fournisseur;
+import model.comptes.Fournisseur;
 
 @Entity
 @Table(name="Article")

@@ -14,9 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import comptes.Admin;
-import comptes.Compte;
 import config.AppConfig;
+import model.comptes.Admin;
+import model.comptes.Compte;
 import repository.CompteRepository;
 
 @ExtendWith(SpringExtension.class)
@@ -51,7 +51,7 @@ class TestCompteRepo {
 		compteRepo.save(newCompte);
 		Compte cFromDB = compteRepo.findByNom("TestUpdateNom").get(0);
 		// @formatter:off	
-		assertAll("controle des donnees du compte inseré", 
+		assertAll("controle des donnees du compte inserï¿½", 
 				() -> assertEquals("TestUpdateNom", cFromDB.getNom()),
 				() -> assertEquals("TestUpdatePrenom", cFromDB.getPrenom()), 
 				() -> assertEquals("TestUpdateMail", cFromDB.getMail()),

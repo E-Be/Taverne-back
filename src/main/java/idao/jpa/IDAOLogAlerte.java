@@ -1,7 +1,7 @@
 package idao.jpa;
 
-import inventaire.LogAlerte;
-import inventaire.Stock;
+import model.inventaire.LogAlerte;
+import model.inventaire.Stock;
 
 public interface IDAOLogAlerte extends IDAO<LogAlerte, Integer> {
 

@@ -1,4 +1,4 @@
-package fonctionnalitees;
+package model.fonctionnalitees;
 
 public enum StatutIntervention {
 

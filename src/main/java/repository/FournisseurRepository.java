@@ -6,8 +6,8 @@ import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import comptes.Fournisseur;
-import inventaire.Article;
+import model.comptes.Fournisseur;
+import model.inventaire.Article;
 
 public interface FournisseurRepository extends JpaRepository<Fournisseur, Long>{
 	

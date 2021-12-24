@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import comptes.Client;
 import exception.AchatException;
 import exception.BoissonException;
-import fonctionnalitees.Achat;
-import inventaire.Boisson;
+import model.comptes.Client;
+import model.fonctionnalitees.Achat;
+import model.inventaire.Boisson;
 import repository.AchatRepository;
 
 

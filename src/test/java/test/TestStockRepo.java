@@ -14,10 +14,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import config.AppConfig;
-import inventaire.Article;
-import inventaire.Bar;
-import inventaire.Stock;
-import inventaire.TypeArticle;
+import model.inventaire.Article;
+import model.inventaire.Bar;
+import model.inventaire.Stock;
+import model.inventaire.TypeArticle;
 import repository.ArticleRepository;
 import repository.BarRepository;
 import repository.StockRepository;

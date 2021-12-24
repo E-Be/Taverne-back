@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import comptes.Fournisseur;
-import inventaire.Article;
+import model.comptes.Fournisseur;
+import model.inventaire.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Long>{
 	

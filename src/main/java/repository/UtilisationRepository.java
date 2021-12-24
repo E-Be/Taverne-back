@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import inventaire.Boisson;
-import inventaire.Utilisation;
+import model.inventaire.Boisson;
+import model.inventaire.Utilisation;
 
 @Repository
 public interface UtilisationRepository extends JpaRepository<Utilisation, Long>{

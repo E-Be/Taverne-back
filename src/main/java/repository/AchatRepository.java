@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import comptes.Client;
-import fonctionnalitees.Achat;
+import model.comptes.Client;
+import model.fonctionnalitees.Achat;
 
 public interface AchatRepository extends JpaRepository<Achat, Long>{
 

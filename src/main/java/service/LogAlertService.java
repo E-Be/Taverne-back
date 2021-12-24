@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import inventaire.LogAlerte;
-import inventaire.Stock;
+import model.inventaire.LogAlerte;
+import model.inventaire.Stock;
 import repository.LogAlertRepository;
 
 @Service

@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import comptes.Client;
-import fonctionnalitees.CarteFidelite;
+import model.comptes.Client;
+import model.fonctionnalitees.CarteFidelite;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
 	

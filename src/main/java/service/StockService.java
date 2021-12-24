@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import exception.StockException;
-import inventaire.Bar;
-import inventaire.Stock;
-import inventaire.TypeArticle;
+import model.inventaire.Bar;
+import model.inventaire.Stock;
+import model.inventaire.TypeArticle;
 import repository.StockRepository;
 
 @Service

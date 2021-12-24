@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import idao.jpa.IDAOLogAlerte;
-import inventaire.LogAlerte;
-import inventaire.Stock;
+import model.inventaire.LogAlerte;
+import model.inventaire.Stock;
 import util.Context;
 
 public class DAOLogAlerte implements IDAOLogAlerte{

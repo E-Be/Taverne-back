@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import comptes.Compte;
 import idao.jpa.IDAOCompte;
+import model.comptes.Compte;
 import util.Context;
 
 public class DAOCompte implements IDAOCompte {

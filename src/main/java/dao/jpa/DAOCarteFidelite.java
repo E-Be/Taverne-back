@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import fonctionnalitees.CarteFidelite;
-import fonctionnalitees.Events;
 import idao.jpa.IDAOCarteFidelite;
+import model.fonctionnalitees.CarteFidelite;
+import model.fonctionnalitees.Events;
 import util.Context;
 
 public class DAOCarteFidelite implements IDAOCarteFidelite {

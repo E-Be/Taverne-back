@@ -1,4 +1,4 @@
-package comptes;
+package model.comptes;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import fonctionnalitees.Intervention;
+import model.fonctionnalitees.Intervention;
 
 @Entity
 @DiscriminatorValue("Intervenant")

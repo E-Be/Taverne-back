@@ -12,9 +12,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import comptes.Employe;
-import fonctionnalitees.Events;
-import inventaire.Bar;
+import model.comptes.Employe;
+import model.fonctionnalitees.Events;
+import model.inventaire.Bar;
 
 
 public interface EvenementRepository extends JpaRepository<Events,Long> {

@@ -2,8 +2,8 @@ package idao.jpa;
 
 import java.util.List;
 
-import fonctionnalitees.Achat;
-import comptes.Client;
+import model.comptes.Client;
+import model.fonctionnalitees.Achat;
 
 public interface IDAOAchat extends IDAO<Achat,Integer> {
 	

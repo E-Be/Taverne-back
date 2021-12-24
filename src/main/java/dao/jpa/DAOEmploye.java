@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import comptes.Employe;
 import idao.jpa.IDAOEmploye;
+import model.comptes.Employe;
 import util.Context;
 
 public class DAOEmploye implements IDAOEmploye{

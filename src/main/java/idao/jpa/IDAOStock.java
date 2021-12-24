@@ -3,8 +3,8 @@ package idao.jpa;
 
 import java.util.List;
 
-import inventaire.Article;
-import inventaire.Stock;
+import model.inventaire.Article;
+import model.inventaire.Stock;
 
 public interface IDAOStock extends IDAO<Stock,Integer> {
 

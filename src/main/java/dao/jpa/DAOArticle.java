@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import fonctionnalitees.Events;
 import idao.jpa.IDAOArticle;
-import inventaire.Article;
+import model.fonctionnalitees.Events;
+import model.inventaire.Article;
 import util.Context;
 
 public class DAOArticle implements IDAOArticle {

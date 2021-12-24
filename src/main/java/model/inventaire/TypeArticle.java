@@ -1,4 +1,4 @@
-package inventaire;
+package model.inventaire;
 
 public enum TypeArticle {
 

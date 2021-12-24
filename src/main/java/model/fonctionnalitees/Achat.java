@@ -1,4 +1,4 @@
-package fonctionnalitees;
+package model.fonctionnalitees;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import comptes.Client;
-import inventaire.Boisson;
 //import util.Context;
+import model.comptes.Client;
+import model.inventaire.Boisson;
 
 @Entity
 public class Achat {

@@ -1,4 +1,4 @@
-package comptes;
+package model.comptes;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

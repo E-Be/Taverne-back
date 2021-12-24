@@ -1,4 +1,4 @@
-package comptes;
+package model.comptes;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import fonctionnalitees.Achat;
-import fonctionnalitees.CarteFidelite;
+import model.fonctionnalitees.Achat;
+import model.fonctionnalitees.CarteFidelite;
 
 @Entity
 @DiscriminatorValue("Client")

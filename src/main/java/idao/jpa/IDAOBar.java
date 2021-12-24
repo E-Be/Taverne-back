@@ -1,11 +1,11 @@
 package idao.jpa;
 
-import comptes.Client;
-import fonctionnalitees.Achat;
-import inventaire.Article;
-import inventaire.Bar;
-import inventaire.Boisson;
-import inventaire.Stock;
+import model.comptes.Client;
+import model.fonctionnalitees.Achat;
+import model.inventaire.Article;
+import model.inventaire.Bar;
+import model.inventaire.Boisson;
+import model.inventaire.Stock;
 
 public interface IDAOBar extends IDAO<Bar, Integer> {
 	public Stock approvisioner(Article article,Bar bar);

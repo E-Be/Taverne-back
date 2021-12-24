@@ -6,10 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import fonctionnalitees.Achat;
 import idao.jpa.IDAOUtilisation;
-import inventaire.Boisson;
-import inventaire.Utilisation;
+import model.fonctionnalitees.Achat;
+import model.inventaire.Boisson;
+import model.inventaire.Utilisation;
 import util.Context;
 
 public class DAOUtilisation implements IDAOUtilisation{

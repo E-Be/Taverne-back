@@ -8,14 +8,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-import comptes.Client;
-import fonctionnalitees.Achat;
 import idao.jpa.IDAOBar;
-import inventaire.Article;
-import inventaire.Bar;
-import inventaire.Boisson;
-import inventaire.Stock;
-import inventaire.Utilisation;
+import model.comptes.Client;
+import model.fonctionnalitees.Achat;
+import model.inventaire.Article;
+import model.inventaire.Bar;
+import model.inventaire.Boisson;
+import model.inventaire.Stock;
+import model.inventaire.Utilisation;
 import util.Context;
 
 public class DAOBar implements IDAOBar{
