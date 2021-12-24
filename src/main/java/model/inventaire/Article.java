@@ -11,30 +11,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;import model.JsonViews;
 import model.comptes.Fournisseur;
 
 @Entity
 @Table(name="Article")
 public class Article {
 
+	@JsonView(JsonViews.Common.class)
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Obligatoire*
 	private Long id;
+	@JsonView(JsonViews.Common.class)
 	private String nom;
+	@JsonView(JsonViews.Common.class)
 	private double cout;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="type_produit")
+	@JsonView(JsonViews.Common.class)
 	private TypeArticle typeProduit;
+	@JsonView(JsonViews.Common.class)
 	private double volume;
 	
 	
 	@ManyToOne
 	@JoinColumn(name="id_fournisseur")
+	@JsonView(JsonViews.ArticleWithFournisseur.class)
 	private Fournisseur fournisseur;
 	
 	public Article(){}
-	
 	
 
 	public Article(String nom, double cout, TypeArticle type_produit, double volume, Fournisseur fournisseur) {
