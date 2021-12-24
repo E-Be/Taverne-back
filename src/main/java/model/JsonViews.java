@@ -7,6 +7,10 @@ public class JsonViews {
 		
 	}
 	
+	public static class BoissonByBar{
+		
+	}
+	
 	public static class ArticleWithFournisseur extends Common{
 		
 	}
