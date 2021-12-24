@@ -6,4 +6,7 @@ public class JsonViews {
 		
 	}
 
+	public static class Stock extends Common{
+		
+	}
 }

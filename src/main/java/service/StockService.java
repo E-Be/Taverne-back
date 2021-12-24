@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,18 @@ public class StockService {
 	
 	@Autowired
 	private LogAlertService logAlerteService;
+	
+	@Autowired
+	private BarService barService;
 
+	public List<Stock> getAllByBar(Bar bar){
+		return stockRepo.findAllByBar(bar);
+	}
+	
+	public List<Stock> getAllByBar(Long id){
+		return getAllByBar(barService.getById(id));
+	}
+	
 	public Stock getByTypeArticle(TypeArticle typeArticle, Bar bar) {
 		return stockRepo.findByTypeArticle(typeArticle, bar).orElseThrow(StockException::new);
 	}
