@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
 
 @Entity
 public class Stock {
@@ -19,19 +24,26 @@ public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_stock")
+	@JsonView(JsonViews.Common.class)
 	private Long idStock;
+	@JsonView(JsonViews.Common.class)
 	private double volumeTot;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "seuil_limite")
 	private Integer seuilLimite;
 
 	@ManyToMany
 	@JoinTable(name = "Articles_de_stock")
+	@JsonView(JsonViews.Common.class)
 	private Set<Article> articles;
 
 	@ManyToOne
 	@JoinColumn(name="id_bar")
 	private Bar bar;
 
+	@Version
+	private int version;
+	
 	public Stock() {}
 
 	public Stock(double volumeTot, Integer seuilLimite, Set<Article> articles, Bar bar) {
@@ -57,14 +69,6 @@ public class Stock {
 		this.volumeTot = volumeTot;
 	}
 
-	public Integer getseuilLimite() {
-		return seuilLimite;
-	}
-
-	public void setseuilLimite(Integer seuilLimite) {
-		this.seuilLimite = seuilLimite;
-	}
-
 	public Set<Article> getArticles() {
 		return articles;
 	}
@@ -79,6 +83,22 @@ public class Stock {
 
 	public void setBar(Bar bar) {
 		this.bar = bar;
+	}
+
+	public Integer getSeuilLimite() {
+		return seuilLimite;
+	}
+
+	public void setSeuilLimite(Integer seuilLimite) {
+		this.seuilLimite = seuilLimite;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	public void utiliserVolume(double volume) {

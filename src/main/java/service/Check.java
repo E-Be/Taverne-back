@@ -26,5 +26,11 @@ public class Check {
 			throw new CheckNegatifException();
 		}
 	}
+	
+	public static void checkNegatifNullOk(Integer qte) {
+		if(qte!=null && qte<0) {
+			throw new CheckNegatifException();
+		}
+	}
 
 }

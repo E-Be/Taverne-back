@@ -12,7 +12,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -21,12 +25,17 @@ public abstract class Boisson{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@JsonView({JsonViews.Common.class,JsonViews.BoissonByBar.class})
 	protected Long id;
+	@JsonView({JsonViews.Common.class,JsonViews.BoissonByBar.class})
 	protected String nom;
 	protected double prixHT;
 	protected double prixHThh;
 	protected double tva;
 	
+	
+	@JsonView(JsonViews.BoissonByBar.class)
 	@ManyToOne
 	@JoinColumn(name = "id_bar")
 	protected Bar bar;
@@ -107,10 +116,22 @@ public abstract class Boisson{
 		return "Boisson [id=" + id + ", nom=" + nom + ", prixHT=" + prixHT + ", prixHThh=" + prixHThh + ", tva=" + tva
 				+ ", bar=" + bar + ", utilisations=" + utilisations + "]";
 	}
+	
+	@Version
+	private int version;
+
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(bar, id, nom, prixHT, prixHThh, tva, utilisations);
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

@@ -15,6 +15,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import model.JsonViews;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="Type_Compte")
