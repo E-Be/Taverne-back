@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
 import model.comptes.Employe;
 import model.fonctionnalitees.Events;
 import model.fonctionnalitees.Intervention;
@@ -21,8 +24,9 @@ public class Bar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bar")
+	@JsonView(JsonViews.Evenement.class)
 	private Long idBar;
-
+	@JsonView(JsonViews.Evenement.class)
 	private String nom;
 
 	@OneToMany(mappedBy = "bar")

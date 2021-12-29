@@ -26,7 +26,10 @@ public interface EvenementRepository extends JpaRepository<Events,Long> {
 	//Employe
 	//@Query("from Events c where c.emp=:emp")
 	List<Events> findByEmp(Employe emp);
-
+	
+	
+	
+	
 
 //JORDAN : Pas besoin, Repository g�re d�j� (� tester quand m�me)
 //	//Update
