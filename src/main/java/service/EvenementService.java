@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 import exception.EvenementException;
+
 import model.comptes.Employe;
 import model.fonctionnalitees.Events;
 import model.inventaire.Bar;
@@ -29,16 +32,15 @@ public class EvenementService {
 	public List<Events> getAll() {
 		return evenementRepo.findAll();
 	}
-	
-//	public List<Employe> getAllEmp() {
-//		return employeRepo.findAll();
-//	}
-//
-//	public List<Bar> getAllBar() {
-//		return barRepo.findAll();
-//	}
-	
-	
+
+	public Events getById (Long id){
+		if(id!=null) {
+			return evenementRepo.findById(id).orElseThrow(EvenementException::new);
+		}		
+		else {
+			throw new EvenementException();}
+	}
+
 	
 	public List<Events> getByJour (LocalDate jour){
 		if(jour!=null) {
@@ -72,9 +74,20 @@ public class EvenementService {
 		evenementRepo.save(evenement);
 	}
 	
-	
-	
-	
+	//On vient chercher l'objet
+	public void suppression(Long id) {
+		suppression(getById(id));
+	}
+	//On le supprime
+	public void suppression(Events evenement) {
+		Events evenementEnBase = null;
+		if (evenement.getId() != null) {
+			evenementEnBase = evenementRepo.findById(evenement.getId()).orElseThrow(EvenementException::new);
+			evenementRepo.delete(evenementEnBase);
+		} else {
+			throw new EvenementException();
+		}
+	}
 	
 	
 	
