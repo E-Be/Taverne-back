@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+
 import model.inventaire.Bar;
 import model.inventaire.Boisson;
 
@@ -18,7 +19,9 @@ public interface BoissonRepository extends JpaRepository<Boisson, Long> {
 	
 	Optional<Boisson> findByBar(Long id);
 
-	List<Boisson> findAllByBar(Bar bar);
+	List<Boisson> findAllByBar(Bar bar);	
+	
+
 		
 
 }

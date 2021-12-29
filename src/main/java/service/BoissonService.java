@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 import exception.BoissonException;
 import model.inventaire.Alcool;
-import model.inventaire.Bar;
 import model.inventaire.Boisson;
 import model.inventaire.Soft;
+import repository.AlcoolRepository;
 import repository.BarRepository;
 import repository.BoissonRepository;
+import repository.SoftRepository;
 
 
 //traitment
@@ -21,6 +22,10 @@ public class BoissonService {
 
 	@Autowired
 	private BoissonRepository BoissonRepo;
+	@Autowired
+	private AlcoolRepository alcoolRepo;
+	@Autowired
+	private SoftRepository softRepo;
 	@Autowired
 	private BarRepository barRepo;
 	@Autowired 
@@ -61,6 +66,26 @@ public class BoissonService {
 		
 		BoissonRepo.save(boisson);
 	}
+	
+	public void update(Alcool alcool) {
+		if (alcool.getId() == null) {
+			throw new BoissonException();
+		}
+		Alcool alcoolEnBase = getAlcoolById(alcool.getId());
+		alcool.setVersion(alcoolEnBase.getVersion());
+		
+		BoissonRepo.save(alcool);
+	}
+	
+	public void update(Soft soft) {
+		if (soft.getId() == null) {
+			throw new BoissonException();
+		}
+		Soft softEnBase = getSoftById(soft.getId());
+		soft.setVersion(softEnBase.getVersion());
+		
+		BoissonRepo.save(soft);
+	}
 
 	public void suppression(Boisson boisson) {
 		//Check.checkLong(boisson.getId());
@@ -75,13 +100,15 @@ public class BoissonService {
 	
 
 	
-	public List<Boisson> getAllByBar(Bar bar) {
-		return BoissonRepo.findAllByBar(bar);
+	public List<Boisson> getAllByBar(Long id) {
+//		try {BoissonRepo.findAllByBar(barService.getById(id));
+//		}
+//		catch(Exception e) {
+//			System.out.println("L'id du bar saisi est inexistant");
+//		}
+		return BoissonRepo.findAllByBar(barService.getById(id));
 	}
 	
-//	public List<Boisson> getAllByBar(Long id) {
-//		getAllByBar(getById(id));
-//	}
 	
 	
 	public List<Boisson> getAll() {
@@ -92,6 +119,19 @@ public class BoissonService {
 		Check.checkLong(id);
 		return BoissonRepo.findById(id).orElseThrow(BoissonException::new);
 	}
+	
+	public Alcool getAlcoolById(Long id) {
+		Check.checkLong(id);
+		return alcoolRepo.findById(id).orElseThrow(BoissonException::new);
+	}
+	
+	public Soft getSoftById(Long id) {
+		Check.checkLong(id);
+		return softRepo.findById(id).orElseThrow(BoissonException::new);
+	}
+	
+	
+	
 	
 	
 }
