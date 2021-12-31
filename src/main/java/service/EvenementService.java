@@ -50,22 +50,39 @@ public class EvenementService {
 			throw new EvenementException();}
 	}
 
-	public List<Events> getByBar (Bar bar) {
-		if(bar!=null) {
-			return evenementRepo.findByBar(bar);
+	//On cherche d'abord l'objet Bar
+	public List<Events> getByIdBar (Long idBar) {
+		if(idBar!=null) {
+			return findByBar(barRepo.getById(idBar));
 		}		
 		else {
 			throw new EvenementException();}
 	}
-
-	public List<Events> getByEmploye(Employe emp){
-		if(emp!=null) {
+//On retrouve la liste Events via l'objet trouvé au dessus
+	public List<Events> findByBar (Bar bar){
+		Check.checkLong(bar.getIdBar());
+		return evenementRepo.findByBar(bar);
+	}
+	
+	
+	
+	
+	
+	//On cherche d'abord l'objet Emp
+		public List<Events> getByIdEmploye(Long id) {
+		Check.checkLong(id);	
+		return findByEmp(employeRepo.getById(id));
+		
+		}
+	//On retrouve la liste Events via l'objet trouvé au dessus
+	public List<Events> findByEmp(Employe emp){
 			return evenementRepo.findByEmp(emp);
-		}		
-		else {
-			throw new EvenementException();}
+			
 	}
 
+	
+	
+	
 
 	public void creationOuModification(Events evenement) {
 		if (evenement.getId() == null) {
@@ -89,27 +106,5 @@ public class EvenementService {
 		}
 	}
 	
-	
-	
-	
-//JORDAN : Pas besoin, Repository gï¿½re dï¿½jï¿½ (ï¿½ tester quand mï¿½me)
-//	//UPDATE
-//	public void updateLocalDate{
-//
-//	}
-//
-//	public void updateLocalTimeDebut{
-//
-//	}
-//
-
-//	//DELETE
-//
-//	public void deleteById{
-//
-//	}
-//
-//
-//
 
 }

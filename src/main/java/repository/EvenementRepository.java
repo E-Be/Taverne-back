@@ -4,6 +4,8 @@ package repository;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import model.comptes.Employe;
 import model.fonctionnalitees.Events;
 import model.inventaire.Bar;
@@ -21,7 +23,7 @@ public interface EvenementRepository extends JpaRepository<Events,Long> {
 	//@Query("select distinct Events from Events c where c.jour =:jour")
 	List<Events> findByJour(LocalDate jour);
 	//Bar
-	//@Query("from Events c where c.bar=:bar")
+//	@Query("from Events c where c.idbar=:idBar")
 	List<Events> findByBar(Bar bar);
 	//Employe
 	//@Query("from Events c where c.emp=:emp")

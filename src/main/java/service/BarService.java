@@ -43,7 +43,7 @@ public class BarService {
 	@Autowired
 	private AchatService achatService;
 	
-	public Bar getById(long id) {
+	public Bar getById(Long id) {
 		Check.checkLong(id);
 		return barRepo.findById(id).orElseThrow(RuntimeException::new);
 	}
