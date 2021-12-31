@@ -6,4 +6,5 @@ import model.inventaire.Bar;
 
 public interface BarRepository extends JpaRepository<Bar, Long>{
 
+
 }

@@ -45,7 +45,13 @@ public class Bar {
 
 	public Bar() {
 	}
-
+	
+	public Bar(Long idBar, String nom) {
+		this.idBar=idBar;
+		this.nom=nom;
+	}
+	
+	
 	public Bar(String nom, Set<Stock> stocks, Set<Events> events, Set<Employe> employes,
 			Set<Intervention> interventions) {
 		this.nom = nom;
